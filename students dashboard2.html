@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Sherwood Nursery Private School</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #ffe6f2; display: flex; min-height: 100vh; }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #ff69b4;
+            height: 100vh;
+            padding: 2rem 1rem;
+            color: white;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+        }
+        .sidebar a {
+            display: block;
+            padding: 1rem;
+            margin: .5rem 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background: #ff85c4;
+            transform: translateX(5px);
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 260px;
+            padding: 2rem;
+            width: calc(100% - 260px);
+        }
+
+        /* Top Area */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .profile-box img {
+            width: 60px; height: 60px; border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .profile-box h3 { font-size: 1.2rem; }
+
+        /* Quick Links */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .card {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background: #ffe4f2;
+        }
+        .card i {
+            font-size: 2rem;
+            color: #ff1493;
+            margin-bottom: 1rem;
+        }
+        .card h4 { font-size: 1.2rem; }
+
+        /* Announcements */
+        .section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .section h3 { margin-bottom: 1rem; color: #ff1493; }
+
+        .announcement {
+            padding: 1rem;
+            background: #fff3fb;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff69b4;
+        }
+
+        @media(max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Student Panel</h2>
+        <a href="#"><i class="fa fa-home"></i> Dashboard</a>
+        <a href="#"><i class="fa fa-book"></i> My Results</a>
+        <a href="#"><i class="fa fa-list"></i> Assignments</a>
+        <a href="#"><i class="fa fa-user-check"></i> Attendance</a>
+        <a href="#"><i class="fa fa-money-bill"></i> Fees</a>
+        <a href="#"><i class="fa fa-bell"></i> Notifications</a>
+        <a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Profile -->
+        <div class="top-bar">
+            <h1>Welcome, Student</h1>
+
+            <div class="profile-box">
+                <img src="https://i.pravatar.cc/150?img=32" alt="">
+                <div>
+                    <h3>Jane Doe</h3>
+                    <small>Grade 1 - Red Class</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <i class="fa fa-book"></i>
+                <h4>Check Results</h4>
+            </div>
+            <div class="card">
+                <i class="fa fa-tasks"></i>
+                <h4>Assignments</h4>
+            </div>
+            <div class="card">
+                <i class="fa fa-user-check"></i>
+                <h4>Attendance</h4>
+            </div>
+            <div class="card">
+                <i class="fa fa-money-bill"></i>
+                <h4>Fees Payment</h4>
+            </div>
+            <div class="card">
+                <i class="fa fa-message"></i>
+                <h4>Messages</h4>
+            </div>
+        </div>
+
+        <!-- Announcements -->
+        <div class="section">
+            <h3>Announcements</h3>
+
+            <div class="announcement">
+                📌 School resumes on Monday 13th January 2025. Ensure all uniforms are ready.
+            </div>
+
+            <div class="announcement">
+                📌 First term report cards will be available next week.
+            </div>
+
+            <div class="announcement">
+                📌 Tuition payment deadline is 25th January 2025.
+            </div>
+        </div>
+
+        <!-- Events -->
+        <div class="section">
+            <h3>Upcoming Events</h3>
+            <p>🎉 Inter-house sports — February 2025</p>
+            <p>🎨 Art & Craft Day — March 2025</p>
+            <p>🌳 Excursion to Nature Park — April 2025</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

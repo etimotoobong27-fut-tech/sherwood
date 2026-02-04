@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sherwood — Student Portal</title>
+<style>
+  :root{
+    --pink:#ff1493;
+    --pink-soft:#ff69b4;
+    --bg:#fff7fb;
+    --card:#fff;
+    --muted:#666;
+  }
+  body{font-family:Poppins,system-ui,-apple-system,Segoe UI; background:var(--bg); margin:0; padding:40px; color:#222;}
+  .wrap{max-width:820px;margin:0 auto;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.9));border-radius:12px;padding:28px;box-shadow:0 8px 30px rgba(0,0,0,.06);}
+  h1{color:var(--pink); margin:0 0 12px;}
+  label{display:block;margin-top:12px;font-weight:600;color:var(--muted);}
+  select,input{width:100%;padding:12px;border-radius:8px;border:1px solid #eee;margin-top:6px;font-size:15px;}
+  .btn{display:inline-block;margin-top:16px;padding:12px 20px;border-radius:10px;background:var(--pink);color:white;border:none;cursor:pointer;font-weight:600;}
+  .result-card{margin-top:18px;background:var(--card);padding:16px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.05);}
+  .error{color:#b00020;margin-top:10px;}
+  .muted{color:var(--muted);font-size:14px;}
+  table{width:100%;border-collapse:collapse;margin-top:12px;}
+  td,th{padding:8px;border-bottom:1px solid #f0f0f0;text-align:left}
+  .small{font-size:13px;color:#777}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Student Portal — Check Results</h1>
+    <p class="muted">Select your class and enter your PIN. (Demo uses local mock data — backend later.)</p>
+
+    <label for="class">Class</label>
+    <select id="class">
+      <option value="">-- Select class --</option>
+      <option value="Playgroup">Playgroup</option>
+      <option value="Nursery">Nursery</option>
+      <option value="Kindergarten">Kindergarten</option>
+      <option value="Primary1">Primary 1</option>
+    </select>
+
+    <label for="pin">PIN</label>
+    <input id="pin" type="text" placeholder="Enter your PIN (e.g. 1234)" />
+
+    <button id="checkBtn" class="btn">Check Result</button>
+    <div id="message" class="error" role="status" aria-live="polite"></div>
+
+    <div id="resultArea" style="display:none;">
+      <div class="result-card" id="resultCard"></div>
+    </div>
+  </div>
+
+<script>
+/* ===== MOCK DATA =====
+ Keyed by `${class}|${pin}`
+ In real app, replace getResultFromMock with fetch('/api/results', {class, pin})
+*/
+const MOCK_RESULTS = {
+  "Playgroup|1111": {
+    name: "Timi A.",
+    class: "Playgroup",
+    pin: "1111",
+    scores: { "Play Skills": "A", "Social": "A", "Motor": "B+" },
+    remark: "Excellent progress"
+  },
+  "Nursery|2222": {
+    name: "Amaka O.",
+    class: "Nursery",
+    pin: "2222",
+    scores: { "Literacy": "B", "Numeracy": "B+", "Art": "A" },
+    remark: "Good improvement"
+  },
+  "Kindergarten|3333": {
+    name: "Chidi U.",
+    class: "Kindergarten",
+    pin: "3333",
+    scores: { "Reading": "A", "Writing": "A", "Math": "A-" },
+    remark: "Outstanding"
+  }
+};
+
+function getResultFromMock(className, pin) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const key = `${className}|${pin}`;
+      resolve(MOCK_RESULTS[key] || null);
+    }, 350); // simulate network latency
+  });
+}
+
+document.getElementById('checkBtn').addEventListener('click', async () => {
+  const className = document.getElementById('class').value.trim();
+  const pin = document.getElementById('pin').value.trim();
+  const msg = document.getElementById('message');
+  const resultArea = document.getElementById('resultArea');
+  const card = document.getElementById('resultCard');
+
+  msg.textContent = '';
+  resultArea.style.display = 'none';
+  card.innerHTML = '';
+
+  if (!className) { msg.textContent = 'Please select a class.'; return; }
+  if (!pin) { msg.textContent = 'Please enter your PIN.'; return; }
+
+  // In future replace:
+  // const data = await fetch('/api/result?class='+className+'&pin='+pin).then(r=>r.json());
+  const data = await getResultFromMock(className, pin);
+
+  if (!data) {
+    msg.textContent = 'Result not found. Check your class/PIN and try again.';
+    return;
+  }
+
+  // show result
+  resultArea.style.display = 'block';
+  card.innerHTML = `
+    <strong>${escapeHtml(data.name)}</strong> — <span class="small">${escapeHtml(data.class)}</span>
+    <table>
+      <thead><tr><th>Subject</th><th>Grade</th></tr></thead>
+      <tbody>
+        ${Object.entries(data.scores).map(([s,g]) => `<tr><td>${escapeHtml(s)}</td><td>${escapeHtml(g)}</td></tr>`).join('')}
+      </tbody>
+    </table>
+    <p class="small"><strong>Remark:</strong> ${escapeHtml(data.remark)}</p>
+    <p class="small">PIN: <strong>${escapeHtml(data.pin)}</strong></p>
+  `;
+});
+
+// tiny escape helper
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); }
+</script>
+</body>
+</html>

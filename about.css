@@ -1,0 +1,54 @@
+/* Reset & Base */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background:#F9F9F9; color:#222; overflow-x:hidden; }
+
+/* Navbar */
+header { background:#0B3D91; color:white; position:sticky; top:0; z-index:1000; }
+.header-container { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content: space-between; padding:1rem; }
+.header-container .logo { font-size:1.8rem; font-weight:bold; }
+.main-nav a { color:white; text-decoration:none; margin:0 0.75rem; font-weight:500; transition:0.3s; }
+.main-nav a:hover, .main-nav a.active { color:#FF1493; }
+.cta-btn { background:#FF1493; color:white; padding:0.6rem 1.5rem; border-radius:5px; text-decoration:none; font-weight:500; transition:0.3s; }
+.cta-btn:hover { background:#FF69B4; }
+
+/* About Hero Section */
+.about-hero { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; padding:4rem 1rem; max-width:1200px; margin:auto; gap:2rem; }
+.about-text { flex:1 1 500px; }
+.about-text h1 { color:#0B3D91; font-size:2.8rem; margin-bottom:1rem; }
+.about-text p { font-size:1.1rem; margin-bottom:1.5rem; }
+.about-text .btn { background:#FF1493; color:white; padding:0.8rem 2rem; border:none; border-radius:6px; text-decoration:none; font-weight:600; transition:0.3s; }
+.about-text .btn:hover { background:#FF69B4; }
+
+/* Carousel */
+.about-carousel { flex:1 1 400px; position:relative; overflow:hidden; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.15); }
+.carousel-slide { display:none; width:100%; height:100%; }
+.carousel-slide img { width:100%; height:auto; display:block; }
+.prev, .next { cursor:pointer; position:absolute; top:50%; width:auto; padding:0.5rem; margin-top:-1rem; color:white; font-weight:bold; font-size:2rem; border:none; background:rgba(0,0,0,0.4); border-radius:50%; user-select:none; transition:0.3s; }
+.prev:hover, .next:hover { background:rgba(0,0,0,0.7); }
+.prev { left:10px; }
+.next { right:10px; }
+
+/* Mission & Vision Section */
+.mission-vision { background: #FFFFFF; color: #1E1E1E; padding: 4rem 1rem; }
+.mv-inner { max-width: 900px; margin: auto; display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; }
+.mv-text { flex: 1 1 400px; }
+.mv-text h2 { font-family: 'Merriweather', serif; font-size: 2rem; color: #0B3D91; margin-bottom: 0.8rem; border-left: 3px solid #FF1493; padding-left: 0.8rem; }
+.mv-text p { font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8; }
+
+
+/* Hover effect (subtle) */
+.mv-item:hover { transform: translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.12); transition:0.3s; }
+
+
+/* Values Section */
+.values { padding:4rem 1rem; text-align:center; background:#F0F8FF; }
+.values h2 { color:#0B3D91; margin-bottom:2rem; }
+.value-cards { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+.value-card { background:#fff; padding:1.5rem; border-radius:10px; flex:1 1 250px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:0.3s; }
+.value-card h3 { color:#FF1493; margin-bottom:0.8rem; }
+
+/* Footer */
+footer { background:#0B3D91; color:white; text-align:center; padding:2rem; }
+
+/* Hover Effects */
+.card:hover, .value-card:hover { transform: translateY(-10px); box-shadow:0 8px 16px rgba(0,0,0,0.2); transition:0.3s; }

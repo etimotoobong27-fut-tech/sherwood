@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherwood Nursery - Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+    body {background:#fff0f5; color:#333; min-height:100vh;}
+    header {background:#ff69b4; color:white; padding:15px 40px; text-align:center; font-size:1.6rem; font-weight:700;}
+    .container {max-width:1200px; margin:30px auto; padding:20px;}
+    h2 {color:#ff1493; margin-bottom:20px; text-align:center;}
+
+    .tabs {display:flex; gap:15px; justify-content:center; margin-bottom:25px;}
+    .tab {padding:12px 25px; background:#ff1493; color:white; border-radius:25px; cursor:pointer; font-weight:600; transition:0.3s;}
+    .tab.active {background:#ff69b4; box-shadow:0 4px 15px rgba(255,20,147,0.4);}
+    .tab:hover {transform:scale(1.05);}
+    .tab-content {display:none;}
+    .tab-content.active {display:block;}
+
+    table {width:100%; border-collapse: collapse; margin-top:10px;}
+    table thead {background:#ff69b4; color:white;}
+    table th, table td {padding:12px 15px; border:1px solid #ffb6c1; text-align:center;}
+    table tr:nth-child(even){background:#ffe6f2;}
+    table tr:hover {background:#ffb6c1; color:white; transform:scale(1.02); transition:0.3s;}
+
+    .button {display:inline-block; padding:8px 16px; background:#ff1493; color:white; border-radius:25px; font-weight:600; text-decoration:none; cursor:pointer; transition:0.3s; margin:2px;}
+    .button:hover {background:#ff69b4; box-shadow:0 4px 12px rgba(255,20,147,0.4); transform:scale(1.05);}
+
+    .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;}
+    .modal-content {background:white; padding:25px; border-radius:15px; max-width:500px; width:90%; position:relative;}
+    .close {position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer; font-weight:bold;}
+
+    label {display:block; margin-top:10px; font-weight:500;}
+    input, select {width:100%; padding:10px; margin-top:5px; border-radius:8px; border:1px solid #ff69b4; outline:none;}
+    input:focus, select:focus {border-color:#ff1493; box-shadow:0 0 8px rgba(255,20,147,0.4);}
+    .save-btn {margin-top:15px; width:100%;}
+</style>
+</head>
+<body>
+
+<header>Admin Dashboard - Sherwood Nursery</header>
+
+<div class="container">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active" data-target="studentsTab">Students</div>
+        <div class="tab" data-target="teachersTab">Teachers</div>
+        <div class="tab" data-target="paymentsTab">Payments</div>
+        <div class="tab" data-target="resultsTab">Results</div>
+        <div class="tab" data-target="postsTab">Announcements</div>
+    </div>
+
+    <!-- Students Tab -->
+    <div class="tab-content active" id="studentsTab">
+        <h2>Manage Students</h2>
+        <button class="button" onclick="openModal('studentModal')">Add Student</button>
+        <table>
+            <thead>
+                <tr><th>Admission No</th><th>Name</th><th>Class</th><th>Contact</th><th>Permission</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="studentsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Teachers Tab -->
+    <div class="tab-content" id="teachersTab">
+        <h2>Manage Teachers</h2>
+        <button class="button" onclick="openModal('teacherModal')">Add Teacher</button>
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Name</th><th>Subject</th><th>Contact</th><th>Permission</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="teachersTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Payments Tab -->
+    <div class="tab-content" id="paymentsTab">
+        <h2>Payments</h2>
+        <button class="button" onclick="openModal('paymentModal')">Add Payment</button>
+        <table>
+            <thead>
+                <tr><th>Date</th><th>Student</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="paymentsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Results Tab -->
+    <div class="tab-content" id="resultsTab">
+        <h2>Results</h2>
+        <button class="button" onclick="openModal('resultModal')">Add Result</button>
+        <table>
+            <thead>
+                <tr><th>Student</th><th>Class</th><th>Subject</th><th>Score</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="resultsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Announcements Tab -->
+    <div class="tab-content" id="postsTab">
+        <h2>Announcements</h2>
+        <button class="button" onclick="openModal('postModal')">Add Announcement</button>
+        <table>
+            <thead>
+                <tr><th>Title</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="postsTable"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modals -->
+<div class="modal" id="studentModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('studentModal')">&times;</span>
+        <h3 id="studentModalTitle">Add Student</h3>
+        <label>Name</label><input type="text" id="studentName">
+        <label>Class</label><input type="text" id="studentClass">
+        <label>Admission No</label><input type="text" id="studentAdmNo">
+        <label>Contact</label><input type="text" id="studentContact">
+        <label>Permission</label>
+        <select id="studentPermission">
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button class="button save-btn" onclick="saveStudent()">Save</button>
+    </div>
+</div>
+
+<div class="modal" id="teacherModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('teacherModal')">&times;</span>
+        <h3 id="teacherModalTitle">Add Teacher</h3>
+        <label>Name</label><input type="text" id="teacherName">
+        <label>Subject</label><input type="text" id="teacherSubject">
+        <label>ID</label><input type="text" id="teacherID">
+        <label>Contact</label><input type="text" id="teacherContact">
+        <label>Permission</label>
+        <select id="teacherPermission">
+            <option value="teacher">Teacher</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button class="button save-btn" onclick="saveTeacher()">Save</button>
+    </div>
+</div>
+
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+        <h3 id="paymentModalTitle">Add Payment</h3>
+        <label>Date</label><input type="date" id="paymentDate">
+        <label>Student</label><input type="text" id="paymentStudent">
+        <label>Amount</label><input type="number" id="paymentAmount">
+        <label>Status</label>
+        <select id="paymentStatus">
+            <option value="Unpaid">Unpaid</option>
+            <option value="Paid">Paid</option>
+        </select>
+        <button class="button save-btn" onclick="savePayment()">Save</button>
+    </div>
+</div>
+
+<div class="modal" id="resultModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('resultModal')">&times;</span>
+        <h3 id="resultModalTitle">Add Result</h3>
+        <label>Student</label><input type="text" id="resultStudent">
+        <label>Class</label><input type="text" id="resultClass">
+        <label>Subject</label><input type="text" id="resultSubject">
+        <label>Score</label><input type="number" id="resultScore">
+        <button class="button save-btn" onclick="saveResult()">Save</button>
+    </div>
+</div>
+
+<div class="modal" id="postModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('postModal')">&times;</span>
+        <h3>Add Announcement</h3>
+        <label>Title</label><input type="text" id="postTitle">
+        <label>Date</label><input type="date" id="postDate">
+        <button class="button save-btn" onclick="addPost()">Save</button>
+    </div>
+</div>
+
+<script>
+    // Tabs
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab=>{
+        tab.addEventListener('click', ()=>{
+            tabs.forEach(t=>t.classList.remove('active'));
+            tab.classList.add('active');
+            tabContents.forEach(tc=>tc.classList.remove('active'));
+            document.getElementById(tab.dataset.target).classList.add('active');
+        });
+    });
+
+    function openModal(id){document.getElementById(id).style.display='flex';}
+    function closeModal(id){document.getElementById(id).style.display='none';}
+
+    // Sample data
+    let students=[{adm:'SN-001',name:'Jane Doe',className:'Nursery',contact:'+2348100000000',permission:'student'}];
+    let teachers=[{id:'T-001',name:'Mrs. Adenike',subject:'Math',contact:'+2348100000010',permission:'teacher'}];
+    let payments=[],results=[],posts=[];
+    let editingStudentIndex=null, editingTeacherIndex=null, editingPaymentIndex=null, editingResultIndex=null;
+
+    // Render functions
+    function renderStudents(){const tbody=document.getElementById('studentsTable');tbody.innerHTML='';students.forEach((s,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${s.adm}</td><td>${s.name}</td><td>${s.className}</td><td>${s.contact}</td><td>${s.permission}</td><td><button class="button" onclick="editStudent(${i})">Edit</button><button class="button" onclick="deleteStudent(${i})">Delete</button></td>`;tbody.appendChild(tr);});}
+    function renderTeachers(){const tbody=document.getElementById('teachersTable');tbody.innerHTML='';teachers.forEach((t,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${t.id}</td><td>${t.name}</td><td>${t.subject}</td><td>${t.contact}</td><td>${t.permission}</td><td><button class="button" onclick="editTeacher(${i})">Edit</button><button class="button" onclick="deleteTeacher(${i})">Delete</button></td>`;tbody.appendChild(tr);});}
+    function renderPayments(){const tbody=document.getElementById('paymentsTable');tbody.innerHTML='';payments.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p.date}</td><td>${p.student}</td><td>${p.amount}</td><td>${p.status}</td><td><button class="button" onclick="editPayment(${i})">Edit</button><button class="button" onclick="deletePayment(${i})">Delete</button></td>`;tbody.appendChild(tr);});}
+    function renderResults(){const tbody=document.getElementById('resultsTable');tbody.innerHTML='';results.forEach((r,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${r.student}</td><td>${r.className}</td><td>${r.subject}</td><td>${r.score}</td><td><button class="button" onclick="editResult(${i})">Edit</button><button class="button" onclick="deleteResult(${i})">Delete</button></td>`;tbody.appendChild(tr);});}
+    function renderPosts(){const tbody=document.getElementById('postsTable');tbody.innerHTML='';posts.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p.title}</td><td>${p.date}</td><td><button class="button" onclick="deletePost(${i})">Delete</button></td>`;tbody.appendChild(tr);});}
+
+    // Students CRUD
+    function saveStudent(){const name=document.getElementById('studentName').value;const className=document.getElementById('studentClass').value;const adm=document.getElementById('studentAdmNo').value;const contact=document.getElementById('studentContact').value;const permission=document.getElementById('studentPermission').value;if(editingStudentIndex!==null){students[editingStudentIndex]={adm,name,className,contact,permission};editingStudentIndex=null;}else{students.push({adm,name,className,contact,permission});}closeModal('studentModal');clearStudentForm();renderStudents();}
+    function editStudent(i){editingStudentIndex=i;const s=students[i];document.getElementById('studentModalTitle').innerText='Edit Student';document.getElementById('studentName').value=s.name;document.getElementById('studentClass').value=s.className;document.getElementById('studentAdmNo').value=s.adm;document.getElementById('studentContact').value=s.contact;document.getElementById('studentPermission').value=s.permission;openModal('studentModal');}
+    function deleteStudent(i){students.splice(i,1);renderStudents();}
+    function clearStudentForm(){document.getElementById('studentName').value='';document.getElementById('studentClass').value='';document.getElementById('studentAdmNo').value='';document.getElementById('studentContact').value='';document.getElementById('studentPermission').value='student';document.getElementById('studentModalTitle').innerText='Add Student';}
+
+    // Teachers CRUD
+    function saveTeacher(){const name=document.getElementById('teacherName').value;const subject=document.getElementById('teacherSubject').value;const id=document.getElementById('teacherID').value;const contact=document.getElementById('teacherContact').value;const permission=document.getElementById('teacherPermission').value;if(editingTeacherIndex!==null){teachers[editingTeacherIndex]={id,name,subject,contact,permission};editingTeacherIndex=null;}else{teachers.push({id,name,subject,contact,permission});}closeModal('teacherModal');clearTeacherForm();renderTeachers();}
+    function editTeacher(i){editingTeacherIndex=i;const t=teachers[i];document.getElementById('teacherModalTitle').innerText='Edit Teacher';document.getElementById('teacherName').value=t.name;document.getElementById('teacherSubject').value=t.subject;document.getElementById('teacherID').value=t.id;document.getElementById('teacherContact').value=t.contact;document.getElementById('teacherPermission').value=t.permission;openModal('teacherModal');}
+    function deleteTeacher(i){teachers.splice(i,1);renderTeachers();}
+    function clearTeacherForm(){document.getElementById('teacherName').value='';document.getElementById('teacherSubject').value='';document.getElementById('teacherID').value='';document.getElementById('teacherContact').value='';document.getElementById('teacherPermission').value='teacher';document.getElementById('teacherModalTitle').innerText='Add Teacher';}
+
+    // Payments CRUD
+    function savePayment(){const date=document.getElementById('paymentDate').value;const student=document.getElementById('paymentStudent').value;const amount=document.getElementById('paymentAmount').value;const status=document.getElementById('paymentStatus').value;if(editingPaymentIndex!==null){payments[editingPaymentIndex]={date,student,amount,status};editingPaymentIndex=null;}else{payments.push({date,student,amount,status});}closeModal('paymentModal');clearPaymentForm();renderPayments();}
+    function editPayment(i){editingPaymentIndex=i;const p=payments[i];document.getElementById('paymentModalTitle').innerText='Edit Payment';document.getElementById('paymentDate').value=p.date;document.getElementById('paymentStudent').value=p.student;document.getElementById('paymentAmount').value=p.amount;document.getElementById('paymentStatus').value=p.status;openModal('paymentModal');}
+    function deletePayment(i){payments.splice(i,1);renderPayments();}
+    function clearPaymentForm(){document.getElementById('paymentDate').value='';document.getElementById('paymentStudent').value='';document.getElementById('paymentAmount').value='';document.getElementById('paymentStatus').value='Unpaid';document.getElementById('paymentModalTitle').innerText='Add Payment';}
+
+    // Results CRUD
+    function saveResult(){const student=document.getElementById('resultStudent').value;const className=document.getElementById('resultClass').value;const subject=document.getElementById('resultSubject').value;const score=document.getElementById('resultScore').value;if(editingResultIndex!==null){results[editingResultIndex]={student,className,subject,score};editingResultIndex=null;}else{results.push({student,className,subject,score});}closeModal('resultModal');clearResultForm();renderResults();}
+    function editResult(i){editingResultIndex=i;const r=results[i];document.getElementById('resultModalTitle').innerText='Edit Result';document.getElementById('resultStudent').value=r.student;document.getElementById('resultClass').value=r.className;document.getElementById('resultSubject').value=r.subject;document.getElementById('resultScore').value=r.score;openModal('resultModal');}
+    function deleteResult(i){results.splice(i,1);renderResults();}
+    function clearResultForm(){document.getElementById('resultStudent').value='';document.getElementById('resultClass').value='';document.getElementById('resultSubject').value='';document.getElementById('resultScore').value='';document.getElementById('resultModalTitle').innerText='Add Result';}
+
+    // Posts
+    function addPost(){const title=document.getElementById('postTitle').value;const date=document.getElementById('postDate').value;posts.push({title,date});renderPosts();closeModal('postModal');document.getElementById('postTitle').value='';document.getElementById('postDate').value='';}
+    function deletePost(i){posts.splice(i,1);renderPosts();}
+
+    renderStudents(); renderTeachers(); renderPayments(); renderResults(); renderPosts();
+</script>
+
+</body>
+</html>

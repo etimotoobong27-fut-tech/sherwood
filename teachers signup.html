@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Sign Up | Sherwood Nursery Private School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
+        body {
+            background: linear-gradient(rgba(255,105,180,0.6), rgba(255,105,180,0.6)),
+                        url("https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=1600&q=80")
+                        no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity:0; transform: translateY(20px);}
+            to {opacity:1; transform: translateY(0);}
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #ff1493;
+        }
+
+        .input-group {margin-bottom: 1rem;}
+        .input-group label {font-weight: 600; margin-bottom: 5px; display:block;}
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 5px rgba(255,105,180,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            background: #ff69b4;
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: #ff1493;
+            box-shadow: 0 0 10px #ff1493;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4ffd8;
+            color: #0f7a1f;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .link {
+            text-align:center;
+            margin-top: 1rem;
+        }
+        .link a {color:#ff1493; font-weight:600;}
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Teacher Registration</h2>
+
+        <div id="success" class="success-message">Registration successful!</div>
+
+        <form id="signupForm">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="text" id="phone" required>
+            </div>
+
+            <div class="input-group">
+                <label>Department</label>
+                <select id="department" required>
+                    <option value="">-- Select Department --</option>
+                    <option>Nursery</option>
+                    <option>Primary</option>
+                    <option>Secondary</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <div class="link">
+            Already have an account? <a href="teacher-login.html">Login here</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("signupForm");
+        const successBox = document.getElementById("success");
+
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+
+            // VALIDATION
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+
+            if(password !== confirmPassword){
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // SHOW SUCCESS
+            successBox.style.display = "block";
+
+            // CLEAR FORM
+            form.reset();
+
+            // OPTIONAL: You can send these to backend here
+            // fetch("register.php", {method:'POST', body: new FormData(form)})
+        });
+    </script>
+
+</body>
+</html>
