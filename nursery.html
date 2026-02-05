@@ -87,14 +87,34 @@ body { background:var(--bg); color:#0b2540; line-height:1.6; }
 /* FOOTER */
 .site-footer { background:var(--primary); color:#fff; padding:32px 0; text-align:center; }
 
-/* RESPONSIVE */
+/* MOBILE MENU */
 @media(max-width:900px){
-  .nav{display:none}
-  .mobile-toggle{display:inline-block}
-  .hero-inner{padding:24px}
-  .typewriter{font-size:1.5rem}
-  .cards-grid{grid-template-columns:1fr}
-  .staff-card{width:180px}
+  .nav{
+    position: fixed;
+    top:0;
+    right:-100%;
+    height:100%;
+    width:250px;
+    background:var(--white);
+    flex-direction: column;
+    padding:4rem 1rem;
+    gap:16px;
+    transition: right 0.3s ease-in-out;
+    z-index:1000;
+  }
+  .nav.active { right:0; }
+  .nav a {
+    opacity:0;
+    transform: translateX(30px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav.active a { opacity:1; transform: translateX(0); }
+  .nav a:nth-child(1) { transition-delay:0.1s; }
+  .nav a:nth-child(2) { transition-delay:0.2s; }
+  .nav a:nth-child(3) { transition-delay:0.3s; }
+  .nav a:nth-child(4) { transition-delay:0.4s; }
+  .nav a:nth-child(5) { transition-delay:0.5s; }
+  .mobile-toggle{display:inline-block;}
 }
 </style>
 </head>
@@ -113,7 +133,7 @@ body { background:var(--bg); color:#0b2540; line-height:1.6; }
     </nav>
     <div class="header-actions">
       <a class="btn-apply" href="admissions.html">Apply</a>
-      <button class="mobile-toggle" aria-label="Open menu">☰</button>
+      <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
     </div>
   </div>
 </header>
@@ -195,23 +215,47 @@ body { background:var(--bg); color:#0b2540; line-height:1.6; }
 </footer>
 
 <script>
-// Mobile toggle
+// MOBILE TOGGLE
 const toggle = document.querySelector('.mobile-toggle');
 const nav = document.querySelector('.nav');
-toggle.addEventListener('click',()=>{nav.style.display=(nav.style.display==='flex')?'none':'flex'});
 
-// Hero slider
-let slides = document.querySelectorAll('.hero .slide'); let currentSlide = 0;
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+});
+
+// HERO SLIDER
+let slides = document.querySelectorAll('.hero .slide'); 
+let currentSlide = 0;
 const nextSlide = ()=>{slides[currentSlide].classList.remove('active');currentSlide=(currentSlide+1)%slides.length;slides[currentSlide].classList.add('active')};
 setInterval(nextSlide,8000);
 
-// Typewriter
-const typeEl = document.querySelector('.typewriter'); let texts = JSON.parse(typeEl.dataset.text); let tIndex=0; let cIndex=0; let typing=true;
-function typeWriter(){if(typing){if(cIndex<texts[tIndex].length){typeEl.textContent+=texts[tIndex][cIndex];cIndex++;setTimeout(typeWriter,60)}else{typing=false;setTimeout(typeWriter,1200)}}else{typeEl.textContent='';cIndex=0;typing=true;tIndex=(tIndex+1)%texts.length;setTimeout(typeWriter,200)}}
+// TYPEWRITER
+const typeEl = document.querySelector('.typewriter'); 
+let texts = JSON.parse(typeEl.dataset.text); 
+let tIndex=0, cIndex=0, typing=true;
+function typeWriter(){
+  if(typing){
+    if(cIndex<texts[tIndex].length){typeEl.textContent+=texts[tIndex][cIndex];cIndex++;setTimeout(typeWriter,60)}
+    else{typing=false;setTimeout(typeWriter,1200)}
+  }else{
+    typeEl.textContent='';cIndex=0;typing=true;tIndex=(tIndex+1)%texts.length;setTimeout(typeWriter,200)
+  }
+}
 typeWriter();
 
-// Counters
-const counters=document.querySelectorAll('.count');counters.forEach(counter=>{const updateCount=()=>{const target=+counter.dataset.target;const count=+counter.innerText;const inc=target/200;if(count<target){counter.innerText=Math.ceil(count+inc);setTimeout(updateCount,20)}else{counter.innerText=target}};updateCount()});
+// COUNTERS
+const counters=document.querySelectorAll('.count');
+counters.forEach(counter=>{
+  const updateCount=()=>{
+    const target=+counter.dataset.target;
+    const count=+counter.innerText;
+    const inc=target/200;
+    if(count<target){counter.innerText=Math.ceil(count+inc);setTimeout(updateCount,20)}
+    else{counter.innerText=target}
+  };
+  updateCount()
+});
 </script>
 
 </body>
