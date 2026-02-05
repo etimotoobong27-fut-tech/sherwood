@@ -4,7 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admissions | Sherwood Private School</title>
-  <link rel="stylesheet" href="admissions.css">
+  <style>
+    /* Reset & Base */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#f9f9f9; color:#222; }
+
+    /* Navbar */
+    header { background:#0B3D91; color:white; position:sticky; top:0; z-index:1000; }
+    .header-container { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content: space-between; padding:1rem; position: relative; }
+    .header-container .logo { font-size:1.8rem; font-weight:bold; }
+    .main-nav { display:flex; gap:0.75rem; }
+    .main-nav a { color:white; text-decoration:none; font-weight:500; transition:0.3s; }
+    .main-nav a:hover, .main-nav a.active { color:#FF1493; }
+    .cta-btn { background:#FF1493; color:white; padding:0.6rem 1.5rem; border-radius:5px; text-decoration:none; font-weight:500; transition:0.3s; }
+    .cta-btn:hover { background:#FF69B4; }
+    .mobile-toggle { display:none; font-size:1.5rem; background:none; border:none; color:white; cursor:pointer; }
+
+    /* Hero Section */
+    .admissions-hero { background:#0B3D91; color:white; text-align:center; padding:6rem 1rem; }
+    .admissions-hero h1 { font-size:3rem; margin-bottom:1rem; }
+    .admissions-hero p { font-size:1.2rem; }
+
+    /* Admissions Info */
+    .admissions-info { max-width:800px; margin:3rem auto; text-align:center; padding:0 1rem; }
+    .admissions-info h2 { color:#0B3D91; font-size:2rem; margin-bottom:1rem; }
+    .admissions-info p { font-size:1.1rem; line-height:1.6; }
+
+    /* Form Section */
+    .admissions-form-section { max-width:700px; margin:2rem auto 6rem auto; background:white; padding:2rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom:1.5rem; display:flex; flex-direction:column; }
+    .form-group label { margin-bottom:0.5rem; font-weight:500; }
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea { padding:0.8rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; transition:0.3s; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color:#FF1493; outline:none; }
+
+    /* Submit Button */
+    .submit-btn { background:#FF1493; color:white; padding:0.8rem 2rem; border:none; border-radius:6px; cursor:pointer; font-size:1.1rem; transition:0.3s; }
+    .submit-btn:hover { background:#FF69B4; }
+
+    /* Form Message */
+    .form-message { margin-top:1rem; font-weight:500; color:#0B3D91; }
+
+    /* Footer */
+    footer { background:#0B3D91; color:white; text-align:center; padding:2rem; }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .main-nav { 
+        position: fixed; 
+        top:0; 
+        right:-100%; 
+        height:100%; 
+        width:250px; 
+        background:#0B3D91; 
+        flex-direction: column; 
+        padding:4rem 1rem; 
+        gap:1rem; 
+        transition: right 0.3s ease-in-out; 
+      }
+      .main-nav.active { right:0; }
+      .mobile-toggle { display:inline-block; }
+      .cta-btn { display:none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,6 +87,7 @@
       <a href="contact.html">Contact</a>
     </nav>
     <a href="admissions.html" class="cta-btn">Apply Now</a>
+    <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
   </div>
 </header>
 
@@ -87,6 +153,39 @@
   </div>
 </footer>
 
-<script src="admissions.js"></script>
+<script>
+  // MOBILE MENU TOGGLE
+  const toggle = document.querySelector('.mobile-toggle');
+  const nav = document.querySelector('.main-nav');
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+  });
+
+  // Handle form submission
+  const form = document.getElementById('admissionsForm');
+  const formMessage = document.getElementById('formMessage');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const fullName = form.fullName.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const childName = form.childName.value.trim();
+    const level = form.level.value;
+
+    if (!fullName || !email || !phone || !childName || !level) {
+      formMessage.textContent = "Please fill in all required fields.";
+      formMessage.style.color = "red";
+      return;
+    }
+
+    formMessage.textContent = `Thank you, ${fullName}! Your application for ${childName} (${level}) has been submitted.`;
+    formMessage.style.color = "#0B3D91";
+    form.reset();
+  });
+</script>
+
 </body>
 </html>
