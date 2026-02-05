@@ -280,6 +280,67 @@ body {
     display: flex;
   }
 
+   /* ============================
+   MOBILE HEADER & LOGO FIX
+============================ */
+
+/* MOBILE HEADER HEIGHT */
+@media (max-width: 768px) {
+
+  header {
+    height: 64px;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  /* LOGO CONTAINER SHRINK */
+  .logo-container {
+    width: 110px;
+    height: 40px;
+  }
+
+  .logo {
+    max-height: 40px;
+  }
+
+  /* MENU TOGGLE ALIGNMENT */
+  .menu-toggle {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 480px) {
+
+  header {
+    height: 56px;
+  }
+
+  .logo-container {
+    width: 90px;
+    height: 32px;
+  }
+
+  .logo {
+    max-height: 32px;
+  }
+}
+   @media (max-width: 768px) {
+  .hero {
+    margin-top: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-top: 56px;
+  }
+}
+
+
 </style>
 
 </head>
@@ -509,6 +570,7 @@ function prevStaff(){ if(staffIndex > 0) staffIndex--; updateStaff(); }
 
 </body>
 </html>
+
 
 
 
