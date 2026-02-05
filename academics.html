@@ -122,7 +122,8 @@ body{background:var(--bg);color:#0b2540;line-height:1.6}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .nav{display:none}
+  .nav{display:none;flex-direction:column;gap:12px;background:var(--white);position:absolute;top:60px;right:20px;padding:12px;border-radius:12px;box-shadow:0 8px 28px rgba(11,61,145,0.15)}
+  .nav.active{display:flex}
   .mobile-toggle{display:inline-block}
   .hero-inner{padding:24px}
   .typewriter{font-size:1.5rem}
@@ -200,7 +201,6 @@ body{background:var(--bg);color:#0b2540;line-height:1.6}
       </div>
     </div>
   </div>
-
 
   <div class="hero-nav">
     <button class="hero-prev">‹</button>
@@ -326,10 +326,13 @@ body{background:var(--bg);color:#0b2540;line-height:1.6}
 <div id="lb"><img src="" alt="Lightbox"></div>
 
 <script>
-// MOBILE MENU
+// MOBILE MENU TOGGLE
 const toggle = document.querySelector('.mobile-toggle');
 const nav = document.querySelector('.nav');
-toggle.addEventListener('click',()=>{nav.style.display=(nav.style.display==='flex')?'none':'flex'});
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+});
 
 // HERO SLIDER
 let slides=document.querySelectorAll('.hero .slide');let currentSlide=0;
