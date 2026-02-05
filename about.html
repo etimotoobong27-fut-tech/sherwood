@@ -1,17 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Sherwood Private School</title>
-  <link rel="stylesheet" href="about.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Sherwood Private School | Excellence in Education</title>
+<meta name="description" content="Learn about Sherwood Private School – a leading nursery, primary and secondary school in Lagos dedicated to academic excellence and character development.">
+
+<style>
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#F9F9F9;color:#222;overflow-x:hidden;}
+
+/* ================= HEADER ================= */
+header{
+  background:linear-gradient(90deg,#0B3D91,#123E9C);
+  position:sticky;top:0;z-index:1000;
+}
+.header-container{
+  max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem;
+}
+.logo{font-size:1.8rem;font-weight:700;color:#fff;}
+.main-nav{display:flex;gap:1rem;}
+.main-nav a{
+  color:#fff;text-decoration:none;font-weight:500;
+  transition:.3s;
+}
+.main-nav a:hover,.main-nav a.active{color:#FF69B4;}
+.cta-btn{
+  background:#FF1493;color:#fff;
+  padding:.6rem 1.5rem;border-radius:6px;
+  text-decoration:none;font-weight:600;
+}
+.menu-toggle{
+  display:none;font-size:2rem;color:#fff;cursor:pointer;
+}
+
+/* ================= HERO ================= */
+.about-hero{
+  max-width:1200px;margin:auto;
+  display:flex;flex-wrap:wrap;gap:3rem;
+  padding:4rem 1rem;align-items:center;
+}
+.about-text{
+  flex:1 1 500px;
+  animation:fadeUp 1s ease;
+}
+.about-text h1{
+  font-size:3rem;color:#0B3D91;margin-bottom:1rem;
+}
+.about-text p{font-size:1.1rem;margin-bottom:1.5rem;line-height:1.7;}
+.about-text .btn{
+  background:#FF1493;color:#fff;
+  padding:.9rem 2.2rem;border-radius:8px;
+  text-decoration:none;font-weight:600;
+}
+
+/* ================= CAROUSEL ================= */
+.about-carousel{
+  flex:1 1 400px;
+  position:relative;overflow:hidden;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.carousel-slide{display:none;}
+.carousel-slide img{width:100%;display:block;}
+.carousel-slide p{
+  background:#0B3D91;color:#fff;
+  padding:.7rem;text-align:center;
+}
+.prev,.next{
+  position:absolute;top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  color:#fff;border:none;
+  font-size:2rem;padding:.3rem .7rem;
+  cursor:pointer;border-radius:50%;
+}
+.prev{left:10px;}
+.next{right:10px;}
+
+/* ================= MISSION & VISION ================= */
+.mission-vision{
+  background:#fff;padding:4rem 1rem;
+}
+.mv-inner{
+  max-width:1000px;margin:auto;
+  display:flex;flex-wrap:wrap;gap:3rem;
+}
+.mv-text{
+  flex:1 1 400px;
+  opacity:0;transform:translateY(40px);
+  transition:.8s;
+}
+.mv-text.show{opacity:1;transform:translateY(0);}
+.mv-text h2{
+  color:#0B3D91;margin-bottom:.7rem;
+  border-left:4px solid #FF1493;padding-left:.7rem;
+}
+
+/* ================= VALUES ================= */
+.values{
+  background:#F0F8FF;padding:4rem 1rem;text-align:center;
+}
+.value-cards{
+  display:flex;flex-wrap:wrap;gap:2rem;
+  max-width:1200px;margin:auto;
+}
+.value-card{
+  flex:1 1 250px;
+  background:#fff;padding:2rem;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  transition:.4s;
+  opacity:0;transform:translateY(40px);
+}
+.value-card.show{opacity:1;transform:translateY(0);}
+.value-card:hover{transform:translateY(-10px);}
+.value-card h3{color:#FF1493;margin-bottom:.6rem;}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#0B3D91;color:#fff;
+  text-align:center;padding:2rem;margin-top:3rem;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .menu-toggle{display:block;}
+  .main-nav{
+    position:absolute;top:100%;left:0;width:100%;
+    background:#0B3D91;
+    flex-direction:column;
+    max-height:0;overflow:hidden;
+    transition:.4s;
+  }
+  .main-nav.show{max-height:400px;}
+  .main-nav a{padding:1rem;}
+  .cta-btn{display:none;}
+  .about-text h1{font-size:2.3rem;}
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-<!-- Navbar -->
 <header>
   <div class="header-container">
     <div class="logo">Sherwood Private School</div>
+    <div class="menu-toggle">☰</div>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
@@ -25,75 +170,80 @@
   </div>
 </header>
 
-<!-- About Hero Section with Two Columns -->
 <section class="about-hero">
   <div class="about-text">
     <h1>About Sherwood Private School</h1>
-    <p>At Sherwood Private School, we are committed to nurturing excellence from Nursery to Secondary. Our mission is to provide a safe, stimulating environment for academic and personal growth, shaping leaders of tomorrow.</p>
+    <p>At Sherwood Private School, we nurture excellence from Nursery to Secondary, providing a safe, stimulating environment for academic and personal growth.</p>
     <a href="admissions.html" class="btn">Join Us Today</a>
   </div>
+
   <div class="about-carousel">
     <div class="carousel-slide">
-      <img src="IMG-20251026-WA0010.jpg" alt="Founder">
-      <p>Mrs. Morries Diya. The Founder of Sherwood Private School</p>
+      <img src="IMG-20251026-WA0010.jpg">
+      <p>Mrs. Morries Diya – Founder</p>
     </div>
     <div class="carousel-slide">
-      <img src="IMG-20251026-WA0011.jpg" alt="Board of Director">
+      <img src="IMG-20251026-WA0011.jpg">
     </div>
     <div class="carousel-slide">
-      <img src="IMG-20251026-WA0016.jpg" alt="Administrator">
+      <img src="IMG-20251026-WA0016.jpg">
     </div>
     <button class="prev">&#10094;</button>
     <button class="next">&#10095;</button>
   </div>
 </section>
 
-<!-- Mission & Vision -->
 <section class="mission-vision">
   <div class="mv-inner">
     <div class="mv-text">
       <h2>Mission</h2>
-      <p>To provide an exceptional learning environment where every child is empowered — academically, socially, and morally — to build character, cultivate curiosity, and reach their full potential.</p>
+      <p>To provide an exceptional learning environment where every child is empowered academically, socially, and morally.</p>
     </div>
     <div class="mv-text">
       <h2>Vision</h2>
-      <p>To become a leading private school in Lagos, recognized for holistic education, nurturing confident, responsible and globally‑aware citizens.</p>
+      <p>To become a leading private school in Lagos recognized for holistic education and global relevance.</p>
     </div>
   </div>
 </section>
 
-
-
-<!-- Values Section -->
 <section class="values">
   <h2>Our Core Values</h2>
   <div class="value-cards">
-    <div class="value-card">
-      <h3>Excellence</h3>
-      <p>Striving for academic and personal excellence in all areas.</p>
-    </div>
-    <div class="value-card">
-      <h3>Creativity</h3>
-      <p>Encouraging innovative thinking and artistic expression.</p>
-    </div>
-    <div class="value-card">
-      <h3>Integrity</h3>
-      <p>Fostering honesty, respect, and responsibility in students.</p>
-    </div>
-    <div class="value-card">
-      <h3>Community</h3>
-      <p>Building a supportive and inclusive environment for all.</p>
-    </div>
+    <div class="value-card"><h3>Excellence</h3><p>Academic and personal excellence.</p></div>
+    <div class="value-card"><h3>Creativity</h3><p>Innovative thinking.</p></div>
+    <div class="value-card"><h3>Integrity</h3><p>Honesty and responsibility.</p></div>
+    <div class="value-card"><h3>Community</h3><p>Inclusive environment.</p></div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="footer-content">
-    &copy; 2025 Sherwood Private School | Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria
-  </div>
+  © 2025 Sherwood Private School | Lagos, Nigeria
 </footer>
 
-<script src="about.js"></script>
+<script>
+/* MENU */
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.main-nav');
+toggle.onclick=()=>nav.classList.toggle('show');
+
+/* CAROUSEL */
+let i=0;
+const slides=document.querySelectorAll('.carousel-slide');
+function show(){slides.forEach(s=>s.style.display='none');slides[i].style.display='block';}
+show();
+document.querySelector('.next').onclick=()=>{i=(i+1)%slides.length;show();}
+document.querySelector('.prev').onclick=()=>{i=(i-1+slides.length)%slides.length;show();}
+setInterval(()=>{i=(i+1)%slides.length;show();},5000);
+
+/* SCROLL ANIMATION */
+const reveal=[...document.querySelectorAll('.value-card,.mv-text')];
+window.addEventListener('scroll',()=>{
+  reveal.forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-100)
+      el.classList.add('show');
+  });
+});
+</script>
+
 </body>
 </html>
