@@ -20,6 +20,10 @@
     .cta-btn:hover { background:#FF69B4; }
     .mobile-toggle { display:none; font-size:1.5rem; background:none; border:none; color:white; cursor:pointer; }
 
+    /* Overlay for mobile menu */
+    .menu-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:900; transition:opacity 0.3s ease-in-out; }
+    .menu-overlay.active { display:block; opacity:1; }
+
     /* Hero Section */
     .admissions-hero { background:#0B3D91; color:white; text-align:center; padding:6rem 1rem; }
     .admissions-hero h1 { font-size:3rem; margin-bottom:1rem; }
@@ -64,6 +68,7 @@
         padding:4rem 1rem; 
         gap:1rem; 
         transition: right 0.3s ease-in-out; 
+        z-index:1000;
       }
       .main-nav.active { right:0; }
       .mobile-toggle { display:inline-block; }
@@ -72,6 +77,9 @@
   </style>
 </head>
 <body>
+
+<!-- Overlay -->
+<div class="menu-overlay"></div>
 
 <!-- Navbar -->
 <header>
@@ -154,13 +162,29 @@
 </footer>
 
 <script>
-  // MOBILE MENU TOGGLE
+  // MOBILE MENU TOGGLE WITH OVERLAY
   const toggle = document.querySelector('.mobile-toggle');
   const nav = document.querySelector('.main-nav');
+  const overlay = document.querySelector('.menu-overlay');
+
+  function openMenu() {
+    nav.classList.add('active');
+    overlay.classList.add('active');
+    toggle.setAttribute('aria-expanded', true);
+  }
+
+  function closeMenu() {
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
+    toggle.setAttribute('aria-expanded', false);
+  }
+
   toggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+    if(nav.classList.contains('active')) closeMenu();
+    else openMenu();
   });
+
+  overlay.addEventListener('click', closeMenu);
 
   // Handle form submission
   const form = document.getElementById('admissionsForm');
