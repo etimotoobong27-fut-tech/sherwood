@@ -1,17 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Sherwood Private School</title>
-  <link rel="stylesheet" href="contact.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Sherwood Private School</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET & BASE ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+body{
+  background:#f9f9f9;
+  color:#222;
+  overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+header{
+  background:#0B3D91;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+}
+.logo{
+  font-size:1.7rem;
+  font-weight:700;
+  color:#fff;
+}
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 .7rem;
+  font-weight:500;
+  transition:.3s;
+}
+.main-nav a:hover,
+.main-nav a.active{
+  color:#FF1493;
+}
+.cta-btn{
+  background:#FF1493;
+  color:#fff;
+  padding:.6rem 1.5rem;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
+.cta-btn:hover{
+  background:#FF69B4;
+}
+
+/* ================= MENU TOGGLE ================= */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.menu-toggle span{
+  width:28px;
+  height:3px;
+  background:#fff;
+  margin:4px 0;
+  border-radius:5px;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#0B3D91,#061f4a);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transform:translateX(100%);
+  transition:.5s ease;
+  z-index:999;
+}
+.mobile-menu.active{
+  transform:translateX(0);
+}
+.mobile-menu a{
+  color:#fff;
+  font-size:1.8rem;
+  text-decoration:none;
+  margin:1rem 0;
+  transition:.3s;
+}
+.mobile-menu a:hover,
+.mobile-menu a.active{
+  color:#FF1493;
+}
+
+/* ================= HERO ================= */
+.contact-hero{
+  background:linear-gradient(rgba(11,61,145,.85),rgba(11,61,145,.85)),
+  url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f") center/cover no-repeat;
+  color:#fff;
+  text-align:center;
+  padding:7rem 1rem;
+}
+.contact-hero h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+  animation:fadeUp 1s ease;
+}
+.contact-hero p{
+  font-size:1.2rem;
+  animation:fadeUp 1.4s ease;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section{
+  max-width:1200px;
+  margin:4rem auto;
+  padding:1rem;
+}
+.contact-container{
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.contact-info,
+.contact-form{
+  flex:1 1 350px;
+  background:#fff;
+  padding:2.5rem;
+  border-radius:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,.1);
+  animation:fadeUp 1.2s ease;
+}
+.contact-info h2{
+  color:#0B3D91;
+  margin-bottom:.6rem;
+}
+.contact-info p{
+  margin-bottom:1rem;
+  line-height:1.6;
+}
+.social-links a{
+  display:inline-block;
+  margin-right:.6rem;
+}
+.social-links img{
+  width:32px;
+  transition:.3s;
+}
+.social-links img:hover{
+  transform:scale(1.2);
+}
+
+/* ================= FORM ================= */
+.form-group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:1.4rem;
+}
+.form-group label{
+  margin-bottom:.4rem;
+  font-weight:500;
+}
+.form-group input,
+.form-group textarea{
+  padding:.8rem;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:1rem;
+}
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:#FF1493;
+}
+.submit-btn{
+  background:#FF1493;
+  color:#fff;
+  border:none;
+  padding:.9rem;
+  font-size:1.1rem;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.3s;
+}
+.submit-btn:hover{
+  background:#FF69B4;
+}
+.form-message{
+  margin-top:1rem;
+  font-weight:500;
+}
+
+/* ================= MAP ================= */
+.map-container{
+  margin:2rem auto;
+  max-width:1200px;
+  padding:0 1rem;
+}
+.map-container iframe{
+  width:100%;
+  height:400px;
+  border:0;
+  border-radius:15px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#0B3D91;
+  color:#fff;
+  text-align:center;
+  padding:2rem 1rem;
+  margin-top:3rem;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .main-nav,
+  .cta-btn{display:none}
+  .menu-toggle{display:flex}
+  .contact-hero h1{font-size:2.4rem}
+}
+</style>
 </head>
+
 <body>
 
-<!-- Navbar -->
+<!-- ================= HEADER ================= -->
 <header>
   <div class="header-container">
     <div class="logo">Sherwood Private School</div>
+
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -21,20 +260,36 @@
       <a href="news.html">News</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
+
     <a href="admissions.html" class="cta-btn">Apply Now</a>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </header>
 
-<!-- Hero Section -->
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="activities.html">Activities</a>
+  <a href="news.html">News</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<!-- ================= HERO ================= -->
 <section class="contact-hero">
   <h1>Contact Us</h1>
   <p>We’d love to hear from you. Reach out with any questions or inquiries.</p>
 </section>
 
-<!-- Contact Info & Form -->
+<!-- ================= CONTACT ================= -->
 <section class="contact-section">
   <div class="contact-container">
-    <!-- Contact Info -->
+
     <div class="contact-info">
       <h2>Our Address</h2>
       <p>Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria</p>
@@ -45,50 +300,71 @@
 
       <h2>Follow Us</h2>
       <div class="social-links">
-        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
-        <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
+        <a href="#"><img src="images/facebook.png"></a>
+        <a href="#"><img src="images/instagram.png"></a>
+        <a href="#"><img src="images/whatsapp.png"></a>
+        <a href="#"><img src="images/linkedin.png"></a>
       </div>
     </div>
 
-    <!-- Contact Form -->
     <div class="contact-form">
       <form id="contactForm">
         <div class="form-group">
-          <label for="name">Full Name*</label>
-          <input type="text" id="name" name="name" required>
+          <label>Full Name*</label>
+          <input type="text" name="name" required>
         </div>
-
         <div class="form-group">
-          <label for="email">Email Address*</label>
-          <input type="email" id="email" name="email" required>
+          <label>Email Address*</label>
+          <input type="email" name="email" required>
         </div>
-
         <div class="form-group">
-          <label for="message">Message*</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <label>Message*</label>
+          <textarea name="message" rows="5" required></textarea>
         </div>
-
-        <button type="submit" class="submit-btn">Send Message</button>
+        <button class="submit-btn">Send Message</button>
         <p id="contactMessage" class="form-message"></p>
       </form>
     </div>
+
   </div>
 </section>
 
-<!-- Map -->
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps?q=Palace%20Way%2C%20Off%20Miyaki%20Oworoshoki%2C%20Lagos%2C%20Nigeria&output=embed" allowfullscreen></iframe>
-        </div>
+<!-- ================= MAP ================= -->
+<div class="map-container">
+  <iframe src="https://www.google.com/maps?q=Palace%20Way%2C%20Off%20Miyaki%20Oworoshoki%2C%20Lagos%2C%20Nigeria&output=embed"></iframe>
+</div>
 
-<!-- Footer -->
+<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="footer-content">
-    &copy; 2025 Sherwood Private School | Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria
-  </div>
+  &copy; 2025 Sherwood Private School | Lagos State, Nigeria
 </footer>
 
-<script src="contact.js"></script>
+<script>
+/* Mobile Menu */
+const menuToggle=document.getElementById("menuToggle");
+const mobileMenu=document.getElementById("mobileMenu");
+menuToggle.addEventListener("click",()=>mobileMenu.classList.toggle("active"));
+
+/* Contact Form */
+const form=document.getElementById("contactForm");
+const msg=document.getElementById("contactMessage");
+
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=form.name.value.trim();
+  const email=form.email.value.trim();
+  const message=form.message.value.trim();
+
+  if(!name||!email||!message){
+    msg.style.color="red";
+    msg.textContent="Please fill in all required fields.";
+    return;
+  }
+  msg.style.color="#0B3D91";
+  msg.textContent=`Thank you, ${name}! Your message has been sent successfully.`;
+  form.reset();
+});
+</script>
+
 </body>
 </html>
