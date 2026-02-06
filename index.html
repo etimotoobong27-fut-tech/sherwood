@@ -1,100 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Sherwood Private School | Excellence in Learning</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 /* ============================ GLOBAL ============================ */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body { background:#f9f9f9; color:#333; padding-top:100px; }
-a { text-decoration:none; }
+:root{
+  --navy:#0b2b4a;
+  --gold:#ffd85a;
+  --muted:#f3f6f9;
+  --card:#ffffff;
+  --accent:#1e90ff;
+  --text:#21303a;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;color:var(--text);}
+html,body{height:100%;}
+body{background:#f7f9fb;padding-top:88px;line-height:1.5;}
 
 /* ============================ HEADER ============================ */
-header { position:fixed; top:0; left:0; width:100%; z-index:1000; background:#ffffffee; backdrop-filter:blur(6px); box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-.navbar { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content:space-between; padding:1rem; flex-wrap:wrap; }
-
-/* Logo container */
-.logo-container { 
-  width:300px; 
-  height:80px; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  background:linear-gradient(90deg, #FF1493, #FFD700, #1E90FF);
-  border-radius:15px;
-  margin:auto;
+header{position:fixed;top:0;left:0;width:100%;z-index:1200;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(10,20,30,0.06);}
+.navbar{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.logo-container{
+  display:flex;align-items:center;gap:12px;padding:6px 8px;border-radius:10px;
+  /* background removed to keep logo visible while blending with header */
+  background:transparent;
 }
-.logo-container img { max-width:90%; max-height:60px; display:block; }
+.logo-container img{height:56px;width:auto;border-radius:6px;display:block;}
 
-/* Fun animated element beside logo */
-.fun-space { margin-left:15px; font-weight:600; font-size:1rem; color:#fff; animation:bounce 2s infinite; }
-@keyframes bounce { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+/* School name next to logo for classic look */
+.school-title{display:flex;flex-direction:column;line-height:1;}
+.school-title .name{font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);font-weight:700;}
+.school-title .tag{font-size:0.8rem;color:#6b7b86;font-weight:600;}
 
-/* Menu toggle */
-.menu-toggle { font-size:2rem; cursor:pointer; color:#FF1493; display:none; }
+/* Fun animated icon but subtle and professional */
+.fun-space{font-size:0.95rem;color:var(--navy);display:flex;align-items:center;gap:8px;}
+.fun-icon{display:inline-block;transform-origin:center;animation:float 4s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-/* Overlay menu */
-.nav-links.overlay { position:fixed; top:0; left:0; width:100%; height:100vh; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.95); color:#fff; font-size:1.5rem; transform:translateX(-100%); transition:0.5s ease; z-index:2000; }
-.nav-links.overlay a { color:#fff; font-weight:600; margin:1rem 0; font-size:1.5rem; }
-.nav-links.overlay.open { transform:translateX(0); }
+/* Nav links */
+.nav-actions{display:flex;align-items:center;gap:18px;}
+.nav-links{display:flex;gap:18px;align-items:center;}
+.nav-links a{color:var(--navy);font-weight:600;padding:8px 10px;border-radius:8px;}
+.nav-links a:hover, .nav-links a.active{background:var(--muted);color:var(--navy);}
 
-/* Close button inside overlay */
-.nav-links.overlay .close-menu { position:absolute; top:30px; right:30px; font-size:2.5rem; cursor:pointer; color:#ffd700; }
+/* CTA in header */
+.header-cta{background:var(--gold);color:#0b2b4a;padding:8px 14px;border-radius:24px;font-weight:700;box-shadow:0 6px 18px rgba(255,216,90,0.12);}
+
+/* Mobile toggle */
+.menu-toggle{display:none;font-size:1.6rem;background:transparent;border:none;color:var(--navy);cursor:pointer;padding:6px;}
+.menu-toggle:focus{outline:2px solid var(--gold);outline-offset:2px}
+
+/* Overlay menu for mobile */
+.overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(11,43,74,0.98),rgba(2,18,33,0.98));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.2,.9,.2,1);z-index:1400;padding:40px;}
+.overlay.open{transform:translateY(0);}
+.overlay a{color:#fff;font-size:1.25rem;font-weight:700;text-decoration:none;}
+.overlay .close-btn{position:absolute;top:22px;right:22px;font-size:2rem;color:var(--gold);background:transparent;border:none;cursor:pointer;}
 
 /* ============================ HERO ============================ */
-.hero { position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
-.hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; }
-.hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); z-index:2; }
-.hero-content { position:relative; z-index:3; max-width:700px; color:#fff; }
+.hero{position:relative;height:78vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(180deg,#eaf3ff 0%, #f7fbff 100%);}
+.hero .hero-inner{z-index:2;max-width:980px;padding:40px;}
+.hero h1{font-family:'Merriweather',serif;font-size:2.4rem;color:var(--navy);margin-bottom:12px;}
+.hero p{font-size:1.05rem;color:#2f4858;margin-bottom:18px;}
+.btn-primary{background:var(--gold);color:#072033;padding:12px 22px;border-radius:28px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 8px 24px rgba(13,36,58,0.08);transition:transform .18s ease,box-shadow .18s ease;}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(13,36,58,0.12);}
 
-.floating-text { font-size:3rem; font-weight:bold; color:#ffd85a; display:inline-block; }
-.hero p { margin:1rem 0 2rem; font-size:1.2rem; }
-.btn-primary { background:#ffd85a; color:#000; padding:0.9rem 2rem; border-radius:30px; font-weight:600; transition:0.3s ease; }
-.btn-primary:hover { background:#ffcf40; }
+/* Decorative playful icons row */
+.playful-icons{display:flex;gap:14px;justify-content:center;margin-top:18px;}
+.playful-icons .icon{background:#fff;padding:10px;border-radius:12px;box-shadow:0 6px 18px rgba(10,20,30,0.06);display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);}
 
-/* ============================ FEATURES ============================ */
-.features { padding:4rem 1rem; max-width:1200px; margin:auto; text-align:center; }
-.section-title { font-size:2rem; font-weight:700; margin-bottom:2rem; color:#2c3e50; }
-.feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-.feature-box { background:#fff; padding:2rem; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; }
-.feature-box:hover { transform:translateY(-8px); }
-.feature-box h3 { margin-bottom:1rem; color:#2c3e50; }
+/* ============================ SECTIONS ============================ */
+.section{padding:56px 20px;}
+.container{max-width:1200px;margin:0 auto;}
+.section-title{font-size:1.6rem;color:var(--navy);font-weight:700;margin-bottom:18px;}
 
-/* ============================ ACADEMICS ============================ */
-.academics { background:#fff; padding:4rem 1rem; }
-.academic-grid { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
-.academic-card { background:#f3f9ff; padding:2rem; border-radius:18px; transition:0.3s; border:2px solid transparent; }
-.academic-card:hover { border-color:#3498db; transform:translateY(-5px); }
-.academic-card h3 { margin-bottom:1rem; color:#2980b9; }
+/* Feature grid */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+.feature{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 8px 24px rgba(10,20,30,0.04);transition:transform .25s ease;}
+.feature:hover{transform:translateY(-8px);}
+.feature h3{color:var(--navy);margin-bottom:8px;font-weight:700;}
 
-/* ============================ GALLERY ============================ */
-.gallery { padding:4rem 1rem; text-align:center; }
-.gallery-grid { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-.gallery-grid img { width:100%; border-radius:15px; transition:0.3s; }
-.gallery-grid img:hover { transform:scale(1.05); }
+/* Academics */
+.academic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+.academic-card{background:linear-gradient(180deg,#ffffff,#fbfdff);padding:20px;border-radius:14px;border:1px solid #e6eef8;}
 
-/* ============================ STAFF ============================ */
-.staff { background:#fff; padding:4rem 1rem; text-align:center; }
-.staff-container { max-width:1200px; margin:auto; overflow:hidden; }
-.staff-track { display:flex; gap:1rem; transition:0.5s ease; }
-.staff-card { min-width:260px; background:#f9f9f9; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:1rem; text-align:center; }
-.staff-card img { width:100%; border-radius:15px; height:260px; object-fit:cover; }
-.staff-controls { margin-top:1rem; display:flex; justify-content:center; gap:1rem; }
-.staff-btn { padding:0.5rem 1rem; border:none; background:#3498db; color:#fff; border-radius:8px; cursor:pointer; }
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.gallery-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;transition:transform .25s ease;box-shadow:0 8px 20px rgba(10,20,30,0.06);}
+.gallery-grid img:hover{transform:scale(1.03);}
 
-/* ============================ CTA ============================ */
-.cta { padding:4rem 1rem; background:darkblue; text-align:center; color:#fff; }
-.cta a { margin-top:1.5rem; }
+/* Staff carousel */
+.staff-track{display:flex;gap:14px;overflow:hidden;padding:6px;}
+.staff-card{min-width:260px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(10,20,30,0.06);text-align:center;}
+.staff-card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:10px;}
 
-/* ============================ FOOTER ============================ */
-footer { background:#1b1b1b; color:#ccc; padding:2rem 1rem; text-align:center; }
-footer p { color:#aaa; }
+/* Fun facts rotating card */
+.fun-facts{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:18px;}
+.fact-card{background:var(--navy);color:#fff;padding:14px;border-radius:12px;min-width:220px;box-shadow:0 10px 30px rgba(2,18,33,0.18);}
+
+/* CTA */
+.cta{background:linear-gradient(90deg,var(--navy),#0f3b5f);color:#fff;padding:40px;border-radius:12px;text-align:center;margin-top:28px;}
+.cta .btn-primary{background:var(--gold);color:var(--navy);}
+
+/* Footer */
+footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-align:center;border-top:1px solid rgba(255,255,255,0.03);}
 
 /* ============================ RESPONSIVE ============================ */
-@media(max-width:768px){
-  .menu-toggle { display:block; }
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-toggle{display:block;}
+  .school-title .name{font-size:0.95rem;}
+  .hero h1{font-size:1.8rem;}
+}
+@media(max-width:520px){
+  .logo-container img{height:48px;}
+  .hero{height:64vh;min-height:420px;}
+  .playful-icons{flex-wrap:wrap;}
 }
 </style>
 </head>
@@ -102,134 +128,222 @@ footer p { color:#aaa; }
 
 <header>
   <div class="navbar">
-    <div class="logo-container">
-      <img src="IMG-20251026-WA0011.jpg" alt="School Logo" class="logo">
+    <div class="brand">
+      <div class="logo-container" aria-hidden="false">
+        <!-- background removed; keep logo image -->
+        <img src="IMG-20251026-WA0011.jpg" alt="Sherwood School Logo" />
+      </div>
+      <div class="school-title" aria-hidden="true">
+        <div class="name">Sherwood Private School</div>
+        <div class="tag">Excellence in Learning</div>
+      </div>
     </div>
-    <div class="fun-space">🎓 Learn. Play. Grow!</div>
-    <div class="menu-toggle">☰</div>
-    <nav class="nav-links overlay">
-      <span class="close-menu">&times;</span>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="academics.html">Academics</a>
-      <a href="admissions.html">Admissions</a>
-      <a href="activities.html">Activities</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+
+    <div class="nav-actions" role="navigation" aria-label="Main navigation">
+      <nav class="nav-links" aria-hidden="true">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="academics.html">Academics</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="activities.html">Activities</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileOverlay" title="Open menu">☰</button>
+      <a href="#admission" class="header-cta">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div class="overlay" id="mobileOverlay" aria-hidden="true">
+    <button class="close-btn" id="closeOverlay" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academics.html">Academics</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="activities.html">Activities</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
 
-<section class="hero">
-  <video autoplay muted loop>
-    <source src="sherwood-hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-content">
-    <h1 class="floating-text"></h1>
+<!-- HERO -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-inner container">
+    <h1 id="heroTitle">Inspiring Minds. Building Futures.</h1>
     <p>We provide world-class education that inspires confidence, creativity, and a lifelong love for learning.</p>
-    <a href="#admission" class="btn-primary">Start Admission</a>
-  </div>
-</section>
 
-<section class="features">
-  <h2 class="section-title">Why Choose Sherwood?</h2>
-  <div class="feature-grid">
-    <div class="feature-box"><h3>Global Curriculum</h3><p>Our curriculum meets international standards and prepares learners for the future.</p></div>
-    <div class="feature-box"><h3>Safe Environment</h3><p>Prioritizing emotional safety, security, and overall student well-being.</p></div>
-    <div class="feature-box"><h3>Modern Facilities</h3><p>Top-class classrooms, ICT lab, library, playground, and more.</p></div>
-    <div class="feature-box"><h3>Qualified Staff</h3><p>Professional, passionate educators dedicated to students' success.</p></div>
-  </div>
-</section>
+    <a class="btn-primary" href="#admission">Start Admission</a>
 
-<section class="academics" id="academics">
-  <h2 class="section-title">Our Academic Structure</h2>
-  <div class="academic-grid">
-    <div class="academic-card"><h3>Early Years</h3><p>Hands-on learning, social development, and foundational literacy.</p></div>
-    <div class="academic-card"><h3>Primary</h3><p>Well-structured academic growth with creative enrichment programs.</p></div>
-    <div class="academic-card"><h3>Junior Secondary</h3><p>Advanced subjects, leadership development, and STEM-driven curriculum.</p></div>
-  </div>
-</section>
+    <div class="playful-icons" aria-hidden="true">
+      <div class="icon"><span class="fun-icon">📚</span> Clubs</div>
+      <div class="icon"><span class="fun-icon">🎨</span> Arts</div>
+      <div class="icon"><span class="fun-icon">⚽</span> Sports</div>
+      <div class="icon"><span class="fun-icon">🔬</span> STEM</div>
+    </div>
 
-<section class="gallery" id="gallery">
-  <h2 class="section-title">Campus Gallery</h2>
-  <div class="gallery-grid">
-    <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&w=800&q=60">
-  </div>
-</section>
-
-<section class="staff" id="staff">
-  <h2 class="section-title">Meet Our Amazing Staff</h2>
-  <div class="staff-container">
-    <div class="staff-track" id="staffTrack">
-      <div class="staff-card"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60"><h3>Mrs. Johnson</h3><p>Head Teacher</p></div>
-      <div class="staff-card"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60"><h3>Mr. Daniel</h3><p>ICT Instructor</p></div>
-      <div class="staff-card"><img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&w=600&q=60"><h3>Miss Clara</h3><p>Nursery Teacher</p></div>
+    <!-- Fun facts rotating -->
+    <div class="fun-facts" id="funFacts" aria-live="polite">
+      <div class="fact-card" id="factCard">Fun Fact: Our library has over 5,000 books.</div>
     </div>
   </div>
-  <div class="staff-controls">
-    <button class="staff-btn" onclick="prevStaff()">Prev</button>
-    <button class="staff-btn" onclick="nextStaff()">Next</button>
+</section>
+
+<!-- FEATURES -->
+<section class="section features container" aria-labelledby="whyTitle">
+  <h2 id="whyTitle" class="section-title">Why Choose Sherwood</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Global Curriculum</h3>
+      <p>Internationally-aligned programs that prepare students for higher education worldwide.</p>
+    </div>
+    <div class="feature">
+      <h3>Safe Environment</h3>
+      <p>Secure campus, pastoral care, and a nurturing community for every child.</p>
+    </div>
+    <div class="feature">
+      <h3>Modern Facilities</h3>
+      <p>Well-equipped labs, library, sports fields, and creative studios.</p>
+    </div>
+    <div class="feature">
+      <h3>Qualified Staff</h3>
+      <p>Experienced educators focused on holistic development and academic excellence.</p>
+    </div>
   </div>
 </section>
 
-<section class="cta" id="admission">
-  <h2>Join a World-Class Learning Community</h2>
-  <p>We are currently accepting applications for the new academic session.</p><br><br>
-  <a href="#contact" class="btn-primary">Contact Admissions</a>
+<!-- ACADEMICS -->
+<section class="section academics container" id="academics" aria-labelledby="academicsTitle">
+  <h2 id="academicsTitle" class="section-title">Our Academic Structure</h2>
+  <div class="academic-grid">
+    <div class="academic-card"><h3>Early Years</h3><p>Play-based learning, social skills, and early literacy foundations.</p></div>
+    <div class="academic-card"><h3>Primary</h3><p>Balanced curriculum with creative enrichment and strong fundamentals.</p></div>
+    <div class="academic-card"><h3>Junior Secondary</h3><p>STEM focus, leadership opportunities, and exam preparation.</p></div>
+  </div>
 </section>
 
+<!-- GALLERY -->
+<section class="section gallery container" id="gallery" aria-labelledby="galleryTitle">
+  <h2 id="galleryTitle" class="section-title">Campus Gallery</h2>
+  <div class="gallery-grid" aria-hidden="false">
+    <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=60" alt="Students in classroom">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60" alt="School library">
+    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&w=800&q=60" alt="Science lab">
+    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&w=800&q=60" alt="Playground">
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="section staff container" id="staff" aria-labelledby="staffTitle">
+  <h2 id="staffTitle" class="section-title">Meet Our Amazing Staff</h2>
+
+  <div class="staff-track" id="staffTrack" tabindex="0" aria-label="Staff carousel">
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60" alt="Mrs Johnson">
+      <h3>Mrs. Johnson</h3><p>Head Teacher</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60" alt="Mr Daniel">
+      <h3>Mr. Daniel</h3><p>ICT Instructor</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&w=600&q=60" alt="Miss Clara">
+      <h3>Miss Clara</h3><p>Nursery Teacher</p>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;">
+    <button class="staff-btn" id="prevStaff" aria-label="Previous staff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Prev</button>
+    <button class="staff-btn" id="nextStaff" aria-label="Next staff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Next</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section container">
+  <div class="cta">
+    <h2>Join a World-Class Learning Community</h2>
+    <p>We are currently accepting applications for the new academic session.</p>
+    <div style="margin-top:18px;">
+      <a class="btn-primary" href="#contact">Contact Admissions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer id="contact">
-  <h3>Sherwood Private School</h3>
-  <p>Palace Way, Off Miyaki Oworoshoki Lagos State, Nigeria.</p>
-  <p>Phone: +234 9047043235</p>
-  <p>Email: info@sherwoodschool.com</p>
-  <br>
-  <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
+  <div class="container">
+    <h3 style="color:#fff;margin-bottom:6px;">Sherwood Private School</h3>
+    <p style="color:#cbd6dd;">Palace Way, Off Miyaki Oworoshoki Lagos State, Nigeria</p>
+    <p style="color:#cbd6dd;">Phone: +234 9047043235 • Email: info@sherwoodschool.com</p>
+    <p style="margin-top:12px;color:#9fb0bd;">&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
+  </div>
 </footer>
 
 <script>
-// Mobile Menu
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav-links.overlay");
-const closeBtn = document.querySelector(".close-menu");
-toggle.addEventListener("click", () => nav.classList.add("open"));
-closeBtn.addEventListener("click", () => nav.classList.remove("open"));
+/* ============================ MENU TOGGLE ============================ */
+const menuToggle = document.getElementById('menuToggle');
+const overlay = document.getElementById('mobileOverlay');
+const closeOverlay = document.getElementById('closeOverlay');
 
-// Staff Carousel
-let staffIndex = 0;
-function updateStaff(){
-  const track = document.getElementById('staffTrack');
-  const card = document.querySelector('.staff-card');
-  const width = card.offsetWidth + 16;
-  track.style.transform = `translateX(-${staffIndex * width}px)`;
+function openMenu(){
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  menuToggle.setAttribute('aria-expanded','true');
+  // trap focus if needed (simple)
+  closeOverlay.focus();
 }
-function nextStaff(){ staffIndex++; updateStaff(); }
-function prevStaff(){ if(staffIndex > 0) staffIndex--; updateStaff(); }
+function closeMenu(){
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  menuToggle.setAttribute('aria-expanded','false');
+  menuToggle.focus();
+}
 
-// Typewriter effect for hero - fallen letters
-const typedWords = ["NURSERY", "PRIMARY", "SECONDARY"];
-let wIndex = 0, cIndex = 0;
-const typedElement = document.querySelector(".floating-text");
+menuToggle.addEventListener('click', () => {
+  const isOpen = overlay.classList.contains('open');
+  if(isOpen) closeMenu(); else openMenu();
+});
+closeOverlay.addEventListener('click', closeMenu);
+overlay.addEventListener('click', (e) => {
+  if(e.target === overlay) closeMenu();
+});
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+});
 
-function typeEffect(){
-  if(cIndex < typedWords[wIndex].length){
-    typedElement.textContent += typedWords[wIndex].charAt(cIndex);
-    cIndex++;
-    setTimeout(typeEffect, 300);
-  } else {
-    setTimeout(eraseEffect, 2000); // 2 seconds stay
-  }
+/* ============================ FUN FACTS ROTATION ============================ */
+const facts = [
+  'Fun Fact: Our library has over 5,000 books.',
+  'Fun Fact: Students participate in 20+ clubs and societies.',
+  'Fun Fact: We run an annual science fair with regional winners.',
+  'Fun Fact: Our sports teams train with certified coaches.'
+];
+let factIndex = 0;
+const factCard = document.getElementById('factCard');
+setInterval(() => {
+  factIndex = (factIndex + 1) % facts.length;
+  factCard.textContent = facts[factIndex];
+}, 4500);
+
+/* ============================ STAFF CAROUSEL ============================ */
+const staffTrack = document.getElementById('staffTrack');
+const prevBtn = document.getElementById('prevStaff');
+const nextBtn = document.getElementById('nextStaff');
+
+function scrollStaff(direction){
+  const cardWidth = staffTrack.querySelector('.staff-card').offsetWidth + 14; // gap
+  staffTrack.scrollBy({left: direction * cardWidth, behavior:'smooth'});
 }
-function eraseEffect(){
-  typedElement.textContent = "";
-  wIndex = (wIndex+1) % typedWords.length;
-  cIndex = 0;
-  setTimeout(typeEffect, 500);
-}
-typeEffect();
+prevBtn.addEventListener('click', () => scrollStaff(-1));
+nextBtn.addEventListener('click', () => scrollStaff(1));
+
+/* keyboard support for carousel */
+staffTrack.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowRight') scrollStaff(1);
+  if(e.key === 'ArrowLeft') scrollStaff(-1);
+});
 </script>
+
 </body>
 </html>
