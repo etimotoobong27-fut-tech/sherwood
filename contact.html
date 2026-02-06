@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Sherwood Private School</title>
 
-<!-- Google Font -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for real social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-KY4DQ7o5a+IwFZkXUBkZvVqK8qPB1t2/2n4iW6cplkONZl6J0+STxP/B8hX7n0sV2fpUhV0lj8q/pq6c8i+5hA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 /* ================= RESET & BASE ================= */
@@ -157,13 +160,12 @@ header{
 .social-links a{
   display:inline-block;
   margin-right:.6rem;
-}
-.social-links img{
-  width:32px;
+  font-size:1.5rem;
+  color:#0B3D91;
   transition:.3s;
 }
-.social-links img:hover{
-  transform:scale(1.2);
+.social-links a:hover{
+  color:#FF1493;
 }
 
 /* ================= FORM ================= */
@@ -182,6 +184,7 @@ header{
   border:1px solid #ccc;
   border-radius:6px;
   font-size:1rem;
+  width:100%;
 }
 .form-group input:focus,
 .form-group textarea:focus{
@@ -197,6 +200,7 @@ header{
   border-radius:6px;
   cursor:pointer;
   transition:.3s;
+  width:100%;
 }
 .submit-btn:hover{
   background:#FF69B4;
@@ -204,6 +208,7 @@ header{
 .form-message{
   margin-top:1rem;
   font-weight:500;
+  text-align:center;
 }
 
 /* ================= MAP ================= */
@@ -222,7 +227,7 @@ header{
 /* ================= FOOTER ================= */
 footer{
   background:#0B3D91;
-  color:#fff;
+  color:white;
   text-align:center;
   padding:2rem 1rem;
   margin-top:3rem;
@@ -240,10 +245,20 @@ footer{
   .cta-btn{display:none}
   .menu-toggle{display:flex}
   .contact-hero h1{font-size:2.4rem}
+  .contact-container{
+    flex-direction:column;
+    padding:0;
+  }
+  .contact-info,.contact-form{
+    width:100%;
+    padding:2rem;
+  }
+  .submit-btn{
+    padding:.8rem;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <!-- ================= HEADER ================= -->
@@ -257,7 +272,6 @@ footer{
       <a href="academics.html">Academics</a>
       <a href="admissions.html">Admissions</a>
       <a href="activities.html">Activities</a>
-      <a href="news.html">News</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
 
@@ -295,15 +309,15 @@ footer{
       <p>Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria</p>
 
       <h2>Email & Phone</h2>
-      <p>Email: info@sherwoodprivateschool.ng</p>
-      <p>Phone: +234 801 234 5678</p>
+      <p>Email: <a href="mailto:info@sherwoodprivateschool.ng">info@sherwoodprivateschool.ng</a></p>
+      <p>Phone: <a href="tel:+2348012345678">+234 801 234 5678</a></p>
 
       <h2>Follow Us</h2>
       <div class="social-links">
-        <a href="#"><img src="images/facebook.png"></a>
-        <a href="#"><img src="images/instagram.png"></a>
-        <a href="#"><img src="images/whatsapp.png"></a>
-        <a href="#"><img src="images/linkedin.png"></a>
+        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
 
