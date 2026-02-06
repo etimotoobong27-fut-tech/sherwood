@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secondary School | Sherwood Private School</title>
+<title>Sherwood International Secondary School</title>
 
-<meta name="description" content="Sherwood Secondary School – STEM, Arts, Leadership and exam excellence preparing students for the future.">
+<meta name="description" content="Sherwood International Secondary School – delivering global-standard education with STEM, Arts, Leadership, and international best practices.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -16,9 +16,19 @@
   --bg:#f7f9fc;
   --muted:#64748b;
   --white:#fff;
-  --radius:14px;
 }
 
+/* ================= SCROLL BAR ================= */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#e8edf5}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+html{scrollbar-width:thin;scrollbar-color:var(--primary) #e8edf5}
+
+/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:var(--bg);color:#0b2540;line-height:1.6}
 .container{max-width:1200px;margin:auto;padding:0 20px}
@@ -34,36 +44,23 @@ a{text-decoration:none}
 }
 .site-header .container{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:14px 20px;
 }
 .brand{
-  font-size:1.25rem;
-  font-weight:700;
+  font-size:1.3rem;
+  font-weight:800;
   color:var(--primary);
 }
-.nav{
-  display:flex;
-  gap:16px;
-}
+.nav{display:flex;gap:16px}
 .nav a{
-  color:var(--primary);
   font-weight:600;
+  color:var(--primary);
   padding:8px 14px;
   border-radius:10px;
-  transition:.3s;
 }
-.nav a:hover,
-.nav a.active{
-  background:rgba(11,61,145,.08);
-  color:var(--accent);
-}
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+.nav a:hover,.nav a.active{background:rgba(11,61,145,.08);color:var(--accent)}
 .btn-apply{
   background:var(--accent);
   color:#fff;
@@ -77,10 +74,9 @@ a{text-decoration:none}
   border:none;
   font-size:28px;
   cursor:pointer;
-  color:var(--primary);
 }
 
-/* ===== MOBILE MENU (FIXED & BEAUTIFUL) ===== */
+/* ================= MOBILE MENU ================= */
 .menu-overlay{
   position:fixed;
   inset:0;
@@ -89,7 +85,6 @@ a{text-decoration:none}
   z-index:150;
 }
 .menu-overlay.show{display:block}
-
 .mobile-nav{
   position:fixed;
   top:0;
@@ -105,30 +100,29 @@ a{text-decoration:none}
 .mobile-nav a{
   display:block;
   color:#fff;
-  font-weight:600;
   padding:14px 0;
+  font-weight:600;
   border-bottom:1px solid rgba(255,255,255,.15);
 }
 
-/* ================= HERO ================= */
+/* ================= VIDEO HERO ================= */
 .hero{
   position:relative;
-  height:75vh;
+  height:80vh;
   overflow:hidden;
 }
-.hero .slide{
+.hero video{
   position:absolute;
   inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 1s ease;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-.hero .slide.active{opacity:1}
-.hero .overlay{
+.hero::after{
+  content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,rgba(11,61,145,.7),rgba(11,61,145,.45));
+  background:linear-gradient(180deg,rgba(11,61,145,.75),rgba(11,61,145,.5));
 }
 .hero-inner{
   position:relative;
@@ -142,22 +136,31 @@ a{text-decoration:none}
   color:#fff;
   padding:20px;
 }
-.typewriter{
-  font-size:2.2rem;
-  font-weight:700;
+.hero-inner h1{
+  font-size:2.4rem;
+  font-weight:800;
   max-width:900px;
 }
-.sub{
-  margin:14px 0 22px;
-  max-width:700px;
-  color:rgba(255,255,255,.95);
+.hero-inner p{
+  margin:16px 0 24px;
+  max-width:720px;
+  font-size:1.05rem;
+  opacity:.95;
 }
-.hero-ctas{
+.hero-badges{
   display:flex;
-  gap:14px;
+  gap:12px;
   flex-wrap:wrap;
   justify-content:center;
+  margin-bottom:24px;
 }
+.badge{
+  background:rgba(255,255,255,.15);
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:.85rem;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
 .btn{
   padding:12px 22px;
   border-radius:12px;
@@ -166,31 +169,22 @@ a{text-decoration:none}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff}
 
-/* ================= FEATURES ================= */
-.features{
-  display:flex;
-  flex-wrap:wrap;
-  gap:2rem;
-  justify-content:center;
-  padding:4rem 1rem;
-}
-.feature{
-  background:#fff;
-  padding:2rem;
-  border-radius:14px;
-  box-shadow:0 12px 30px rgba(11,61,145,.08);
-  text-align:center;
-  flex:1 1 260px;
-}
-.feature h3{color:var(--primary);margin-bottom:1rem}
-.feature p{color:var(--muted)}
-
 /* ================= SECTIONS ================= */
 .section{padding:80px 0}
-.section-title{text-align:center;font-size:1.8rem;color:var(--primary);margin-bottom:12px}
-.lead{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 40px}
+.section-title{
+  text-align:center;
+  font-size:1.9rem;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.lead{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 40px;
+  color:var(--muted);
+}
 
-/* PROGRAM CARDS */
+/* PROGRAMS */
 .cards-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -204,12 +198,15 @@ a{text-decoration:none}
   transition:.3s;
 }
 .card:hover{transform:translateY(-6px)}
-.card img{height:180px;object-fit:cover;width:100%}
+.card img{width:100%;height:180px;object-fit:cover}
 .card-body{padding:20px}
 .card h3{color:var(--primary);margin-bottom:8px}
 .card p{color:var(--muted)}
 
 /* COUNTERS */
+.counters{
+  background:#fff;
+}
 .counters-grid{
   display:flex;
   flex-wrap:wrap;
@@ -217,52 +214,13 @@ a{text-decoration:none}
   gap:20px;
 }
 .counter{
-  background:#fff;
-  padding:24px;
-  border-radius:14px;
   text-align:center;
   min-width:160px;
-  box-shadow:0 12px 30px rgba(11,61,145,.08);
 }
 .count{
-  font-size:2.2rem;
+  font-size:2.4rem;
   font-weight:800;
   color:var(--primary);
-}
-
-/* STAFF */
-.staff-carousel{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  overflow:hidden;
-}
-.s-track{
-  display:flex;
-  gap:16px;
-  transition:.4s ease;
-}
-.staff-card{
-  width:220px;
-  background:#fff;
-  padding:14px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 12px 30px rgba(11,61,145,.08);
-}
-.staff-card img{
-  height:160px;
-  object-fit:cover;
-  border-radius:10px;
-  margin-bottom:10px;
-}
-.s-prev,.s-next{
-  background:var(--accent);
-  border:none;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:10px;
-  cursor:pointer;
 }
 
 /* FOOTER */
@@ -277,62 +235,108 @@ a{text-decoration:none}
 @media(max-width:900px){
   .nav{display:none}
   .mobile-toggle{display:block}
-  .typewriter{font-size:1.6rem}
-  .staff-card{width:180px}
+  .hero-inner h1{font-size:1.7rem}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="index.html">Sherwood Secondary School</a>
+    <a class="brand" href="#">Sherwood International School</a>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="academics.html">Academics</a>
-      <a href="nursery.html">Nursery</a>
-      <a href="primary.html">Primary</a>
-      <a href="secondary.html" class="active">Secondary</a>
+      <a href="#">Home</a>
+      <a href="#">Academics</a>
+      <a href="#">Primary</a>
+      <a href="#" class="active">Secondary</a>
     </nav>
-    <div class="header-actions">
-      <a class="btn-apply" href="admissions.html">Apply</a>
+    <div>
+      <a class="btn-apply" href="#">Apply</a>
       <button class="mobile-toggle">☰</button>
     </div>
   </div>
 </header>
 
-<!-- MOBILE NAV -->
 <div class="menu-overlay"></div>
 <div class="mobile-nav">
-  <a href="index.html">Home</a>
-  <a href="academics.html">Academics</a>
-  <a href="nursery.html">Nursery</a>
-  <a href="primary.html">Primary</a>
-  <a href="secondary.html">Secondary</a>
-  <a href="admissions.html">Admissions</a>
+  <a href="#">Home</a>
+  <a href="#">Academics</a>
+  <a href="#">Primary</a>
+  <a href="#">Secondary</a>
+  <a href="#">Admissions</a>
 </div>
 
-<!-- HERO -->
+<!-- VIDEO HERO -->
 <section class="hero">
-  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914');">
-    <div class="overlay"></div>
-    <div class="hero-inner">
-      <h1 class="typewriter" data-text='["Welcome to Sherwood Secondary School","STEM, Arts & Leadership","Preparing for Excellence"]'></h1>
-      <p class="sub">Advanced learning, small class sizes, STEM labs, and strong exam preparation.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="admissions.html">Enroll Now</a>
-        <a class="btn btn-outline" href="#programs">Explore Programs</a>
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-students-studying-together-3187/1080p.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="badge">International Standards</span>
+      <span class="badge">STEM Focused</span>
+      <span class="badge">Global Citizenship</span>
+    </div>
+
+    <h1>Preparing Students for a Global Future</h1>
+    <p>
+      Sherwood International Secondary School delivers world-class education
+      aligned with international best practices, strong academics, leadership,
+      and innovation.
+    </p>
+
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#">Enroll Now</a>
+      <a class="btn btn-outline" href="#programs">Explore Programs</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="programs">
+  <h2 class="section-title">Our International Programs</h2>
+  <p class="lead">
+    A balanced curriculum blending Nigerian and international educational standards.
+  </p>
+
+  <div class="container cards-grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b">
+      <div class="card-body">
+        <h3>STEM & Innovation</h3>
+        <p>Advanced science, technology, robotics, and problem-solving skills.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+      <div class="card-body">
+        <h3>Arts & Humanities</h3>
+        <p>Developing creativity, communication, and critical thinking.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655">
+      <div class="card-body">
+        <h3>Leadership & Ethics</h3>
+        <p>Building confidence, discipline, and global citizenship.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- KEEP ALL YOUR ORIGINAL CONTENT BELOW (UNCHANGED) -->
-<!-- FEATURES, PROGRAMS, COUNTERS, STAFF, FOOTER -->
+<section class="section counters">
+  <div class="container counters-grid">
+    <div class="counter"><div class="count" data-target="98">0</div><p>Exam Success Rate</p></div>
+    <div class="counter"><div class="count" data-target="25">0</div><p>Qualified Teachers</p></div>
+    <div class="counter"><div class="count" data-target="12">0</div><p>Modern Labs</p></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2026 Sherwood International School. Global Education, Local Excellence.</p>
+</footer>
 
 <script>
-// MOBILE MENU
 const toggle=document.querySelector('.mobile-toggle');
 const mobileNav=document.querySelector('.mobile-nav');
 const overlay=document.querySelector('.menu-overlay');
@@ -340,20 +344,6 @@ const overlay=document.querySelector('.menu-overlay');
 toggle.onclick=()=>{mobileNav.classList.toggle('open');overlay.classList.toggle('show')}
 overlay.onclick=()=>{mobileNav.classList.remove('open');overlay.classList.remove('show')}
 
-// TYPEWRITER
-const typeEl=document.querySelector('.typewriter');
-const texts=JSON.parse(typeEl.dataset.text);
-let ti=0,ci=0;
-(function type(){
-  if(ci<texts[ti].length){
-    typeEl.textContent+=texts[ti][ci++];
-    setTimeout(type,60);
-  }else{
-    setTimeout(()=>{typeEl.textContent="";ci=0;ti=(ti+1)%texts.length;type()},1500);
-  }
-})();
-
-// COUNTERS
 document.querySelectorAll('.count').forEach(counter=>{
   const update=()=>{
     const target=+counter.dataset.target;
