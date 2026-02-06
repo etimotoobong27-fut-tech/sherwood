@@ -1,17 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activities | Sherwood Private School</title>
-  <link rel="stylesheet" href="activities.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activities | Sherwood Global International School</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0B3D91;
+  --accent:#FF1493;
+  --bg:#f9f9f9;
+  --white:#fff;
+  --muted:#6b7280;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#222;overflow-x:hidden;}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--primary);
+}
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+}
+.logo{
+  font-size:1.6rem;
+  font-weight:700;
+  color:#fff;
+}
+.main-nav{
+  display:flex;
+  gap:1rem;
+}
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  padding:.5rem .75rem;
+  border-radius:6px;
+  transition:.3s;
+}
+.main-nav a:hover,
+.main-nav a.active{
+  background:rgba(255,255,255,.15);
+  color:var(--accent);
+}
+.cta-btn{
+  background:var(--accent);
+  color:#fff;
+  padding:.6rem 1.4rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+.cta-btn:hover{opacity:.9}
+
+/* ===== Mobile Toggle (Academics-style) ===== */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.menu-toggle span{
+  width:26px;
+  height:3px;
+  background:#fff;
+  border-radius:3px;
+  transition:.3s;
+}
+.menu-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+.menu-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* Mobile Nav */
+@media(max-width:900px){
+  .main-nav{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#0B3D91,#062a66);
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transform:translateY(-100%);
+    transition:.4s ease;
+  }
+  .main-nav.show{transform:translateY(0);}
+  .menu-toggle{display:flex;}
+}
+
+/* ================= HERO (VIDEO) ================= */
+.activities-hero{
+  position:relative;
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+.activities-hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.activities-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(11,61,145,.7),rgba(11,61,145,.5));
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  padding:1rem;
+}
+.hero-content h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+}
+.hero-content p{
+  font-size:1.2rem;
+  opacity:.95;
+}
+
+/* Scroll Indicator */
+.scroll-indicator{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+}
+.scroll-indicator span{
+  display:block;
+  width:22px;
+  height:36px;
+  border:2px solid #fff;
+  border-radius:12px;
+  position:relative;
+}
+.scroll-indicator span::after{
+  content:'';
+  position:absolute;
+  top:6px;
+  left:50%;
+  transform:translateX(-50%);
+  width:4px;
+  height:8px;
+  background:#fff;
+  border-radius:4px;
+  animation:scroll 1.5s infinite;
+}
+@keyframes scroll{
+  0%{opacity:0;transform:translate(-50%,0);}
+  50%{opacity:1;}
+  100%{opacity:0;transform:translate(-50%,10px);}
+}
+
+/* ================= ACTIVITIES ================= */
+.activities-grid{
+  max-width:1200px;
+  margin:4rem auto;
+  padding:0 1rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+}
+.activity-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+  opacity:0;
+  transform:translateY(40px);
+  transition:.6s ease;
+}
+.activity-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+}
+.activity-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+.activity-card h2{
+  color:var(--primary);
+  margin:1rem;
+}
+.activity-card p{
+  margin:0 1rem 1.5rem;
+  color:var(--muted);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:2.5rem 1rem;
+  margin-top:4rem;
+}
+</style>
 </head>
+
 <body>
 
-<!-- Navbar -->
+<!-- HEADER -->
 <header>
   <div class="header-container">
-    <div class="logo">Sherwood Private School</div>
+    <div class="logo">Sherwood Global International School</div>
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -22,55 +247,87 @@
       <a href="contact.html">Contact</a>
     </nav>
     <a href="admissions.html" class="cta-btn">Apply Now</a>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- Hero Section -->
+<!-- HERO -->
 <section class="activities-hero">
-  <h1>Life at Sherwood</h1>
-  <p>Engaging, Creative, and Inspiring Activities for Every Student</p>
+  <video autoplay muted loop playsinline>
+    <source src="school-life.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Life at Sherwood</h1>
+    <p>A globally-minded learning environment where creativity, leadership, and excellence thrive.</p>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
 </section>
 
-<!-- Activities Grid -->
+<!-- ACTIVITIES -->
 <section class="activities-grid">
-  <div class="activity-card" data-animate="fadeInUp">
+  <div class="activity-card" data-delay="0">
     <img src="images/sports.jpg" alt="Sports">
     <h2>Sports & Athletics</h2>
     <p>Encouraging teamwork, fitness, and healthy competition.</p>
   </div>
 
-  <div class="activity-card" data-animate="fadeInUp" data-delay="100">
+  <div class="activity-card" data-delay="100">
     <img src="images/music.jpg" alt="Music">
     <h2>Music & Performing Arts</h2>
     <p>Nurturing creativity and self-expression through performance.</p>
   </div>
 
-  <div class="activity-card" data-animate="fadeInUp" data-delay="200">
+  <div class="activity-card" data-delay="200">
     <img src="images/science-club.jpg" alt="Science Club">
     <h2>STEM & Science Clubs</h2>
     <p>Hands-on experiments to cultivate curiosity and innovation.</p>
   </div>
 
-  <div class="activity-card" data-animate="fadeInUp" data-delay="300">
+  <div class="activity-card" data-delay="300">
     <img src="images/art.jpg" alt="Art Club">
     <h2>Art & Creativity</h2>
     <p>Exploring imagination through painting, craft, and design.</p>
   </div>
 
-  <div class="activity-card" data-animate="fadeInUp" data-delay="400">
+  <div class="activity-card" data-delay="400">
     <img src="images/community.jpg" alt="Community Service">
     <h2>Community Service</h2>
-    <p>Building responsibility, empathy, and social awareness.</p>
+    <p>Building responsibility, empathy, and global citizenship.</p>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-content">
-    &copy; 2025 Sherwood Private School | Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria
-  </div>
+  © 2025 Sherwood Global International School | Lagos, Nigeria
 </footer>
 
-<script src="activities.js"></script>
+<script>
+// ===== Mobile Menu Toggle =====
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.main-nav');
+toggle.onclick=()=>{
+  toggle.classList.toggle('active');
+  nav.classList.toggle('show');
+};
+
+// ===== Scroll Animations =====
+const cards=document.querySelectorAll('.activity-card');
+function reveal(){
+  const trigger=window.innerHeight*0.85;
+  cards.forEach(card=>{
+    const top=card.getBoundingClientRect().top;
+    if(top<trigger){
+      card.style.opacity=1;
+      card.style.transform='translateY(0)';
+      card.style.transitionDelay=(card.dataset.delay||0)+'ms';
+    }
+  });
+}
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+</script>
+
 </body>
 </html>
