@@ -5,42 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sherwood Private School | Excellence in Learning</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 /* ============================ GLOBAL ============================ */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body { background:#f9f9f9; color:#333; padding-top:80px; }
+body { background:#f9f9f9; color:#333; padding-top:100px; }
 a { text-decoration:none; }
 
 /* ============================ HEADER ============================ */
 header { position:fixed; top:0; left:0; width:100%; z-index:1000; background:#ffffffee; backdrop-filter:blur(6px); box-shadow:0 2px 10px rgba(0,0,0,0.1); }
 .navbar { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content:space-between; padding:1rem; flex-wrap:wrap; }
-.logo-container { width:220px; height:80px; display:flex; align-items:center; justify-content:center; }
-.logo-container img { max-width:100%; max-height:100%; display:block; }
-.fun-space { margin-left:15px; font-weight:600; font-size:1rem; color:#FF1493; animation:bounce 2s infinite; }
+
+/* Logo container */
+.logo-container { 
+  width:300px; 
+  height:80px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  background:linear-gradient(90deg, #FF1493, #FFD700, #1E90FF);
+  border-radius:15px;
+  margin:auto;
+}
+.logo-container img { max-width:90%; max-height:60px; display:block; }
+
+/* Fun animated element beside logo */
+.fun-space { margin-left:15px; font-weight:600; font-size:1rem; color:#fff; animation:bounce 2s infinite; }
 @keyframes bounce { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+
+/* Menu toggle */
 .menu-toggle { font-size:2rem; cursor:pointer; color:#FF1493; display:none; }
-.nav-links { display:flex; gap:1.5rem; }
-.nav-links a { color:#333; font-weight:500; font-size:1rem; }
-.nav-links a.active { color:#FF1493; }
 
 /* Overlay menu */
-.nav-links.overlay { position:fixed; top:0; left:0; width:100%; height:100vh; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.95); color:#fff; font-size:1.5rem; transform:translateX(-100%); transition:0.5s ease; }
+.nav-links.overlay { position:fixed; top:0; left:0; width:100%; height:100vh; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.95); color:#fff; font-size:1.5rem; transform:translateX(-100%); transition:0.5s ease; z-index:2000; }
 .nav-links.overlay a { color:#fff; font-weight:600; margin:1rem 0; font-size:1.5rem; }
 .nav-links.overlay.open { transform:translateX(0); }
+
+/* Close button inside overlay */
+.nav-links.overlay .close-menu { position:absolute; top:30px; right:30px; font-size:2.5rem; cursor:pointer; color:#ffd700; }
 
 /* ============================ HERO ============================ */
 .hero { position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
 .hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; }
 .hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); z-index:2; }
 .hero-content { position:relative; z-index:3; max-width:700px; color:#fff; }
-.floating-text { font-size:3rem; font-weight:bold; color:#ffd85a; display:inline-block; animation:floatText 5s ease-in-out infinite; }
-@keyframes floatText {
-  0%,100%{ transform: translate(0,0); }
-  25%{ transform: translate(10px,-10px); }
-  50%{ transform: translate(-10px,10px); }
-  75%{ transform: translate(10px,5px); }
-}
+
+.floating-text { font-size:3rem; font-weight:bold; color:#ffd85a; display:inline-block; }
 .hero p { margin:1rem 0 2rem; font-size:1.2rem; }
 .btn-primary { background:#ffd85a; color:#000; padding:0.9rem 2rem; border-radius:30px; font-weight:600; transition:0.3s ease; }
 .btn-primary:hover { background:#ffcf40; }
@@ -85,9 +94,7 @@ footer p { color:#aaa; }
 
 /* ============================ RESPONSIVE ============================ */
 @media(max-width:768px){
-  .nav-links { display:none; }
   .menu-toggle { display:block; }
-  .nav-links.overlay { display:flex; }
 }
 </style>
 </head>
@@ -101,6 +108,7 @@ footer p { color:#aaa; }
     <div class="fun-space">🎓 Learn. Play. Grow!</div>
     <div class="menu-toggle">☰</div>
     <nav class="nav-links overlay">
+      <span class="close-menu">&times;</span>
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
@@ -117,7 +125,7 @@ footer p { color:#aaa; }
     <source src="sherwood-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-content">
-    <h1 class="floating-text">Sherwood Private School</h1>
+    <h1 class="floating-text"></h1>
     <p>We provide world-class education that inspires confidence, creativity, and a lifelong love for learning.</p>
     <a href="#admission" class="btn-primary">Start Admission</a>
   </div>
@@ -147,8 +155,8 @@ footer p { color:#aaa; }
   <div class="gallery-grid">
     <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=60">
     <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=60">
+    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&w=800&q=60">
+    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&w=800&q=60">
   </div>
 </section>
 
@@ -186,7 +194,9 @@ footer p { color:#aaa; }
 // Mobile Menu
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav-links.overlay");
-toggle.addEventListener("click", () => nav.classList.toggle("open"));
+const closeBtn = document.querySelector(".close-menu");
+toggle.addEventListener("click", () => nav.classList.add("open"));
+closeBtn.addEventListener("click", () => nav.classList.remove("open"));
 
 // Staff Carousel
 let staffIndex = 0;
@@ -199,31 +209,27 @@ function updateStaff(){
 function nextStaff(){ staffIndex++; updateStaff(); }
 function prevStaff(){ if(staffIndex > 0) staffIndex--; updateStaff(); }
 
-// Typewriter effect for hero
+// Typewriter effect for hero - fallen letters
 const typedWords = ["NURSERY", "PRIMARY", "SECONDARY"];
 let wIndex = 0, cIndex = 0;
 const typedElement = document.querySelector(".floating-text");
+
 function typeEffect(){
   if(cIndex < typedWords[wIndex].length){
-    typedElement.textContent = typedWords[wIndex].charAt(cIndex);
+    typedElement.textContent += typedWords[wIndex].charAt(cIndex);
     cIndex++;
-    setTimeout(typeEffect, 100);
+    setTimeout(typeEffect, 300);
   } else {
-    setTimeout(eraseEffect, 1500);
+    setTimeout(eraseEffect, 2000); // 2 seconds stay
   }
 }
 function eraseEffect(){
-  if(cIndex > 0){
-    typedElement.textContent = typedWords[wIndex].substr(0,cIndex-1);
-    cIndex--;
-    setTimeout(eraseEffect,50);
-  } else {
-    wIndex = (wIndex+1) % typedWords.length;
-    setTimeout(typeEffect,300);
-  }
+  typedElement.textContent = "";
+  wIndex = (wIndex+1) % typedWords.length;
+  cIndex = 0;
+  setTimeout(typeEffect, 500);
 }
 typeEffect();
 </script>
-
 </body>
 </html>
