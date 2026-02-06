@@ -1,254 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sherwood Private School | Home</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sherwood Private School | Excellence in Learning</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-KY4DQ7o5a+IwFZkXUBkZvVqK8qPB1t2/2n4iW6cplkONZl6J0+STxP/B8hX7n0sV2fpUhV0lj8q/pq6c8i+5hA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <style>
-/* =================== RESET & BASE =================== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f7f9fc;color:#0b2540;overflow-x:hidden;scroll-behavior:smooth;}
-a{text-decoration:none;}
-img{max-width:100%;display:block;}
+/* =========================
+   GLOBAL
+========================= */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; background:#f9f9f9; color:#333; scroll-behavior: smooth; }
+a { text-decoration:none; }
+section { padding:4rem 1rem; position:relative; }
+h2.section-title { text-align:center; margin-bottom:2rem; color:#2c3e50; font-size:2rem; }
 
-/* =================== HEADER =================== */
-header{
-  background:#0B3D91;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  animation:fadeDown 1s ease;
-}
-.header-container{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:1rem 1.5rem;
-}
-.logo{font-size:1.8rem;font-weight:700;color:#fff;}
-.main-nav{display:flex;gap:1rem;align-items:center;}
-.main-nav a{
-  color:#fff;
-  font-weight:500;
-  padding:.5rem 1rem;
-  border-radius:8px;
-  transition:.3s;
-}
-.main-nav a:hover,
-.main-nav a.active{background:#FF1493;color:#fff;}
-.cta-btn{
-  background:#FF1493;color:#fff;padding:.6rem 1.5rem;border-radius:8px;font-weight:600;transition:.3s;
-}
-.cta-btn:hover{opacity:.9;}
-
-/* Mobile Menu */
-.menu-btn{
-  display:none;
-  font-size:1.8rem;
-  color:#fff;
-  cursor:pointer;
-}
-.mobile-nav{
-  display:none;
-  flex-direction:column;
-  background:#0B3D91;
+/* =========================
+   HEADER
+========================= */
+header {
   width:100%;
+  background:#ffffffcc;
+  backdrop-filter:blur(8px);
+  position:fixed; top:0; left:0;
+  z-index:1000;
+  box-shadow:0 2px 15px rgba(0,0,0,0.1);
 }
-.mobile-nav a{
-  color:#fff;
-  padding:1rem;
-  border-top:1px solid rgba(255,255,255,.2);
-  transition:.3s;
+.navbar {
+  max-width:1200px; margin:auto;
+  padding:1rem 2rem;
+  display:flex; align-items:center; justify-content:space-between;
 }
-.mobile-nav a:hover,
-.mobile-nav a.active{color:#FF1493;}
+.logo-container {
+  width:150px; height:60px; display:flex; align-items:center; justify-content:center;
+}
+.logo-container img { max-width:100%; max-height:100%; display:block; }
+.nav-links {
+  display:flex; gap:1.5rem; align-items:center;
+}
+.nav-links a { color:#333; font-weight:500; transition:0.3s; }
+.nav-links a.active, .nav-links a:hover { color:#FF1493; }
+.menu-toggle { display:none; font-size:1.8rem; cursor:pointer; }
 
-/* =================== HERO =================== */
-.hero{
+/* =========================
+   HERO
+========================= */
+.hero {
+  height:100vh;
   position:relative;
-  height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; color:#fff;
 }
-.hero video{
-  position:absolute;
-  top:0;left:0;width:100%;height:100%;object-fit:cover;
-  z-index:1;
+.hero video {
+  position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;
 }
-.hero .overlay{
-  position:absolute;
-  top:0;left:0;width:100%;height:100%;
-  background:rgba(11,61,145,.6);
-  z-index:2;
+.hero::after {
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.45); z-index:1;
 }
-.hero-inner{
-  position:relative;
-  z-index:3;
-  text-align:center;
-  color:#fff;
-  max-width:900px;
-  padding:0 1rem;
-}
-.hero-inner h1{
-  font-size:3rem;
-  margin-bottom:1rem;
-  animation:typewriter 4s steps(30) infinite alternate;
-}
-.hero-inner p{
-  font-size:1.3rem;
-  margin-bottom:2rem;
-  animation:fadeUp 1.5s ease;
-}
-.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.hero-ctas a{
-  padding:12px 24px;
-  border-radius:8px;
-  font-weight:600;
-  transition:.3s;
-}
-.btn-primary{background:#FF1493;color:#fff;}
-.btn-primary:hover{opacity:.9;}
-.btn-outline{border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent;}
-.btn-outline:hover{background:rgba(255,255,255,.2);}
+.hero-content { position:relative; z-index:2; max-width:700px; opacity:0; transform:translateY(40px); transition:1s ease; }
+.hero-content h1 { font-size:3rem; margin-bottom:1rem; }
+.hero-content .typed { color:#ffd85a; font-weight:600; font-size:1.5rem; }
+.hero-content p { margin:1rem 0 2rem; font-size:1.2rem; }
+.btn-primary { background:#ffd85a; color:#000; padding:0.9rem 2rem; border-radius:30px; font-weight:600; transition:0.3s ease; display:inline-block; }
+.btn-primary:hover { background:#ffcf40; transform:scale(1.05); }
 
-/* =================== FEATURES =================== */
-.features{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:2rem;
-  padding:4rem 1rem;
+/* =========================
+   FEATURES
+========================= */
+.features .feature-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;
 }
-.feature{
-  background:#fff;
-  border-radius:12px;
-  padding:2rem;
-  flex:1 1 250px;
-  text-align:center;
-  box-shadow:0 6px 20px rgba(11,61,145,0.06);
-  opacity:0;
-  transform:translateY(50px);
-  transition:.6s ease;
+.feature-box {
+  background:#fff; padding:2rem; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.1);
+  transition:0.5s; opacity:0; transform:translateY(50px);
 }
-.feature.show{opacity:1;transform:translateY(0);}
-.feature h3{color:#0B3D91;margin-bottom:1rem;font-size:1.5rem;}
-.feature p{color:#64748b;font-size:1rem;}
+.feature-box:hover { transform:translateY(-10px); }
+.feature-box h3 { margin-bottom:1rem; color:#2c3e50; }
 
-/* =================== PROGRAMS =================== */
-.section{padding:80px 0;}
-.section-title{text-align:center;font-size:2rem;color:#0B3D91;margin-bottom:1rem;font-weight:700;}
-.lead{text-align:center;color:#64748b;margin-bottom:36px;font-size:1.1rem;}
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
+/* =========================
+   ACADEMICS
+========================= */
+.academic-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+.academic-card {
+  background:#f3f9ff; padding:2rem; border-radius:18px; transition:0.3s;
+  opacity:0; transform:translateY(50px);
 }
-.card{
-  background:#fff;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 12px 32px rgba(11,61,145,0.08);
-  transition:.5s;
-  opacity:0;
-  transform:translateY(40px);
-}
-.card.show{opacity:1;transform:translateY(0);}
-.card:hover{transform:translateY(-6px);}
-.card img{width:100%;height:180px;object-fit:cover;}
-.card-body{padding:20px;}
-.card-body h3{color:#0B3D91;margin-bottom:8px;}
-.card-body p{color:#64748b;margin-bottom:12px;}
-.card-link{color:#FF1493;font-weight:600;transition:.3s;}
-.card-link:hover{text-decoration:underline;}
+.academic-card:hover { border-color:#3498db; transform:translateY(-5px); border:2px solid transparent; }
+.academic-card h3 { margin-bottom:1rem; color:#2980b9; }
 
-/* =================== COUNTERS =================== */
-.counters-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-around;
-  gap:2rem;
-}
-.counter{
-  background:#fff;
-  border-radius:12px;
-  padding:2rem;
-  min-width:140px;
-  text-align:center;
-  box-shadow:0 8px 28px rgba(11,61,145,.05);
-  opacity:0;
-  transform:translateY(30px);
-  transition:.5s;
-}
-.counter.show{opacity:1;transform:translateY(0);}
-.counter .count{font-size:2rem;font-weight:800;color:#0B3D91;display:block;}
+/* =========================
+   GALLERY
+========================= */
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
+.gallery-grid img { width:100%; border-radius:15px; transition:0.5s; opacity:0; transform:scale(0.9); }
+.gallery-grid img:hover { transform:scale(1.05); }
 
-/* =================== STAFF CAROUSEL =================== */
-.staff-carousel{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  overflow:hidden;
-  margin-top:2rem;
+/* =========================
+   STAFF CAROUSEL
+========================= */
+.staff-track { display:flex; gap:1rem; transition:0.5s ease; }
+.staff-card {
+  min-width:260px; background:#f9f9f9; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  padding:1rem; text-align:center; opacity:0; transform:translateY(50px);
 }
-.s-track{
-  display:flex;
-  gap:16px;
-  transition:transform .35s ease;
-}
-.staff-card{
-  width:220px;
-  background:#fff;
-  border-radius:12px;
-  text-align:center;
-  padding:14px;
-  box-shadow:0 10px 32px rgba(11,61,145,.06);
-  transition:.3s;
-}
-.staff-card:hover{transform:translateY(-3px);}
-.staff-card img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:8px;}
-.s-prev,.s-next{background:#FF1493;border:none;color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;transition:.3s;}
-.s-prev:hover,.s-next:hover{opacity:.9;}
+.staff-card img { width:100%; border-radius:15px; height:260px; object-fit:cover; }
 
-/* =================== FOOTER =================== */
-.site-footer{
-  background:#0B3D91;
-  color:#fff;
-  padding:32px 0;
-  text-align:center;
-}
+/* =========================
+   CTA
+========================= */
+.cta { padding:4rem 1rem; background:darkblue; text-align:center; color:#fff; }
+.cta a { margin-top:1.5rem; }
 
-/* =================== ANIMATIONS =================== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes typewriter{
-  0%,100%{width:0;overflow:hidden}
-  50%{width:100%;}
-}
+/* =========================
+   FOOTER
+========================= */
+footer { background:#1b1b1b; color:#ccc; padding:2rem 1rem; text-align:center; }
 
-/* =================== RESPONSIVE =================== */
-@media(max-width:900px){
-  .main-nav,.cta-btn{display:none;}
-  .menu-btn{display:block;}
-  .cards-grid{grid-template-columns:1fr;}
-  .staff-card{width:180px;}
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .nav-links { display:none; flex-direction:column; background:#fff; position:absolute; top:100%; left:0; width:100%; padding:1rem 0; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+  .nav-links.open { display:flex; }
+  .menu-toggle { display:block; color:#333; }
+  body { padding-top:80px; }
 }
 </style>
 </head>
@@ -257,126 +137,150 @@ header{
 
 <!-- HEADER -->
 <header>
-  <div class="header-container">
-    <div class="logo">Sherwood Private School</div>
-    <nav class="main-nav">
+  <div class="navbar">
+    <div class="logo-container">
+      <img src="IMG-20251026-WA0011.jpg" alt="School Logo" class="logo">
+    </div>
+    <div class="menu-toggle">☰</div>
+    <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
-      <a href="nursery.html">Nursery</a>
-      <a href="primary.html">Primary</a>
-      <a href="secondary.html">Secondary</a>
-      <a href="activities.html">Activities</a>
       <a href="admissions.html">Admissions</a>
+      <a href="activities.html">Activities</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <a href="admissions.html" class="cta-btn">Apply Now</a>
-    <i class="fas fa-bars menu-btn" id="menuBtn"></i>
-  </div>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="active">Home</a>
-    <a href="academics.html">Academics</a>
-    <a href="nursery.html">Nursery</a>
-    <a href="primary.html">Primary</a>
-    <a href="secondary.html">Secondary</a>
-    <a href="activities.html">Activities</a>
-    <a href="admissions.html">Admissions</a>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <video autoplay muted loop>
-    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
-  <div class="hero-inner">
-    <h1>Welcome to Sherwood Private School</h1>
-    <p>STEM, Arts & Leadership — Preparing for Excellence</p>
-    <div class="hero-ctas">
-      <a href="admissions.html" class="btn-primary">Enroll Now</a>
-      <a href="#programs" class="btn-outline">Explore Programs</a>
-    </div>
+<section class="hero" id="hero">
+  <video src="school-hero.mp4" autoplay muted loop></video>
+  <div class="hero-content">
+    <h1>Welcome To Sherwood Private School <span class="typed"></span></h1>
+    <p>We provide world-class education that inspires confidence, creativity, and a lifelong love for learning.</p>
+    <a href="#admission" class="btn-primary">Start Admission</a>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-  <div class="feature"> <h3>STEM Focus</h3><p>State-of-the-art labs, coding, robotics, and engineering projects.</p></div>
-  <div class="feature"> <h3>Arts & Sports</h3><p>Drama, music, visual arts, PE, and competitive sports for well-rounded growth.</p></div>
-  <div class="feature"> <h3>College Prep</h3><p>Exam-focused programs, leadership clubs, and guidance counseling for tertiary readiness.</p></div>
-</section>
-
-<!-- PROGRAMS -->
-<section id="programs" class="section">
-  <h2 class="section-title">Programs & Subjects</h2>
-  <p class="lead">Our secondary school programs prepare students academically, socially, and creatively for future success.</p>
-  <div class="cards-grid">
-    <div class="card"><img src="https://images.unsplash.com/photo-1596496054198-abcd" alt=""><div class="card-body"><h3>Mathematics</h3><p>Advanced problem-solving and exam preparation.</p></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" alt=""><div class="card-body"><h3>Science</h3><p>Physics, Chemistry, Biology, and lab experiments.</p></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" alt=""><div class="card-body"><h3>ICT & Coding</h3><p>Programming, robotics, and digital skills.</p></div></div>
+  <h2 class="section-title">Why Choose Sherwood?</h2>
+  <div class="feature-grid">
+    <div class="feature-box"><h3>Global Curriculum</h3><p>Meets international standards and prepares learners for the future.</p></div>
+    <div class="feature-box"><h3>Safe Environment</h3><p>Prioritizes emotional safety, security, and student well-being.</p></div>
+    <div class="feature-box"><h3>Modern Facilities</h3><p>Top-class classrooms, ICT lab, library, playground, and more.</p></div>
+    <div class="feature-box"><h3>Qualified Staff</h3><p>Professional educators dedicated to student success.</p></div>
   </div>
 </section>
 
-<!-- COUNTERS -->
-<section class="section counters">
-  <div class="counters-grid">
-    <div class="counter"><span class="count" data-target="1000">0</span><small>Students</small></div>
-    <div class="counter"><span class="count" data-target="98">0</span><small>% Exam Pass Rate</small></div>
-    <div class="counter"><span class="count" data-target="90">0</span><small>Teachers</small></div>
-    <div class="counter"><span class="count" data-target="20">0</span><small>Years of Excellence</small></div>
+<!-- ACADEMICS -->
+<section class="academics" id="academics">
+  <h2 class="section-title">Our Academic Structure</h2>
+  <div class="academic-grid">
+    <div class="academic-card"><h3>Early Years</h3><p>Hands-on learning, social development, and foundational literacy.</p></div>
+    <div class="academic-card"><h3>Primary</h3><p>Well-structured academic growth with creative enrichment programs.</p></div>
+    <div class="academic-card"><h3>Junior Secondary</h3><p>Advanced subjects, leadership development, and STEM-driven curriculum.</p></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <h2 class="section-title">Campus Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=60">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60">
+    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&fit=crop&w=800&q=60">
+    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=60">
   </div>
 </section>
 
 <!-- STAFF -->
-<section class="section staff">
-  <h2 class="section-title">Meet Our Educators</h2>
-  <div class="staff-carousel">
-    <button class="s-prev">‹</button>
-    <div class="s-track">
-      <div class="staff-card"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" alt=""><strong>Mrs. Vivian Okafor</strong><p>Head of Secondary</p></div>
-      <div class="staff-card"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt=""><strong>Mr. David Okafor</strong><p>Science Lead</p></div>
-    </div>
-    <button class="s-next">›</button>
+<section class="staff" id="staff">
+  <h2 class="section-title">Meet Our Amazing Staff</h2>
+  <div class="staff-track" id="staffTrack">
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60"><h3>Mrs. Johnson</h3><p>Head Teacher</p></div>
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60"><h3>Mr. Daniel</h3><p>ICT Instructor</p></div>
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&fit=crop&w=600&q=60"><h3>Miss Clara</h3><p>Nursery Teacher</p></div>
   </div>
 </section>
 
+<!-- CTA -->
+<section class="cta" id="admission">
+  <h2>Join a World-Class Learning Community</h2>
+  <p>We are currently accepting applications for the new academic session.</p><br>
+  <a href="#contact" class="btn-primary">Contact Admissions</a>
+</section>
+
 <!-- FOOTER -->
-<footer class="site-footer">
-  © 2025 Sherwood Private School | Lagos State, Nigeria
+<footer id="contact">
+  <h3>Sherwood Private School</h3>
+  <p>Palace Way, Off Miyaki Oworoshoki Lagos State, Nigeria.</p>
+  <p>Phone: +234 9047043235</p>
+  <p>Email: info@sherwoodschool.com</p>
+  <br>
+  <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
 </footer>
 
 <script>
-// Mobile Menu
-const menuBtn = document.getElementById("menuBtn");
-const mobileNav = document.getElementById("mobileNav");
-menuBtn.addEventListener("click", ()=> mobileNav.classList.toggle("active"));
+// MOBILE MENU
+document.querySelector(".menu-toggle").onclick = () => {
+  document.querySelector(".nav-links").classList.toggle("open");
+};
 
-// Animate on scroll
-const features = document.querySelectorAll('.feature');
-const cards = document.querySelectorAll('.card');
-const counters = document.querySelectorAll('.counter');
+// TYPEWRITER EFFECT
+const typedWords = ["NURSERY", "PRIMARY", "SECONDARY"];
+let wIndex = 0, cIndex = 0;
+const typedElement = document.querySelector(".typed");
 
-function animateOnScroll(){
-  const trigger = window.innerHeight * 0.85;
-  features.forEach(f=>{if(f.getBoundingClientRect().top<trigger){f.classList.add('show')}});
-  cards.forEach(c=>{if(c.getBoundingClientRect().top<trigger){c.classList.add('show')}});
-  counters.forEach(c=>{if(c.getBoundingClientRect().top<trigger){c.classList.add('show')}});
+function typeEffect(){
+  if(cIndex < typedWords[wIndex].length){
+    typedElement.textContent += typedWords[wIndex][cIndex];
+    cIndex++;
+    setTimeout(typeEffect, 100);
+  } else { setTimeout(eraseEffect, 1500); }
 }
-window.addEventListener('scroll',animateOnScroll);
-window.addEventListener('load',animateOnScroll);
+function eraseEffect(){
+  if(cIndex > 0){
+    typedElement.textContent = typedWords[wIndex].substr(0,cIndex-1);
+    cIndex--;
+    setTimeout(eraseEffect,50);
+  } else { wIndex=(wIndex+1)%typedWords.length; setTimeout(typeEffect,300); }
+}
+typeEffect();
 
-// Counters
-counters.forEach(counter=>{
-  const updateCount=()=>{
-    const target=+counter.dataset.target;
-    const count=+counter.querySelector('.count').innerText;
-    const inc=target/200;
-    if(count<target){
-      counter.querySelector('.count').innerText=Math.ceil(count+inc);
-      setTimeout(updateCount,20);
-    } else counter.querySelector('.count').innerText=target;
-  };
-  updateCount();
+// STAFF CAROUSEL ANIMATION
+const staffCards = document.querySelectorAll('.staff-card');
+let staffObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
+  });
+}, {threshold:0.3});
+staffCards.forEach(card=>staffObserver.observe(card));
+
+// FEATURES & ACADEMICS & GALLERY ANIMATIONS
+const animatedSections = document.querySelectorAll('.feature-box, .academic-card, .gallery-grid img');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      entry.target.style.transition='all 0.8s ease';
+    }
+  });
+},{threshold:0.3});
+animatedSections.forEach(el=>observer.observe(el));
+
+// HERO fade-in
+window.addEventListener('load',()=>{
+  document.querySelector('.hero-content').style.opacity='1';
+  document.querySelector('.hero-content').style.transform='translateY(0)';
 });
 </script>
+
 </body>
 </html>
