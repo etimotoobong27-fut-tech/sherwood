@@ -1,141 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sherwood Private School | Excellence in Learning</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-/* ============================
-   GLOBAL
-============================ */
+/* ============================ GLOBAL ============================ */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body { background:#f9f9f9; color:#333; scroll-behavior:smooth; padding-top:80px; }
+body { background:#f9f9f9; color:#333; padding-top:80px; }
+a { text-decoration:none; }
 
-/* ============================
-   HEADER
-============================ */
-header {
-  width:100%; background:#ffffffee; backdrop-filter:blur(6px);
-  position:fixed; top:0; left:0; z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-.navbar {
-  max-width:1200px; margin:auto; padding:1rem;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.logo-container {
-  width:150px; height:60px; overflow:hidden; display:flex; align-items:center; justify-content:center;
-}
-.logo { max-width:100%; max-height:100%; height:auto; width:auto; display:block; }
+/* ============================ HEADER ============================ */
+header { position:fixed; top:0; left:0; width:100%; z-index:1000; background:#ffffffee; backdrop-filter:blur(6px); box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+.navbar { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content:space-between; padding:1rem; flex-wrap:wrap; }
+.logo-container { width:220px; height:80px; display:flex; align-items:center; justify-content:center; }
+.logo-container img { max-width:100%; max-height:100%; display:block; }
+.fun-space { margin-left:15px; font-weight:600; font-size:1rem; color:#FF1493; animation:bounce 2s infinite; }
+@keyframes bounce { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+.menu-toggle { font-size:2rem; cursor:pointer; color:#FF1493; display:none; }
 .nav-links { display:flex; gap:1.5rem; }
-.nav-links a { text-decoration:none; color:#333; font-weight:500; transition:0.3s; }
-.nav-links a:hover, .nav-links a.active { color:#FF1493; }
-.menu-toggle { display:none; font-size:1.8rem; cursor:pointer; }
+.nav-links a { color:#333; font-weight:500; font-size:1rem; }
+.nav-links a.active { color:#FF1493; }
 
-/* ============================
-   HERO
-============================ */
-.hero {
-  position:relative; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center;
+/* Overlay menu */
+.nav-links.overlay { position:fixed; top:0; left:0; width:100%; height:100vh; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.95); color:#fff; font-size:1.5rem; transform:translateX(-100%); transition:0.5s ease; }
+.nav-links.overlay a { color:#fff; font-weight:600; margin:1rem 0; font-size:1.5rem; }
+.nav-links.overlay.open { transform:translateX(0); }
+
+/* ============================ HERO ============================ */
+.hero { position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+.hero::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); z-index:2; }
+.hero-content { position:relative; z-index:3; max-width:700px; color:#fff; }
+.floating-text { font-size:3rem; font-weight:bold; color:#ffd85a; display:inline-block; animation:floatText 5s ease-in-out infinite; }
+@keyframes floatText {
+  0%,100%{ transform: translate(0,0); }
+  25%{ transform: translate(10px,-10px); }
+  50%{ transform: translate(-10px,10px); }
+  75%{ transform: translate(10px,5px); }
 }
-.hero video {
-  position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;
-}
-.hero::after {
-  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.45); z-index:1;
-}
-.hero-content {
-  position:relative; z-index:2; max-width:700px; color:#fff;
-  opacity:0; transform:translateY(50px); animation:fadeUp 1s forwards 0.3s;
-}
-.hero h1 { font-size:3rem; line-height:1.2; margin-bottom:1rem; }
-.hero .typed { color:#ffd85a; font-weight:600; font-size:1.4rem; }
 .hero p { margin:1rem 0 2rem; font-size:1.2rem; }
-.btn-primary {
-  background:#ffd85a; color:#000; padding:0.9rem 2rem; border-radius:30px;
-  font-weight:600; text-decoration:none; transition:0.3s ease;
-}
+.btn-primary { background:#ffd85a; color:#000; padding:0.9rem 2rem; border-radius:30px; font-weight:600; transition:0.3s ease; }
 .btn-primary:hover { background:#ffcf40; }
 
-/* ============================
-   FEATURES
-============================ */
+/* ============================ FEATURES ============================ */
 .features { padding:4rem 1rem; max-width:1200px; margin:auto; text-align:center; }
 .section-title { font-size:2rem; font-weight:700; margin-bottom:2rem; color:#2c3e50; }
-.feature-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem; }
-.feature-box { background:#fff; padding:2rem; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; opacity:0; transform:translateY(30px); }
+.feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+.feature-box { background:#fff; padding:2rem; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; }
 .feature-box:hover { transform:translateY(-8px); }
 .feature-box h3 { margin-bottom:1rem; color:#2c3e50; }
 
-/* ============================
-   ACADEMICS
-============================ */
+/* ============================ ACADEMICS ============================ */
 .academics { background:#fff; padding:4rem 1rem; }
 .academic-grid { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
-.academic-card { background:#f3f9ff; padding:2rem; border-radius:18px; transition:0.3s; border:2px solid transparent; opacity:0; transform:translateY(20px); }
+.academic-card { background:#f3f9ff; padding:2rem; border-radius:18px; transition:0.3s; border:2px solid transparent; }
 .academic-card:hover { border-color:#3498db; transform:translateY(-5px); }
 .academic-card h3 { margin-bottom:1rem; color:#2980b9; }
 
-/* ============================
-   GALLERY
-============================ */
+/* ============================ GALLERY ============================ */
 .gallery { padding:4rem 1rem; text-align:center; }
 .gallery-grid { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-.gallery-grid img { width:100%; border-radius:15px; transition:0.3s; opacity:0; transform:scale(0.95); }
+.gallery-grid img { width:100%; border-radius:15px; transition:0.3s; }
 .gallery-grid img:hover { transform:scale(1.05); }
 
-/* ============================
-   STAFF
-============================ */
+/* ============================ STAFF ============================ */
 .staff { background:#fff; padding:4rem 1rem; text-align:center; }
-.staff-container { max-width:1200px; margin:auto; overflow:hidden; position:relative; }
-.staff-track { display:flex; gap:1rem; transition:transform 0.5s ease-in-out; will-change: transform; }
-.staff-card { min-width:260px; background:#f9f9f9; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:1rem; text-align:center; flex-shrink:0; opacity:0; transform:scale(0.9); }
+.staff-container { max-width:1200px; margin:auto; overflow:hidden; }
+.staff-track { display:flex; gap:1rem; transition:0.5s ease; }
+.staff-card { min-width:260px; background:#f9f9f9; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:1rem; text-align:center; }
 .staff-card img { width:100%; border-radius:15px; height:260px; object-fit:cover; }
 .staff-controls { margin-top:1rem; display:flex; justify-content:center; gap:1rem; }
 .staff-btn { padding:0.5rem 1rem; border:none; background:#3498db; color:#fff; border-radius:8px; cursor:pointer; }
 
-/* ============================
-   CTA
-============================ */
+/* ============================ CTA ============================ */
 .cta { padding:4rem 1rem; background:darkblue; text-align:center; color:#fff; }
 .cta a { margin-top:1.5rem; }
 
-/* ============================
-   FOOTER
-============================ */
+/* ============================ FOOTER ============================ */
 footer { background:#1b1b1b; color:#ccc; padding:2rem 1rem; text-align:center; }
 footer p { color:#aaa; }
 
-/* ============================
-   ANIMATIONS
-============================ */
-@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
-@keyframes fadeScale { to { opacity:1; transform:scale(1); } }
-
-/* ============================
-   RESPONSIVE
-============================ */
+/* ============================ RESPONSIVE ============================ */
 @media(max-width:768px){
-  .nav-links { display:none; flex-direction:column; width:100%; background:#fff; position:absolute; top:100%; left:0; gap:1rem; padding:1rem 0; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-  .nav-links.open { display:flex; }
+  .nav-links { display:none; }
   .menu-toggle { display:block; }
-  .feature-grid, .academic-grid, .gallery-grid { grid-template-columns:1fr; }
+  .nav-links.overlay { display:flex; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="navbar">
     <div class="logo-container">
       <img src="IMG-20251026-WA0011.jpg" alt="School Logo" class="logo">
     </div>
+    <div class="fun-space">🎓 Learn. Play. Grow!</div>
     <div class="menu-toggle">☰</div>
-    <nav class="nav-links">
+    <nav class="nav-links overlay">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
@@ -147,30 +112,27 @@ footer p { color:#aaa; }
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero">
   <video autoplay muted loop>
     <source src="sherwood-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-content">
-    <h1>Welcome To Sherwood Private School <span class="typed"></span></h1>
+    <h1 class="floating-text">Sherwood Private School</h1>
     <p>We provide world-class education that inspires confidence, creativity, and a lifelong love for learning.</p>
     <a href="#admission" class="btn-primary">Start Admission</a>
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="features">
   <h2 class="section-title">Why Choose Sherwood?</h2>
   <div class="feature-grid">
-    <div class="feature-box"> <h3>Global Curriculum</h3> <p>Our curriculum meets international standards and prepares learners for the future.</p> </div>
-    <div class="feature-box"> <h3>Safe Environment</h3> <p>Our school prioritizes emotional safety, security, and overall student well-being.</p> </div>
-    <div class="feature-box"> <h3>Modern Facilities</h3> <p>Top-class classrooms, ICT lab, library, playground, and more.</p> </div>
-    <div class="feature-box"> <h3>Qualified Staff</h3> <p>Professional, passionate educators dedicated to students' success.</p> </div>
+    <div class="feature-box"><h3>Global Curriculum</h3><p>Our curriculum meets international standards and prepares learners for the future.</p></div>
+    <div class="feature-box"><h3>Safe Environment</h3><p>Prioritizing emotional safety, security, and overall student well-being.</p></div>
+    <div class="feature-box"><h3>Modern Facilities</h3><p>Top-class classrooms, ICT lab, library, playground, and more.</p></div>
+    <div class="feature-box"><h3>Qualified Staff</h3><p>Professional, passionate educators dedicated to students' success.</p></div>
   </div>
 </section>
 
-<!-- ACADEMICS -->
 <section class="academics" id="academics">
   <h2 class="section-title">Our Academic Structure</h2>
   <div class="academic-grid">
@@ -180,7 +142,6 @@ footer p { color:#aaa; }
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery" id="gallery">
   <h2 class="section-title">Campus Gallery</h2>
   <div class="gallery-grid">
@@ -191,7 +152,6 @@ footer p { color:#aaa; }
   </div>
 </section>
 
-<!-- STAFF CAROUSEL -->
 <section class="staff" id="staff">
   <h2 class="section-title">Meet Our Amazing Staff</h2>
   <div class="staff-container">
@@ -202,19 +162,17 @@ footer p { color:#aaa; }
     </div>
   </div>
   <div class="staff-controls">
-    <button class="staff-btn">Prev</button>
-    <button class="staff-btn">Next</button>
+    <button class="staff-btn" onclick="prevStaff()">Prev</button>
+    <button class="staff-btn" onclick="nextStaff()">Next</button>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta" id="admission">
   <h2>Join a World-Class Learning Community</h2>
-  <p>We are currently accepting applications for the new academic session.</p><br>
+  <p>We are currently accepting applications for the new academic session.</p><br><br>
   <a href="#contact" class="btn-primary">Contact Admissions</a>
 </section>
 
-<!-- FOOTER -->
 <footer id="contact">
   <h3>Sherwood Private School</h3>
   <p>Palace Way, Off Miyaki Oworoshoki Lagos State, Nigeria.</p>
@@ -225,69 +183,47 @@ footer p { color:#aaa; }
 </footer>
 
 <script>
-// MOBILE MENU
-document.querySelector(".menu-toggle").onclick = () => {
-  document.querySelector(".nav-links").classList.toggle("open");
-};
+// Mobile Menu
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav-links.overlay");
+toggle.addEventListener("click", () => nav.classList.toggle("open"));
 
-// TYPEWRITER EFFECT
-const typedWords = ["NURSERY","PRIMARY","SECONDARY"];
-let wIndex=0,cIndex=0;
-const typedElement = document.querySelector(".typed");
+// Staff Carousel
+let staffIndex = 0;
+function updateStaff(){
+  const track = document.getElementById('staffTrack');
+  const card = document.querySelector('.staff-card');
+  const width = card.offsetWidth + 16;
+  track.style.transform = `translateX(-${staffIndex * width}px)`;
+}
+function nextStaff(){ staffIndex++; updateStaff(); }
+function prevStaff(){ if(staffIndex > 0) staffIndex--; updateStaff(); }
+
+// Typewriter effect for hero
+const typedWords = ["NURSERY", "PRIMARY", "SECONDARY"];
+let wIndex = 0, cIndex = 0;
+const typedElement = document.querySelector(".floating-text");
 function typeEffect(){
   if(cIndex < typedWords[wIndex].length){
-    typedElement.textContent += typedWords[wIndex].charAt(cIndex);
-    cIndex++; setTimeout(typeEffect,100);
-  } else { setTimeout(eraseEffect,1500); }
+    typedElement.textContent = typedWords[wIndex].charAt(cIndex);
+    cIndex++;
+    setTimeout(typeEffect, 100);
+  } else {
+    setTimeout(eraseEffect, 1500);
+  }
 }
 function eraseEffect(){
-  if(cIndex>0){ typedElement.textContent = typedWords[wIndex].substr(0,cIndex-1); cIndex--; setTimeout(eraseEffect,50);}
-  else{ wIndex=(wIndex+1)%typedWords.length; setTimeout(typeEffect,300);}
+  if(cIndex > 0){
+    typedElement.textContent = typedWords[wIndex].substr(0,cIndex-1);
+    cIndex--;
+    setTimeout(eraseEffect,50);
+  } else {
+    wIndex = (wIndex+1) % typedWords.length;
+    setTimeout(typeEffect,300);
+  }
 }
 typeEffect();
-
-// FEATURE, ACADEMIC & GALLERY ANIMATIONS
-function animateOnScroll(){
-  const features = document.querySelectorAll('.feature-box');
-  const academics = document.querySelectorAll('.academic-card');
-  const gallery = document.querySelectorAll('.gallery-grid img');
-  const triggerBottom = window.innerHeight / 5 * 4;
-  [features,academics,gallery].forEach(group=>{
-    group.forEach(el=>{
-      const top = el.getBoundingClientRect().top;
-      if(top<triggerBottom){
-        el.style.animation = 'fadeUp 0.8s forwards';
-      }
-    });
-  });
-}
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
-
-// STAFF CAROUSEL
-const track = document.getElementById('staffTrack');
-const staffCards = document.querySelectorAll('.staff-card');
-const cardWidth = staffCards[0].offsetWidth + 16;
-let totalCards = staffCards.length;
-track.appendChild(staffCards[0].cloneNode(true));
-track.insertBefore(staffCards[totalCards-1].cloneNode(true), staffCards[0]);
-let currentPosition = 1;
-track.style.transform = `translateX(-${cardWidth*currentPosition}px)`;
-let autoSlide = setInterval(nextStaff,3000);
-function nextStaff(){ currentPosition++; slideStaff(); }
-function prevStaff(){ currentPosition--; slideStaff(); }
-function slideStaff(){
-  track.style.transition='transform 0.5s ease-in-out';
-  track.style.transform = `translateX(-${cardWidth*currentPosition}px)`;
-  track.addEventListener('transitionend', ()=>{
-    if(currentPosition >= totalCards+1){ track.style.transition='none'; currentPosition=1; track.style.transform=`translateX(-${cardWidth*currentPosition}px)`;}
-    if(currentPosition <=0){ track.style.transition='none'; currentPosition=totalCards; track.style.transform=`translateX(-${cardWidth*currentPosition}px)`;}
-  },{once:true});
-}
-track.addEventListener('mouseenter',()=>clearInterval(autoSlide));
-track.addEventListener('mouseleave',()=>autoSlide=setInterval(nextStaff,3000));
-document.querySelector('.staff-btn:nth-child(1)').onclick=prevStaff;
-document.querySelector('.staff-btn:nth-child(2)').onclick=nextStaff;
 </script>
+
 </body>
 </html>
