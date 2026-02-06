@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Sherwood Private School | Excellence in Learning</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-/* ================= GLOBAL ================= */
 :root{
   --navy: #0b2b4a;
   --gold: #ffd85a;
@@ -22,117 +21,65 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;color:var(--text);}
 html,body{height:100%;scroll-behavior:smooth;}
-body{background:#f7f9fb;padding-top:88px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{background:#0b2b4a;padding-top:88px;line-height:1.5;-webkit-font-smoothing:antialiased;}
 
-/* ================= HEADER ================= */
-header{
-  position:fixed;top:0;left:0;width:100%;z-index:1200;
-  background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);
-  box-shadow:0 6px 18px rgba(10,20,30,0.06);
-}
-.navbar{
-  max-width:1200px;margin:0 auto;display:flex;align-items:center;
-  justify-content:space-between;padding:12px 20px;gap:12px;
-}
-
-/* Logo container */
-.brand{display:flex;align-items:center;gap:12px;}
-.logo-container{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg, #ffd85a, #1e90ff);padding:6px 12px;border-radius:12px;}
-.logo-container img{height:56px;width:auto;border-radius:6px;display:block;}
-
-/* School title */
+/* HEADER */
+header{position:fixed;top:0;left:0;width:100%;z-index:1200;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(10,20,30,0.06);}
+.navbar{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px;}
+.brand{display:flex;align-items:center;gap:12px;flex:1;}
+.logo-container{display:flex;align-items:center;gap:12px;background:#ffd85a;padding:4px;border-radius:8px;flex:1;justify-content:flex-start;}
+.logo-container img{width:250px;max-height:56px;object-fit:contain;}
 .school-title{display:flex;flex-direction:column;line-height:1;}
-.school-title .name{font-family:'Merriweather',serif;font-size:1.2rem;color:#fff;font-weight:700;}
-.school-title .tag{font-size:0.85rem;color:#fff;font-weight:600;}
-
-/* Nav links (desktop) */
+.school-title .name{font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);font-weight:700;}
+.school-title .tag{font-size:0.78rem;color:#6b7b86;font-weight:600;}
 .nav-links{display:flex;gap:14px;align-items:center;}
-.nav-links a{color:var(--navy);font-weight:600;padding:8px 10px;border-radius:8px;text-decoration:none;}
+.nav-links a{color:var(--navy);font-weight:600;padding:8px 10px;border-radius:8px;}
 .nav-links a:hover,.nav-links a.active{background:var(--muted);color:var(--navy);}
-
-/* Menu toggle */
-.menu-toggle{
-  display:none;align-items:center;justify-content:center;
-  width:46px;height:46px;border-radius:12px;border:none;
-  background:var(--toggle-bg);color:var(--toggle-ink);font-size:1.5rem;
-  cursor:pointer;box-shadow:0 8px 20px rgba(11,43,74,0.12);
-}
+.menu-toggle{display:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:none;background:var(--toggle-bg);color:var(--toggle-ink);font-size:1.25rem;cursor:pointer;box-shadow:0 8px 20px rgba(11,43,74,0.12);}
 .menu-toggle:focus{outline:3px solid rgba(255,216,90,0.25);outline-offset:3px}
-
-/* Mobile overlay menu */
-.overlay{
-  position:fixed;top:0;right:0;width:100%;height:100vh;
-  background:linear-gradient(180deg,rgba(11,43,74,0.98),rgba(2,18,33,0.98));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
-  transform:translateX(100%);transition:transform .42s cubic-bezier(.2,.9,.2,1);z-index:1400;padding:40px;
-}
+.overlay{position:fixed;top:0;right:0;width:100%;height:100vh;background:linear-gradient(180deg,rgba(11,43,74,0.98),rgba(2,18,33,0.98));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transform:translateX(100%);transition:transform .42s cubic-bezier(.2,.9,.2,1);z-index:1400;padding:40px;}
 .overlay.open{transform:translateX(0);}
 .overlay a{color:#fff;font-size:1.25rem;font-weight:700;text-decoration:none;}
 .overlay .close-btn{position:absolute;top:20px;right:20px;font-size:2rem;color:var(--gold);background:transparent;border:none;cursor:pointer;}
 
-/* ================= HERO ================= */
-.hero{
-  position:relative;height:78vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
-}
-.hero video{
-  position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;
-}
+/* HERO */
+.hero{position:relative;height:78vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background-color:#0b2b4a;}
+.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(0.5);}
 .hero-inner{z-index:2;max-width:980px;padding:36px;color:#fff;}
-.hero-inner h2{font-size:2rem;margin-bottom:12px;line-height:1.2;}
-.hero-inner h1{font-family:'Merriweather',serif;font-size:2.4rem;margin-bottom:12px;line-height:1.2;}
-.hero-inner p{font-size:1.05rem;margin-bottom:18px;}
+.hero h2{color:#ffd85a;font-family:'Merriweather',serif;margin-bottom:8px;font-size:2rem;}
+.hero h1{font-size:2.4rem;margin-bottom:12px;}
+.floating-text{display:inline-block;font-weight:800;color:var(--gold);font-size:1.8rem;letter-spacing:1px;margin-bottom:8px;}
+.hero p{font-size:1.05rem;margin-bottom:18px;}
 .btn-primary{background:var(--gold);color:#072033;padding:12px 22px;border-radius:28px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 8px 24px rgba(13,36,58,0.08);transition:transform .18s ease,box-shadow .18s ease;}
 .btn-primary:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(13,36,58,0.12);}
 
-/* Falling letters */
-.floating-text span{
-  display:inline-block;
-  opacity:0;
-  transform:translateY(-50px);
-  animation-fill-mode:forwards;
-}
-@keyframes fall{
-  0%{opacity:0; transform:translateY(-50px);}
-  60%{opacity:1; transform:translateY(0);}
-  100%{opacity:1; transform:translateY(0);}
-}
-
-/* Playful icons row */
+/* Fun icons */
 .playful-icons{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
 .playful-icons .icon{background:#fff;padding:10px;border-radius:12px;box-shadow:0 6px 18px rgba(10,20,30,0.06);display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);}
 
-/* ================= SECTIONS ================= */
-.section{padding:56px 20px;}
+/* SECTIONS */
+.section{padding:56px 20px;background:#f7f9fb;}
 .container{max-width:1200px;margin:0 auto;}
 .section-title{font-size:1.6rem;color:var(--navy);font-weight:700;margin-bottom:18px;}
-
-/* Feature grid */
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
 .feature{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 8px 24px rgba(10,20,30,0.04);transition:transform .25s ease;}
 .feature:hover{transform:translateY(-8px);}
-
-/* Academics */
 .academic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
 .academic-card{background:linear-gradient(180deg,#ffffff,#fbfdff);padding:20px;border-radius:14px;border:1px solid #e6eef8;}
-
-/* Gallery */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
 .gallery-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;transition:transform .25s ease;box-shadow:0 8px 20px rgba(10,20,30,0.06);}
 .gallery-grid img:hover{transform:scale(1.03);}
-
-/* Staff carousel */
 .staff-track{display:flex;gap:14px;overflow:hidden;padding:6px;transition:transform .42s cubic-bezier(.2,.9,.2,1);}
 .staff-card{min-width:260px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(10,20,30,0.06);text-align:center;}
 .staff-card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:10px;}
-
-/* CTA and footer */
 .cta{background:linear-gradient(90deg,var(--navy),#0f3b5f);color:#fff;padding:40px;border-radius:12px;text-align:center;margin-top:28px;}
-.cta .btn-primary{background:var(--gold);color:var(--navy);}
+
+/* FOOTER */
 footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-align:center;border-top:1px solid rgba(255,255,255,0.03);}
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){.nav-links{display:none;}.menu-toggle{display:flex;}}
-@media(max-width:520px){.logo-container img{height:48px;}}
+/* RESPONSIVE */
+@media(max-width:900px){.nav-links{display:none;}.menu-toggle{display:flex;}.school-title .name{font-size:0.95rem;}.hero h1{font-size:1.8rem;}}
+@media(max-width:520px){.logo-container img{height:48px;width:auto;}.hero{height:64vh;min-height:420px;}.playful-icons{gap:8px;}}
 </style>
 </head>
 <body>
@@ -141,7 +88,7 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
   <div class="navbar">
     <div class="brand">
       <div class="logo-container">
-        <img src="IMG-20251026-WA0011.jpg" alt="Sherwood School Logo" />
+        <img src="IMG-20251026-WA0011.jpg" alt="Sherwood School Logo">
       </div>
       <div class="school-title">
         <div class="name">Sherwood Private School</div>
@@ -160,36 +107,30 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
     </nav>
 
     <div style="display:flex;align-items:center;gap:12px;">
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileOverlay" title="Open menu">☰</button>
-      <a href="#admission" class="btn-primary" style="padding:8px 12px;border-radius:20px;font-size:0.95rem;">Apply Now</a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <a href="#contact" class="btn-primary" style="padding:8px 12px;border-radius:20px;font-size:0.95rem;">Apply Now</a>
     </div>
   </div>
 
-  <div class="overlay" id="mobileOverlay" aria-hidden="true">
+  <div class="overlay" id="mobileOverlay">
     <button class="close-btn" id="closeOverlay">&times;</button>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="academics.html">Academics</a>
-    <a href="admissions.html">Admissions</a>
-    <a href="activities.html">Activities</a>
-    <a href="news.html">News</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a>
+    <a href="admissions.html">Admissions</a><a href="activities.html">Activities</a><a href="news.html">News</a><a href="contact.html">Contact</a>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <video src="your-video.mp4" autoplay muted loop></video>
+  <video src="https://assets.mixkit.co/videos/preview/mixkit-classroom-lesson-1466.mp4" autoplay muted loop></video>
   <div class="hero-inner container">
     <h2>Welcome to Sherwood Private School</h2>
     <h1><span class="floating-text"></span></h1>
     <p>Inspiring Minds. Building Futures.</p>
-    <a class="btn-primary" href="#admission">Start Admission</a>
+    <a class="btn-primary" href="#contact">Start Admission</a>
     <div class="playful-icons">
-      <div class="icon"><span>📚</span> Clubs</div>
-      <div class="icon"><span>🎨</span> Arts</div>
-      <div class="icon"><span>⚽</span> Sports</div>
-      <div class="icon"><span>🔬</span> STEM</div>
+      <div class="icon">📚 Clubs</div>
+      <div class="icon">🎨 Arts</div>
+      <div class="icon">⚽ Sports</div>
+      <div class="icon">🔬 STEM</div>
     </div>
   </div>
 </section>
@@ -230,13 +171,18 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
 <section class="section staff container">
   <h2 class="section-title">Meet Our Amazing Staff</h2>
   <div class="staff-track" id="staffTrack">
-    <div class="staff-card"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60" alt="Mrs Johnson"><h3>Mrs. Johnson</h3><p>Head Teacher</p></div>
-    <div class="staff-card"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60" alt="Mr Daniel"><h3>Mr. Daniel</h3><p>ICT Instructor</p></div>
-    <div class="staff-card"><img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&w=600&q=60" alt="Miss Clara"><h3>Miss Clara</h3><p>Nursery Teacher</p></div>
-  </div>
-  <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;">
-    <button id="prevStaff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Prev</button>
-    <button id="nextStaff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Next</button>
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60" alt="Mrs Johnson">
+      <h3>Mrs. Johnson</h3><p>Head Teacher</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60" alt="Mr Daniel">
+      <h3>Mr. Daniel</h3><p>ICT Instructor</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&w=600&q=60" alt="Miss Clara">
+      <h3>Miss Clara</h3><p>Nursery Teacher</p>
+    </div>
   </div>
 </section>
 
@@ -262,50 +208,25 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
 </footer>
 
 <script>
-// MOBILE MENU
+// Menu toggle
 (function(){
-  const menuToggle = document.getElementById('menuToggle');
-  const overlay = document.getElementById('mobileOverlay');
-  const closeBtn = document.getElementById('closeOverlay');
-  function openMenu(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-  function closeMenu(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-  menuToggle.addEventListener('click',()=>{ overlay.classList.contains('open')?closeMenu():openMenu(); });
-  closeBtn.addEventListener('click',closeMenu);
-  overlay.addEventListener('click',(e)=>{ if(e.target===overlay) closeMenu(); });
-  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && overlay.classList.contains('open')) closeMenu(); });
+  const menuToggle=document.getElementById('menuToggle'), overlay=document.getElementById('mobileOverlay'), closeBtn=document.getElementById('closeOverlay');
+  function open(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');menuToggle.setAttribute('aria-expanded','true');closeBtn?.focus();document.body.style.overflow='hidden';}
+  function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');menuToggle.setAttribute('aria-expanded','false');menuToggle.focus();document.body.style.overflow='';}
+  menuToggle.addEventListener('click',()=>overlay.classList.contains('open')?close():open());
+  closeBtn?.addEventListener('click',close);
+  overlay.addEventListener('click',(e)=>{if(e.target===overlay)close();});
+  document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close();});
 })();
 
-// FALLING LETTER TYPEWRITER
+// Typewriter
 (function(){
-  const el = document.querySelector('.floating-text');
-  const words = ["NURSERY","PRIMARY","SECONDARY"];
-  if(!el||!words.length) return;
-  const hold = 2000;
-  let w = 0;
-  function showWord(word){
-    el.innerHTML='';
-    const letters = word.split('');
-    letters.forEach((letter, idx)=>{
-      const span=document.createElement('span');
-      span.textContent=letter;
-      span.style.animation=`fall 0.6s ease forwards`;
-      span.style.animationDelay=`${idx*0.15}s`;
-      el.appendChild(span);
-    });
-    setTimeout(()=>{ w=(w+1)%words.length; showWord(words[w]); }, hold + letters.length*150);
-  }
-  showWord(words[w]);
-})();
-
-// STAFF CAROUSEL
-(function(){
-  const track = document.getElementById('staffTrack');
-  const prev = document.getElementById('prevStaff');
-  const next = document.getElementById('nextStaff');
-  let position = 0;
-  const cardWidth = 280; 
-  prev.addEventListener('click',()=>{ position+=cardWidth; if(position>0) position=-(track.scrollWidth - track.clientWidth); track.style.transform=`translateX(${position}px)`; });
-  next.addEventListener('click',()=>{ position-=cardWidth; if(Math.abs(position) > (track.scrollWidth - track.clientWidth)) position=0; track.style.transform=`translateX(${position}px)`; });
+  const el=document.querySelector('.floating-text'), words=["NURSERY","PRIMARY","SECONDARY"];
+  if(!el||!words.length)return;
+  const typeSpeed=110,eraseSpeed=40,hold=2000;let w=0,c=0;
+  function type(){const word=words[w];if(c<=word.length){el.textContent=word.slice(0,c);c++;setTimeout(type,typeSpeed);}else{setTimeout(()=>erase(),hold);}}
+  function erase(){const word=words[w];if(c>0){c--;el.textContent=word.slice(0,c);setTimeout(erase,eraseSpeed);}else{w=(w+1)%words.length;setTimeout(type,300);}}
+  type();
 })();
 </script>
 </body>
