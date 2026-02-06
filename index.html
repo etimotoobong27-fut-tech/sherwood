@@ -78,8 +78,8 @@ header{
   position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;
 }
 .hero-inner{z-index:2;max-width:980px;padding:36px;color:#fff;}
-.hero-inner h1{font-family:'Merriweather',serif;font-size:2.6rem;margin-bottom:12px;line-height:1.2;}
-.hero-inner h2{font-size:1.8rem;margin-bottom:12px;line-height:1.2;}
+.hero-inner h2{font-size:2rem;margin-bottom:12px;line-height:1.2;}
+.hero-inner h1{font-family:'Merriweather',serif;font-size:2.4rem;margin-bottom:12px;line-height:1.2;}
 .hero-inner p{font-size:1.05rem;margin-bottom:18px;}
 .btn-primary{background:var(--gold);color:#072033;padding:12px 22px;border-radius:28px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 8px 24px rgba(13,36,58,0.08);transition:transform .18s ease,box-shadow .18s ease;}
 .btn-primary:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(13,36,58,0.12);}
@@ -194,7 +194,72 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
   </div>
 </section>
 
-<!-- FEATURES, ACADEMICS, GALLERY, STAFF, CTA, FOOTER sections will go here (I can integrate them next fully if you want) -->
+<!-- FEATURES -->
+<section class="section features container">
+  <h2 class="section-title">Why Choose Sherwood</h2>
+  <div class="feature-grid">
+    <div class="feature"><h3>Global Curriculum</h3><p>Internationally-aligned programs that prepare students for higher education worldwide.</p></div>
+    <div class="feature"><h3>Safe Environment</h3><p>Secure campus, pastoral care, and a nurturing community for every child.</p></div>
+    <div class="feature"><h3>Modern Facilities</h3><p>Well-equipped labs, library, sports fields, and creative studios.</p></div>
+    <div class="feature"><h3>Qualified Staff</h3><p>Experienced educators focused on holistic development and academic excellence.</p></div>
+  </div>
+</section>
+
+<!-- ACADEMICS -->
+<section class="section academics container">
+  <h2 class="section-title">Our Academic Structure</h2>
+  <div class="academic-grid">
+    <div class="academic-card"><h3>Early Years</h3><p>Play-based learning, social skills, and early literacy foundations.</p></div>
+    <div class="academic-card"><h3>Primary</h3><p>Balanced curriculum with creative enrichment and strong fundamentals.</p></div>
+    <div class="academic-card"><h3>Junior Secondary</h3><p>STEM focus, leadership opportunities, and exam preparation.</p></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery container">
+  <h2 class="section-title">Campus Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=60" alt="Students in classroom">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60" alt="School library">
+    <img src="https://images.unsplash.com/photo-1596495753656-cf7e4c2a0597?auto=format&w=800&q=60" alt="Science lab">
+    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&w=800&q=60" alt="Playground">
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="section staff container">
+  <h2 class="section-title">Meet Our Amazing Staff</h2>
+  <div class="staff-track" id="staffTrack">
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=60" alt="Mrs Johnson"><h3>Mrs. Johnson</h3><p>Head Teacher</p></div>
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=60" alt="Mr Daniel"><h3>Mr. Daniel</h3><p>ICT Instructor</p></div>
+    <div class="staff-card"><img src="https://images.unsplash.com/photo-1599689019339-23326e1ab96f?auto=format&w=600&q=60" alt="Miss Clara"><h3>Miss Clara</h3><p>Nursery Teacher</p></div>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;">
+    <button id="prevStaff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Prev</button>
+    <button id="nextStaff" style="padding:8px 12px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer;">Next</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section container">
+  <div class="cta">
+    <h2>Join a World-Class Learning Community</h2>
+    <p>We are currently accepting applications for the new academic session.</p>
+    <div style="margin-top:18px;">
+      <a class="btn-primary" href="#contact">Contact Admissions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <h3 style="color:#fff;margin-bottom:6px;">Sherwood Private School</h3>
+    <p style="color:#cbd6dd;">Palace Way, Off Miyaki Oworoshoki Lagos State, Nigeria</p>
+    <p style="color:#cbd6dd;">Phone: +234 9047043235 • Email: info@sherwoodschool.com</p>
+    <p style="margin-top:12px;color:#9fb0bd;">&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
+  </div>
+</footer>
 
 <script>
 // MOBILE MENU
@@ -202,7 +267,6 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
   const menuToggle = document.getElementById('menuToggle');
   const overlay = document.getElementById('mobileOverlay');
   const closeBtn = document.getElementById('closeOverlay');
-
   function openMenu(){overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');menuToggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
   function closeMenu(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
   menuToggle.addEventListener('click',()=>{ overlay.classList.contains('open')?closeMenu():openMenu(); });
@@ -231,6 +295,17 @@ footer{margin-top:28px;background:#071827;color:#cbd6dd;padding:28px 20px;text-a
     setTimeout(()=>{ w=(w+1)%words.length; showWord(words[w]); }, hold + letters.length*150);
   }
   showWord(words[w]);
+})();
+
+// STAFF CAROUSEL
+(function(){
+  const track = document.getElementById('staffTrack');
+  const prev = document.getElementById('prevStaff');
+  const next = document.getElementById('nextStaff');
+  let position = 0;
+  const cardWidth = 280; 
+  prev.addEventListener('click',()=>{ position+=cardWidth; if(position>0) position=-(track.scrollWidth - track.clientWidth); track.style.transform=`translateX(${position}px)`; });
+  next.addEventListener('click',()=>{ position-=cardWidth; if(Math.abs(position) > (track.scrollWidth - track.clientWidth)) position=0; track.style.transform=`translateX(${position}px)`; });
 })();
 </script>
 </body>
