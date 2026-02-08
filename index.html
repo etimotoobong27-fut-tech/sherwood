@@ -41,9 +41,8 @@ header{
   align-items:center;
   justify-content:space-between;
 }
-.logo-area img{
-  height:52px;
-}
+.logo-area img{height:52px}
+
 .menu-toggle{
   display:none;
   background:var(--accent);
@@ -64,7 +63,7 @@ header{
   color:white;
 }
 
-/* ================= MOBILE MENU ================= */
+/* MOBILE MENU */
 .mobile-menu{
   position:fixed;
   inset:0;
@@ -95,34 +94,48 @@ header{
   cursor:pointer;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO SLIDER ================= */
 .hero{
   height:100vh;
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  overflow:hidden;
 }
-.hero video{
+.hero-slider{
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.45);
 }
+.hero-slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+.hero-slide.active{opacity:1}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+}
+
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:900px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
   padding:1.2rem;
   color:white;
 }
 .hero h2{
   letter-spacing:4px;
   font-size:1rem;
-  font-weight:500;
   margin-bottom:.8rem;
 }
 .hero h1{
@@ -139,6 +152,12 @@ header{
   max-width:650px;
   margin:1.4rem auto 2.2rem;
 }
+.hero-buttons{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 .hero-btn{
   background:var(--gold);
   color:var(--blue);
@@ -147,8 +166,13 @@ header{
   font-weight:700;
   text-decoration:none;
 }
+.hero-btn.alt{
+  background:transparent;
+  border:2px solid white;
+  color:white;
+}
 
-/* ================= GENERAL ================= */
+/* GENERAL */
 section{padding:5rem 1.2rem}
 .container{max-width:1200px;margin:auto}
 .section-title{
@@ -172,16 +196,15 @@ section{padding:5rem 1.2rem}
   box-shadow:0 18px 40px rgba(0,0,0,.08);
 }
 
-/* ================= ADDITION: ABOUT ================= */
+/* ABOUT */
 .about-text{
   max-width:900px;
   margin:auto;
   text-align:center;
-  font-size:1.05rem;
   line-height:1.8;
 }
 
-/* ================= ADDITION: TESTIMONIALS ================= */
+/* TESTIMONIALS */
 .testimonials{
   background:white;
   border-radius:28px;
@@ -199,14 +222,8 @@ section{padding:5rem 1.2rem}
   min-width:100%;
   text-align:center;
 }
-.testimonial p{
-  font-style:italic;
-  margin-bottom:1.2rem;
-}
-.testimonial h4{
-  color:var(--blue);
-  font-weight:700;
-}
+.testimonial p{font-style:italic}
+.testimonial h4{margin-top:1rem;color:var(--blue)}
 
 /* CTA */
 .cta{
@@ -217,8 +234,8 @@ section{padding:5rem 1.2rem}
   text-align:center;
 }
 .cta a{
-  display:inline-block;
   margin-top:1.6rem;
+  display:inline-block;
   background:var(--gold);
   color:var(--blue);
   padding:1rem 2.8rem;
@@ -258,7 +275,7 @@ footer{
 @media(max-width:900px){
   .nav-links{display:none}
   .menu-toggle{display:block}
-  .hero h1{font-size:2.5rem}
+  .hero h1{font-size:2.4rem}
 }
 </style>
 </head>
@@ -272,11 +289,11 @@ footer{
     </div>
 
     <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Academics</a>
-      <a href="#">Admissions</a>
-      <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academics">Academics</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="contact.html">Contact</a>
     </nav>
 
     <button class="menu-toggle" id="menuBtn">☰</button>
@@ -284,50 +301,45 @@ footer{
 
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenu">×</button>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Academics</a>
-    <a href="#">Admissions</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academics">Academics</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="Excel Alignment.mp4" type="video/mp4">
-  </video>
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1588072432836-e10032774350');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1513258496099-48168024aec0');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b');"></div>
+  </div>
 
   <div class="hero-content">
     <h2>WELCOME TO</h2>
     <h1>Sherwood Private School</h1>
     <div class="falling-word" id="fallingWord"></div>
-    <p>Inspiring academic excellence, discipline, and leadership from nursery to secondary level.</p>
-    <a href="#admission" class="hero-btn">Apply for Admission</a>
+    <p>Inspiring minds, shaping leaders, and building a strong academic foundation.</p>
+    <div class="hero-buttons">
+      <a href="#admission" class="hero-btn">Apply for Admission</a>
+      <a href="#about" class="hero-btn alt">Explore Our School</a>
+    </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section>
+<section id="about">
   <div class="container">
-    <h2 class="section-title">About Our School</h2>
+    <h2 class="section-title">About Sherwood</h2>
     <p class="about-text">
-      Sherwood Private School is a co-educational institution committed to raising confident,
-      disciplined and academically sound learners. We combine a strong Nigerian curriculum
-      with modern teaching approaches to ensure every child reaches their full potential.
+      Sherwood Private School provides a nurturing environment where academic excellence,
+      discipline and moral values are developed. We cater for Nursery, Primary and Secondary
+      education using modern teaching methods.
     </p>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="colour-bg">
-  <div class="container">
-    <h2 class="section-title">Why Parents Trust Sherwood</h2>
-    <div class="features">
-      <div class="feature"><h3>Qualified Teachers</h3><p>Experienced and passionate educators.</p></div>
-      <div class="feature"><h3>Modern Facilities</h3><p>Well-equipped classrooms and labs.</p></div>
-      <div class="feature"><h3>Academic Excellence</h3><p>Consistent outstanding performance.</p></div>
-    </div>
   </div>
 </section>
 
@@ -337,11 +349,11 @@ footer{
     <h2 class="section-title">What Parents Say</h2>
     <div class="testimonials">
       <div class="testimonial-track" id="testimonialTrack">
-        <div class="testimonial"><p>"Sherwood transformed my child's confidence."</p><h4>Mrs. Ade</h4></div>
-        <div class="testimonial"><p>"Excellent teachers and strong discipline."</p><h4>Mr. Bello</h4></div>
-        <div class="testimonial"><p>"Best decision we made for our son."</p><h4>Mrs. Johnson</h4></div>
-        <div class="testimonial"><p>"Great academic foundation."</p><h4>Mr. Okafor</h4></div>
-        <div class="testimonial"><p>"A school that truly cares."</p><h4>Mrs. Adebayo</h4></div>
+        <div class="testimonial"><p>"Excellent school with strong discipline."</p><h4>Mrs. Ade</h4></div>
+        <div class="testimonial"><p>"My child improved academically."</p><h4>Mr. Bello</h4></div>
+        <div class="testimonial"><p>"Teachers are very dedicated."</p><h4>Mrs. Johnson</h4></div>
+        <div class="testimonial"><p>"Safe and caring environment."</p><h4>Mr. Okafor</h4></div>
+        <div class="testimonial"><p>"Highly recommended."</p><h4>Mrs. Adebayo</h4></div>
       </div>
     </div>
   </div>
@@ -351,8 +363,8 @@ footer{
 <section class="container" id="admission">
   <div class="cta">
     <h2>Admissions Now Open</h2>
-    <p>Secure your child’s future today.</p>
-    <a href="#">Contact Admissions</a>
+    <p>Give your child a strong academic future.</p>
+    <a href="contact.html">Contact Admissions</a>
   </div>
 </section>
 
@@ -360,7 +372,6 @@ footer{
   <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
 </footer>
 
-<!-- FLOATING -->
 <a class="whatsapp" href="https://wa.me/2349047043235">💬</a>
 <a class="whatsapp" style="bottom:95px;background:#0a2a52" href="tel:+2349047043235">📞</a>
 
@@ -369,32 +380,33 @@ menuBtn.onclick=()=>mobileMenu.classList.add("active");
 closeMenu.onclick=()=>mobileMenu.classList.remove("active");
 
 /* Falling words */
-const words=["Nursery","Primary","Secondary"];
-let index=0;
-const el=document.getElementById("fallingWord");
-function showWord(){
-  el.style.opacity=0;
+const words=["Secondary","Primary","Nursery"];
+let w=0;
+const fw=document.getElementById("fallingWord");
+setInterval(()=>{
+  fw.style.opacity=0;
   setTimeout(()=>{
-    el.textContent=words[index];
-    el.style.opacity=1;
-    index=(index+1)%words.length;
+    fw.textContent=words[w];
+    fw.style.opacity=1;
+    w=(w+1)%words.length;
   },400);
-}
-showWord();
-setInterval(showWord,3000);
+},3000);
+
+/* Hero slider */
+const slides=document.querySelectorAll(".hero-slide");
+let s=0;
+setInterval(()=>{
+  slides[s].classList.remove("active");
+  s=(s+1)%slides.length;
+  slides[s].classList.add("active");
+},2000);
 
 /* Testimonial slider */
-let tIndex=0;
+let t=0;
 setInterval(()=>{
-  tIndex=(tIndex+1)%5;
-  testimonialTrack.style.transform=`translateX(-${tIndex*100}%)`;
+  testimonialTrack.style.transform=`translateX(-${t*100}%)`;
+  t=(t+1)%5;
 },4000);
-
-/* Force video play */
-document.addEventListener("DOMContentLoaded",()=>{
-  const v=document.querySelector(".hero video");
-  if(v){v.muted=true;v.play().catch(()=>{});}
-});
 </script>
 
 </body>
