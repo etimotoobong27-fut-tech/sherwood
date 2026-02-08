@@ -29,56 +29,51 @@ body{
 header{
   position:fixed;
   top:0;left:0;width:100%;
-  background:linear-gradient(90deg,#081f3f,#0d3563);
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  background:linear-gradient(90deg,var(--blue),#123d73);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
   z-index:3000;
 }
 .navbar{
   max-width:1300px;
   margin:auto;
-  padding:.9rem 1.4rem;
+  padding:1rem 1.2rem;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 .logo-area img{
-  height:50px;
-  width:auto;
+  height:52px;
 }
-
-/* DESKTOP NAV */
-.nav-links{
-  display:flex;
-  gap:1.6rem;
-}
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* TOGGLE */
 .menu-toggle{
   display:none;
   background:var(--accent);
   color:white;
   border:none;
-  padding:.55rem .9rem;
+  padding:.5rem .9rem;
   font-size:1.6rem;
   border-radius:12px;
   cursor:pointer;
 }
+.nav-links{
+  display:flex;
+  gap:1.6rem;
+}
+.nav-links a{
+  text-decoration:none;
+  font-weight:600;
+  color:white;
+}
 
-/* MOBILE MENU */
+/* ================= MOBILE MENU ================= */
 .mobile-menu{
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#071a34,#0e3b6f);
+  background:linear-gradient(135deg,var(--blue),#0f3b6f);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:2rem;
+  gap:1.8rem;
   transform:translateX(100%);
   transition:.4s ease;
   z-index:4000;
@@ -86,14 +81,14 @@ header{
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu a{
   color:white;
-  font-size:1.6rem;
+  font-size:1.5rem;
   text-decoration:none;
   font-weight:600;
 }
 .close-menu{
   position:absolute;
   top:25px;right:25px;
-  font-size:2.4rem;
+  font-size:2.2rem;
   background:none;
   border:none;
   color:white;
@@ -108,7 +103,6 @@ header{
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:#081f3f;
 }
 .hero video{
   position:absolute;
@@ -134,30 +128,27 @@ header{
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:3.4rem;
-  margin-bottom:.6rem;
 }
 .falling-word{
-  font-size:2rem;
+  font-size:1.9rem;
   font-weight:700;
   color:var(--gold);
-  height:48px;
-  transition:all .5s ease;
+  height:44px;
 }
 .hero p{
-  max-width:640px;
-  margin:1.3rem auto 2.2rem;
-  font-size:1.05rem;
+  max-width:650px;
+  margin:1.4rem auto 2.2rem;
 }
 .hero-btn{
   background:var(--gold);
   color:var(--blue);
-  padding:1rem 2.8rem;
+  padding:1rem 2.6rem;
   border-radius:50px;
   font-weight:700;
   text-decoration:none;
 }
 
-/* ================= SECTIONS ================= */
+/* ================= GENERAL ================= */
 section{padding:5rem 1.2rem}
 .container{max-width:1200px;margin:auto}
 .section-title{
@@ -169,7 +160,6 @@ section{padding:5rem 1.2rem}
 }
 
 /* FEATURES */
-.colour-bg{background:#eef2f7}
 .features{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -177,10 +167,45 @@ section{padding:5rem 1.2rem}
 }
 .feature{
   background:white;
-  border-left:6px solid var(--accent);
   padding:2.4rem;
   border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+
+/* ================= ADDITION: ABOUT ================= */
+.about-text{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  font-size:1.05rem;
+  line-height:1.8;
+}
+
+/* ================= ADDITION: TESTIMONIALS ================= */
+.testimonials{
+  background:white;
+  border-radius:28px;
+  padding:3rem 2rem;
+  box-shadow:0 20px 45px rgba(0,0,0,.08);
+  max-width:900px;
+  margin:auto;
+  overflow:hidden;
+}
+.testimonial-track{
+  display:flex;
+  transition:.6s ease;
+}
+.testimonial{
+  min-width:100%;
+  text-align:center;
+}
+.testimonial p{
+  font-style:italic;
+  margin-bottom:1.2rem;
+}
+.testimonial h4{
+  color:var(--blue);
+  font-weight:700;
 }
 
 /* CTA */
@@ -210,7 +235,7 @@ footer{
   text-align:center;
 }
 
-/* WHATSAPP */
+/* FLOATING BUTTONS */
 .whatsapp{
   position:fixed;
   bottom:22px;
@@ -233,7 +258,7 @@ footer{
 @media(max-width:900px){
   .nav-links{display:none}
   .menu-toggle{display:block}
-  .hero h1{font-size:2.4rem}
+  .hero h1{font-size:2.5rem}
 }
 </style>
 </head>
@@ -243,15 +268,15 @@ footer{
 <header>
   <div class="navbar">
     <div class="logo-area">
-      <img src="Screenshot_20240330-221945.jpg" alt="Sherwood Private School Logo">
+      <img src="Screenshot_20240330-221945.jpg" alt="Sherwood Private School">
     </div>
 
     <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="academics.html">Academics</a>
-      <a href="admissions.html">Admissions</a>
-      <a href="contact.html">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Academics</a>
+      <a href="#">Admissions</a>
+      <a href="#">Contact</a>
     </nav>
 
     <button class="menu-toggle" id="menuBtn">☰</button>
@@ -269,45 +294,64 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <!-- AUTOPLAY-SAFE EDUCATIONAL VIDEO -->
-  <video autoplay muted loop playsinline preload="auto"
-    poster="https://images.unsplash.com/photo-1588072432836-e10032774350">
-    <source src="https://cdn.pixabay.com/video/2020/09/01/48637-456679961_large.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="Excel Alignment.mp4" type="video/mp4">
   </video>
 
   <div class="hero-content">
     <h2>WELCOME TO</h2>
     <h1>Sherwood Private School</h1>
     <div class="falling-word" id="fallingWord"></div>
-    <p>Inspiring minds, building confidence and preparing students for a successful future.</p>
+    <p>Inspiring academic excellence, discipline, and leadership from nursery to secondary level.</p>
     <a href="#admission" class="hero-btn">Apply for Admission</a>
   </div>
 </section>
 
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <h2 class="section-title">About Our School</h2>
+    <p class="about-text">
+      Sherwood Private School is a co-educational institution committed to raising confident,
+      disciplined and academically sound learners. We combine a strong Nigerian curriculum
+      with modern teaching approaches to ensure every child reaches their full potential.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURES -->
 <section class="colour-bg">
   <div class="container">
-    <h2 class="section-title">Why Parents Choose Sherwood</h2>
+    <h2 class="section-title">Why Parents Trust Sherwood</h2>
     <div class="features">
-      <div class="feature">
-        <h3>Strong Academics</h3>
-        <p>Balanced Nigerian and international curriculum delivered with excellence.</p>
-      </div>
-      <div class="feature">
-        <h3>Character & Discipline</h3>
-        <p>We build confident, respectful and responsible learners.</p>
-      </div>
-      <div class="feature">
-        <h3>Safe Environment</h3>
-        <p>A secure and nurturing space for every child.</p>
+      <div class="feature"><h3>Qualified Teachers</h3><p>Experienced and passionate educators.</p></div>
+      <div class="feature"><h3>Modern Facilities</h3><p>Well-equipped classrooms and labs.</p></div>
+      <div class="feature"><h3>Academic Excellence</h3><p>Consistent outstanding performance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <h2 class="section-title">What Parents Say</h2>
+    <div class="testimonials">
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial"><p>"Sherwood transformed my child's confidence."</p><h4>Mrs. Ade</h4></div>
+        <div class="testimonial"><p>"Excellent teachers and strong discipline."</p><h4>Mr. Bello</h4></div>
+        <div class="testimonial"><p>"Best decision we made for our son."</p><h4>Mrs. Johnson</h4></div>
+        <div class="testimonial"><p>"Great academic foundation."</p><h4>Mr. Okafor</h4></div>
+        <div class="testimonial"><p>"A school that truly cares."</p><h4>Mrs. Adebayo</h4></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="container" id="admission">
   <div class="cta">
     <h2>Admissions Now Open</h2>
-    <p>Give your child the Sherwood advantage.</p>
+    <p>Secure your child’s future today.</p>
     <a href="#">Contact Admissions</a>
   </div>
 </section>
@@ -316,33 +360,40 @@ footer{
   <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/2349047043235" target="_blank">💬</a>
+<!-- FLOATING -->
+<a class="whatsapp" href="https://wa.me/2349047043235">💬</a>
+<a class="whatsapp" style="bottom:95px;background:#0a2a52" href="tel:+2349047043235">📞</a>
 
 <script>
-document.addEventListener("DOMContentLoaded", ()=>{
-  const menuBtn=document.getElementById("menuBtn");
-  const mobileMenu=document.getElementById("mobileMenu");
-  const closeMenu=document.getElementById("closeMenu");
+menuBtn.onclick=()=>mobileMenu.classList.add("active");
+closeMenu.onclick=()=>mobileMenu.classList.remove("active");
 
-  menuBtn.onclick=()=>{mobileMenu.classList.add("active");document.body.style.overflow="hidden";}
-  closeMenu.onclick=()=>{mobileMenu.classList.remove("active");document.body.style.overflow="";}
+/* Falling words */
+const words=["Nursery","Primary","Secondary"];
+let index=0;
+const el=document.getElementById("fallingWord");
+function showWord(){
+  el.style.opacity=0;
+  setTimeout(()=>{
+    el.textContent=words[index];
+    el.style.opacity=1;
+    index=(index+1)%words.length;
+  },400);
+}
+showWord();
+setInterval(showWord,3000);
 
-  const words=["Secondary","Primary","Nursery"];
-  let i=0;
-  const el=document.getElementById("fallingWord");
+/* Testimonial slider */
+let tIndex=0;
+setInterval(()=>{
+  tIndex=(tIndex+1)%5;
+  testimonialTrack.style.transform=`translateX(-${tIndex*100}%)`;
+},4000);
 
-  function rotate(){
-    el.style.opacity=0;
-    el.style.transform="translateY(-20px)";
-    setTimeout(()=>{
-      el.textContent=words[i];
-      el.style.opacity=1;
-      el.style.transform="translateY(0)";
-      i=(i+1)%words.length;
-    },400);
-  }
-  rotate();
-  setInterval(rotate,3000);
+/* Force video play */
+document.addEventListener("DOMContentLoaded",()=>{
+  const v=document.querySelector(".hero video");
+  if(v){v.muted=true;v.play().catch(()=>{});}
 });
 </script>
 
