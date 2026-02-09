@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Facilities | Sherwood Private School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#0a2a52;
+  --gold:#f4c430;
+  --light:#f6f8fb;
+  --dark:#1c2430;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--light);
+  color:var(--dark);
+}
+
+/* ================= HEADER ================= */
+header{
+  background:linear-gradient(90deg,var(--blue),#123d73);
+  position:sticky;
+  top:0;
+  z-index:2000;
+}
+.navbar{
+  max-width:1300px;
+  margin:auto;
+  padding:1rem 1.2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo-area img{height:50px}
+.nav-links{
+  display:flex;
+  gap:1.5rem;
+}
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ================= HERO ================= */
+.hero{
+  height:45vh;
+  background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1580582932707-520aed937b7b");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+}
+.hero p{
+  max-width:600px;
+  margin-top:1rem;
+}
+
+/* ================= SECTION ================= */
+section{
+  padding:5rem 1.2rem;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+.section-title{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;
+  color:var(--blue);
+  margin-bottom:1.5rem;
+}
+.section-text{
+  max-width:800px;
+  margin:0 auto 3rem;
+  text-align:center;
+  line-height:1.8;
+}
+
+/* ================= GALLERY ================= */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.1);
+  cursor:pointer;
+}
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s ease;
+}
+.gallery-item:hover img{
+  transform:scale(1.1);
+}
+.gallery-label{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  padding:1rem;
+  background:rgba(0,0,0,.6);
+  color:white;
+  font-weight:600;
+  text-align:center;
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:5000;
+}
+.lightbox.active{display:flex}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+}
+.lightbox span{
+  position:absolute;
+  top:25px;
+  right:30px;
+  font-size:2.5rem;
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= CTA ================= */
+.cta{
+  background:linear-gradient(90deg,var(--blue),#123d73);
+  color:white;
+  padding:4rem 1.5rem;
+  border-radius:28px;
+  text-align:center;
+}
+.cta a{
+  margin-top:1.5rem;
+  display:inline-block;
+  background:var(--gold);
+  color:var(--blue);
+  padding:1rem 2.8rem;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#06172b;
+  color:#cbd6e2;
+  padding:2.2rem 1rem;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="navbar">
+    <div class="logo-area">
+      <img src="Screenshot_20240330-221945.jpg" alt="Sherwood Private School">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Our School Facilities</h1>
+    <p>Modern, safe and inspiring learning spaces designed for excellence.</p>
+  </div>
+</div>
+
+<!-- FACILITIES GALLERY -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Explore Our Facilities</h2>
+    <p class="section-text">
+      At Sherwood Private School, we provide a well-equipped environment that
+      supports academic excellence, creativity and physical development.
+    </p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+        <div class="gallery-label">Modern Classrooms</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+        <div class="gallery-label">Library & Reading Area</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+        <div class="gallery-label">Science Laboratory</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b">
+        <div class="gallery-label">ICT & Computer Lab</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136">
+        <div class="gallery-label">Playground & Sports Area</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238">
+        <div class="gallery-label">School Environment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="container">
+  <div class="cta">
+    <h2>Come and See It Yourself</h2>
+    <p>Visit Sherwood Private School and experience our facilities firsthand.</p>
+    <a href="contact.html">Book a Visit</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span onclick="closeLightbox()">×</span>
+  <img id="lightboxImg">
+</div>
+
+<script>
+const items=document.querySelectorAll(".gallery-item img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightboxImg");
+
+items.forEach(img=>{
+  img.onclick=()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src=img.src;
+  }
+});
+function closeLightbox(){
+  lightbox.classList.remove("active");
+}
+</script>
+
+</body>
+</html>
