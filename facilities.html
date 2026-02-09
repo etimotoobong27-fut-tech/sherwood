@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>School Facilities | Sherwood Private School</title>
+<title>Facilities | Sherwood Private School</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
@@ -20,6 +20,7 @@ body{
   font-family:'Montserrat',sans-serif;
   background:var(--light);
   color:var(--dark);
+  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -27,7 +28,7 @@ header{
   background:linear-gradient(90deg,var(--blue),#123d73);
   position:sticky;
   top:0;
-  z-index:2000;
+  z-index:3000;
 }
 .navbar{
   max-width:1300px;
@@ -38,6 +39,7 @@ header{
   justify-content:space-between;
 }
 .logo-area img{height:50px}
+
 .nav-links{
   display:flex;
   gap:1.5rem;
@@ -48,12 +50,53 @@ header{
   font-weight:600;
 }
 
+.menu-toggle{
+  display:none;
+  font-size:1.8rem;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,var(--blue),#0f3b6f);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  transform:translateX(100%);
+  transition:.4s ease;
+  z-index:4000;
+}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu a{
+  color:white;
+  font-size:1.4rem;
+  text-decoration:none;
+  font-weight:600;
+}
+.close-menu{
+  position:absolute;
+  top:25px;
+  right:25px;
+  font-size:2.4rem;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
 /* ================= HERO ================= */
 .hero{
   height:45vh;
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url("https://images.unsplash.com/photo-1580582932707-520aed937b7b");
+    url("https://images.unsplash.com/photo-1588072432836-e10032774350");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -66,25 +109,17 @@ header{
   font-family:'Playfair Display',serif;
   font-size:3rem;
 }
-.hero p{
-  max-width:600px;
-  margin-top:1rem;
-}
+.hero p{margin-top:1rem}
 
-/* ================= SECTION ================= */
-section{
-  padding:5rem 1.2rem;
-}
-.container{
-  max-width:1200px;
-  margin:auto;
-}
+/* ================= SECTIONS ================= */
+section{padding:5rem 1.2rem}
+.container{max-width:1200px;margin:auto}
 .section-title{
   text-align:center;
   font-family:'Playfair Display',serif;
   font-size:2.4rem;
   color:var(--blue);
-  margin-bottom:1.5rem;
+  margin-bottom:1.2rem;
 }
 .section-text{
   max-width:800px;
@@ -93,38 +128,56 @@ section{
   line-height:1.8;
 }
 
+/* ================= CATEGORY ================= */
+.category-title{
+  font-size:1.6rem;
+  color:var(--blue);
+  margin:3rem 0 1.5rem;
+}
+
 /* ================= GALLERY ================= */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:1.5rem;
 }
 .gallery-item{
   position:relative;
   overflow:hidden;
   border-radius:18px;
-  box-shadow:0 18px 40px rgba(0,0,0,.1);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
   cursor:pointer;
 }
 .gallery-item img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.5s ease;
+  transition:.5s;
 }
-.gallery-item:hover img{
-  transform:scale(1.1);
-}
-.gallery-label{
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-caption{
   position:absolute;
   bottom:0;
   left:0;
   width:100%;
-  padding:1rem;
   background:rgba(0,0,0,.6);
   color:white;
-  font-weight:600;
+  padding:1rem;
   text-align:center;
+  font-size:.95rem;
+}
+
+/* ================= VIDEO GALLERY ================= */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+.video-grid iframe{
+  width:100%;
+  height:220px;
+  border-radius:16px;
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
 /* ================= LIGHTBOX ================= */
@@ -135,40 +188,32 @@ section{
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:5000;
+  z-index:6000;
 }
 .lightbox.active{display:flex}
 .lightbox img{
   max-width:90%;
   max-height:90%;
-  border-radius:12px;
+  border-radius:14px;
 }
 .lightbox span{
   position:absolute;
-  top:25px;
-  right:30px;
+  top:20px;
+  right:25px;
   font-size:2.5rem;
   color:white;
   cursor:pointer;
 }
 
-/* ================= CTA ================= */
-.cta{
-  background:linear-gradient(90deg,var(--blue),#123d73);
-  color:white;
-  padding:4rem 1.5rem;
-  border-radius:28px;
-  text-align:center;
+/* ================= ANIMATION ================= */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
-.cta a{
-  margin-top:1.5rem;
-  display:inline-block;
-  background:var(--gold);
-  color:var(--blue);
-  padding:1rem 2.8rem;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:700;
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ================= FOOTER ================= */
@@ -178,12 +223,18 @@ footer{
   padding:2.2rem 1rem;
   text-align:center;
 }
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .hero h1{font-size:2.3rem}
+}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="navbar">
     <div class="logo-area">
@@ -196,66 +247,60 @@ footer{
       <a href="facilities.html">Facilities</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="menu-toggle" id="menuBtn">☰</button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">×</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="academics.html">Academics</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <div>
-    <h1>Our School Facilities</h1>
-    <p>Modern, safe and inspiring learning spaces designed for excellence.</p>
+    <h1>Our Facilities</h1>
+    <p>Designed to inspire learning, creativity and growth</p>
   </div>
 </div>
 
-<!-- FACILITIES GALLERY -->
 <section>
-  <div class="container">
-    <h2 class="section-title">Explore Our Facilities</h2>
+  <div class="container fade-up">
+    <h2 class="section-title">Learning Environment</h2>
     <p class="section-text">
-      At Sherwood Private School, we provide a well-equipped environment that
-      supports academic excellence, creativity and physical development.
+      Our facilities are carefully designed to provide a safe, modern and engaging
+      environment where students can thrive academically and socially.
     </p>
 
+    <h3 class="category-title">Classrooms</h3>
     <div class="gallery">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
-        <div class="gallery-label">Modern Classrooms</div>
-      </div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350"><div class="gallery-caption">Spacious & Well-Ventilated Classrooms</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"><div class="gallery-caption">Interactive Learning Spaces</div></div>
+    </div>
 
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
-        <div class="gallery-label">Library & Reading Area</div>
-      </div>
+    <h3 class="category-title">Laboratories & ICT</h3>
+    <div class="gallery">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1513258496099-48168024aec0"><div class="gallery-caption">Modern Science Laboratory</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b"><div class="gallery-caption">ICT & Computer Lab</div></div>
+    </div>
 
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
-        <div class="gallery-label">Science Laboratory</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b">
-        <div class="gallery-label">ICT & Computer Lab</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136">
-        <div class="gallery-label">Playground & Sports Area</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238">
-        <div class="gallery-label">School Environment</div>
-      </div>
+    <h3 class="category-title">Playground & Recreation</h3>
+    <div class="gallery">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136"><div class="gallery-caption">Safe Playground Area</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238"><div class="gallery-caption">Sports & Physical Activities</div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="container">
-  <div class="cta">
-    <h2>Come and See It Yourself</h2>
-    <p>Visit Sherwood Private School and experience our facilities firsthand.</p>
-    <a href="contact.html">Book a Visit</a>
+<section class="container fade-up">
+  <h2 class="section-title">Facility Videos</h2>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/bMknfKXIFA8" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/1vHkzvZp4x4" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/9No-FiEInLA" allowfullscreen></iframe>
   </div>
 </section>
 
@@ -263,26 +308,37 @@ footer{
   <p>&copy; 2025 Sherwood Private School. All Rights Reserved.</p>
 </footer>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <span onclick="closeLightbox()">×</span>
+  <span id="closeLightbox">×</span>
   <img id="lightboxImg">
 </div>
 
 <script>
-const items=document.querySelectorAll(".gallery-item img");
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightboxImg");
+/* Mobile Menu */
+menuBtn.onclick=()=>mobileMenu.classList.add("active");
+closeMenu.onclick=()=>mobileMenu.classList.remove("active");
 
-items.forEach(img=>{
+/* Lightbox */
+document.querySelectorAll(".gallery-item img").forEach(img=>{
   img.onclick=()=>{
     lightbox.classList.add("active");
     lightboxImg.src=img.src;
+    document.body.style.overflow="hidden";
   }
 });
-function closeLightbox(){
+closeLightbox.onclick=()=>{
   lightbox.classList.remove("active");
-}
+  document.body.style.overflow="";
+};
+
+/* Scroll Animation */
+const items=document.querySelectorAll(".fade-up");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("show");
+  });
+},{threshold:.2});
+items.forEach(item=>observer.observe(item));
 </script>
 
 </body>
