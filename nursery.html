@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursery School | Sherwood Private School</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --primary:#0B3D91;
@@ -15,152 +17,218 @@
   --radius:12px;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; font-family:'Poppins',sans-serif; }
-body { background:var(--bg); color:#0b2540; line-height:1.6; }
-.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:#0b2540;line-height:1.6;}
+.container{max-width:1200px;margin:auto;padding:0 20px;}
 
 /* HEADER */
-.site-header { background:var(--white); box-shadow:0 6px 18px rgba(11,61,145,0.06); position:sticky; top:0; z-index:50; }
-.site-header .container { display:flex; align-items:center; gap:16px; padding:14px 20px; }
-.brand { font-weight:700; color:var(--primary); font-size:1.25rem; text-decoration:none; }
-.nav { margin-left:auto; display:flex; gap:16px; transition: right 0.3s ease-in-out; }
-.nav a { color:var(--primary); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; transition:.3s; }
-.nav a:hover, .nav a.active { background:rgba(11,61,145,0.08); color:var(--accent); }
-.header-actions { display:flex; align-items:center; gap:10px; }
-.btn-apply { background:var(--accent); color:#fff; padding:8px 16px; border-radius:10px; text-decoration:none; font-weight:700; transition:.3s; }
-.btn-apply:hover { opacity:.9; }
-.mobile-toggle { display:none; background:none; border:none; font-size:24px; cursor:pointer; }
+.site-header{
+  background:#fff;
+  box-shadow:0 6px 18px rgba(11,61,145,.06);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.site-header .container{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:14px 20px;
+}
+.brand{
+  font-weight:700;
+  color:var(--primary);
+  font-size:1.25rem;
+  text-decoration:none;
+}
+.nav{
+  margin-left:auto;
+  display:flex;
+  gap:16px;
+}
+.nav a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:8px;
+}
+.nav a:hover,
+.nav a.active{
+  background:rgba(11,61,145,.08);
+  color:var(--accent);
+}
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.btn-apply{
+  background:var(--accent);
+  color:#fff;
+  padding:8px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+}
+.mobile-toggle{
+  display:none;
+  background:none;
+  border:none;
+  font-size:26px;
+  cursor:pointer;
+}
 
 /* OVERLAY */
-.menu-overlay {
+.menu-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,.4);
   opacity:0;
   pointer-events:none;
-  transition: opacity 0.3s ease;
+  transition:.3s;
   z-index:900;
 }
-.menu-overlay.active {
+.menu-overlay.active{
   opacity:1;
   pointer-events:auto;
 }
 
-/* MOBILE MENU */
-@media(max-width:900px){
-  .nav {
-    position: fixed;
-    top:0; right:-100%;
-    width:250px; height:100%;
-    background:var(--white);
-    flex-direction: column;
-    padding:4rem 1rem; gap:16px;
-    transition: right 0.3s ease-in-out;
-    z-index:1000;
-  }
-  .nav.active { right:0; }
-  .mobile-toggle{display:inline-block;}
-  .nav a { opacity:0; transform:translateX(30px); transition: transform .3s ease, opacity .3s ease; }
-  .nav.active a { opacity:1; transform:translateX(0); }
-  .nav a:nth-child(1){ transition-delay:0.1s; }
-  .nav a:nth-child(2){ transition-delay:0.2s; }
-  .nav a:nth-child(3){ transition-delay:0.3s; }
-  .nav a:nth-child(4){ transition-delay:0.4s; }
-  .nav a:nth-child(5){ transition-delay:0.5s; }
-}
-
 /* HERO */
-.hero { position:relative; height:75vh; display:flex; align-items:center; overflow:hidden; }
-.hero .slide { position:absolute; inset:0; background-size:cover; background-position:center; transition:opacity 1s ease; opacity:0; z-index:0; }
-.hero .slide.active { opacity:1; z-index:1; }
-.hero .overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,61,145,0.65), rgba(11,61,145,0.45)); }
-.hero-inner { position:relative; z-index:2; color:#fff; padding:40px; max-width:900px; margin:0 auto; text-align:center; }
-.typewriter { font-weight:700; font-size:2.2rem; min-height:60px; margin-bottom:16px; line-height:1.2; }
-.sub { color:rgba(255,255,255,0.9); margin-bottom:20px; }
-.hero-ctas { display:flex; gap:14px; justify-content:center; }
-.btn { padding:10px 20px; border-radius:10px; text-decoration:none; font-weight:600; transition:.3s; }
-.btn-primary { background:var(--accent); color:#fff; }
-.btn-primary:hover { opacity:.9; }
-.btn-outline { background:transparent; border:2px solid rgba(255,255,255,0.25); color:#fff; }
-.btn-outline:hover { background:rgba(255,255,255,0.1); }
+.hero{
+  height:75vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(11,61,145,.65),rgba(11,61,145,.45)),
+  url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f") center/cover no-repeat;
+}
+.hero-inner{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  text-align:center;
+  max-width:900px;
+  padding:20px;
+}
+.typewriter{
+  font-size:2.2rem;
+  font-weight:700;
+  min-height:60px;
+}
+.sub{margin:1rem 0;}
+.hero-ctas{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+.btn{
+  padding:10px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid #fff;color:#fff;}
 
 /* FEATURES */
-.features { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:4rem 1rem; }
-.feature { background:#fff; border-radius:12px; padding:2rem; flex:1 1 250px; text-align:center; box-shadow:0 6px 20px rgba(11,61,145,0.06); }
-.feature h3 { color:var(--primary); margin-bottom:1rem; font-size:1.5rem; }
-.feature p { font-size:1rem; color:var(--muted); }
-
-/* PROGRAMS */
-.section { padding:80px 0; }
-.section-title { text-align:center; font-size:1.75rem; color:var(--primary); margin-bottom:12px; font-weight:700; }
-.lead { text-align:center; color:var(--muted); margin-bottom:36px; font-size:1rem; }
-.cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
-.card { background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:0 12px 32px rgba(11,61,145,0.08); transition:.3s; }
-.card:hover { transform:translateY(-4px); }
-.card img { width:100%; height:180px; object-fit:cover; }
-.card-body { padding:20px; }
-.card h3 { margin:0 0 8px; color:var(--primary); }
-.card p { color:var(--muted); margin-bottom:14px; }
-
-/* COUNTERS */
-.counters-grid { display:flex; gap:24px; justify-content:space-between; flex-wrap:wrap; align-items:center; }
-.counter { text-align:center; background:var(--white); padding:22px; border-radius:12px; min-width:140px; box-shadow:0 8px 28px rgba(11,61,145,0.05); }
-.count { font-size:2rem; font-weight:800; color:var(--primary); display:block; }
+.features{
+  padding:4rem 1rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+}
+.feature{
+  background:#fff;
+  padding:2rem;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(11,61,145,.06);
+}
+.feature h3{color:var(--primary);margin-bottom:.6rem;}
+.feature p{color:var(--muted);}
 
 /* FOOTER */
-.site-footer { background:var(--primary); color:#fff; padding:32px 0; text-align:center; }
+.site-footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:2rem 1rem;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:260px;
+    height:100%;
+    background:#fff;
+    flex-direction:column;
+    padding:4rem 1.5rem;
+    transition:.3s;
+    z-index:1000;
+  }
+  .nav.active{right:0;}
+  .mobile-toggle{display:inline-block;}
+}
 </style>
 </head>
+
 <body>
 
 <div class="menu-overlay"></div>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="index.html">Sherwood Nursery School</a>
+    <a href="index.html" class="brand">Sherwood Nursery School</a>
+
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="academics.html">Academics</a>
       <a href="nursery.html" class="active">Nursery</a>
+      <a href="nursery portal.html">Primary</a>
       <a href="primary.html">Primary</a>
       <a href="secondary.html">Secondary</a>
     </nav>
+
     <div class="header-actions">
-      <a class="btn-apply" href="admissions.html">Apply</a>
-      <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+      <a href="admissions.html" class="btn-apply">Apply</a>
+      <button class="mobile-toggle" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1596496054198-abcd');">
-    <div class="overlay"></div>
-    <div class="hero-inner">
-      <h1 class="typewriter" data-text='["Welcome to Sherwood Nursery School","Excellence in Education","Bright Futures Start Here"]'></h1>
-      <p class="sub">Strong foundation for lifelong learning. Caring & innovative environment.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="admissions.html">Enroll Now</a>
-        <a class="btn btn-outline" href="#programs">Explore Programs</a>
-      </div>
+  <div class="hero-inner">
+    <h1 class="typewriter" data-text='["Welcome to Sherwood Nursery School","Building Bright Futures","Excellence in Learning"]'></h1>
+    <p class="sub">Strong academic foundation in a caring and innovative environment.</p>
+    <div class="hero-ctas">
+      <a href="admissions.html" class="btn btn-primary">Enroll Now</a>
+      <a href="#features" class="btn btn-outline">Explore</a>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <div class="feature"><h3>Academic Excellence</h3><p>Core subjects with digital learning & STEM activities.</p></div>
-  <div class="feature"><h3>Creative Programs</h3><p>Arts, sports, coding & leadership programs.</p></div>
-  <div class="feature"><h3>Safe Environment</h3><p>Friendly staff and secure campus.</p></div>
-</section>
-
-<section id="programs" class="section">
-  <div class="container">
-    <h2 class="section-title">Programs & Activities</h2>
-    <p class="lead">Our Nursery programs focus on growth, creativity & social development.</p>
-    <div class="cards-grid">
-      <article class="card"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984" alt="Math"><div class="card-body"><h3>Mathematics</h3><p>Hands-on learning to build problem-solving skills.</p></div></article>
-      <article class="card"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" alt="Science"><div class="card-body"><h3>Science</h3><p>Experiments, STEM labs & projects.</p></div></article>
-      <article class="card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" alt="Arts"><div class="card-body"><h3>Arts & Sports</h3><p>Visual arts, music, drama, PE & sports activities.</p></div></article>
-    </div>
+<section class="features" id="features">
+  <div class="feature">
+    <h3>Academic Excellence</h3>
+    <p>Structured curriculum with modern teaching methods.</p>
+  </div>
+  <div class="feature">
+    <h3>Creative Learning</h3>
+    <p>Arts, STEM, sports and leadership development.</p>
+  </div>
+  <div class="feature">
+    <h3>Safe Environment</h3>
+    <p>Secure campus with caring and qualified teachers.</p>
   </div>
 </section>
 
@@ -169,7 +237,7 @@ body { background:var(--bg); color:#0b2540; line-height:1.6; }
 </footer>
 
 <script>
-// MOBILE MENU TOGGLE
+/* MOBILE MENU */
 const toggle=document.querySelector('.mobile-toggle');
 const nav=document.querySelector('.nav');
 const overlay=document.querySelector('.menu-overlay');
@@ -179,23 +247,43 @@ toggle.addEventListener('click',()=>{
   overlay.classList.toggle('active');
 });
 
-// CLOSE MENU ON CLICK OUTSIDE OR LINK
-overlay.addEventListener('click',()=>{nav.classList.remove('active'); overlay.classList.remove('active');});
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('active'); overlay.classList.remove('active');}));
+overlay.addEventListener('click',()=>{
+  nav.classList.remove('active');
+  overlay.classList.remove('active');
+});
 
-// TYPEWRITER
-const typeEl=document.querySelector('.typewriter');
-const texts=JSON.parse(typeEl.dataset.text);
-let tIndex=0,cIndex=0,typing=true;
-function typeWriter(){
+/* CLOSE MENU ON LINK CLICK */
+document.querySelectorAll('.nav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    nav.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+});
+
+/* TYPEWRITER */
+const el=document.querySelector('.typewriter');
+const texts=JSON.parse(el.dataset.text);
+let i=0,j=0,typing=true;
+
+function type(){
   if(typing){
-    if(cIndex<texts[tIndex].length){typeEl.textContent+=texts[tIndex][cIndex];cIndex++;setTimeout(typeWriter,60);}
-    else{typing=false;setTimeout(typeWriter,1200);}
+    if(j<texts[i].length){
+      el.textContent+=texts[i][j++];
+      setTimeout(type,60);
+    }else{
+      typing=false;
+      setTimeout(type,1200);
+    }
   }else{
-    typeEl.textContent='';cIndex=0;typing=true;tIndex=(tIndex+1)%texts.length;setTimeout(typeWriter,200);
+    el.textContent='';
+    j=0;
+    typing=true;
+    i=(i+1)%texts.length;
+    setTimeout(type,300);
   }
 }
-typeWriter();
+type();
 </script>
+
 </body>
 </html>
