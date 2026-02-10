@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Access | Sherwood School Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0B3D91;
+  --accent:#FF1493;
+  --bg:#f7f9fc;
+  --white:#fff;
+  --radius:14px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0B3D91,#092a63);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.card{
+  background:var(--white);
+  width:100%;
+  max-width:420px;
+  border-radius:var(--radius);
+  padding:2rem;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  text-align:center;
+}
+
+h1{
+  color:var(--primary);
+  margin-bottom:0.5rem;
+}
+p{
+  color:#555;
+  margin-bottom:1.5rem;
+  font-size:0.95rem;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem;
+}
+
+.option-btn{
+  padding:1rem;
+  border-radius:12px;
+  border:2px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.option-btn:hover{
+  background:var(--primary);
+  color:#fff;
+}
+
+.option-btn.accent{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.option-btn.accent:hover{
+  background:var(--accent);
+  color:#fff;
+}
+
+.hidden{
+  display:none;
+}
+
+/* Small animation */
+.fade-in{
+  animation:fade 0.4s ease;
+}
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- STEP 1 -->
+  <div id="step-role" class="fade-in">
+    <h1>Welcome 👋</h1>
+    <p>Please tell us who you are</p>
+
+    <div class="options">
+      <button class="option-btn" onclick="selectRole('teacher')">👩‍🏫 Teacher</button>
+      <button class="option-btn" onclick="selectRole('student')">🎓 Student</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step-action" class="hidden fade-in">
+    <h1 id="roleTitle"></h1>
+    <p>What would you like to do?</p>
+
+    <div class="options">
+      <button class="option-btn accent" onclick="goTo('signup')">Sign Up</button>
+      <button class="option-btn" onclick="goTo('login')">Log In</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let selectedRole = "";
+
+function selectRole(role){
+  selectedRole = role;
+
+  document.getElementById("step-role").classList.add("hidden");
+  document.getElementById("step-action").classList.remove("hidden");
+
+  const roleText = role === "teacher" ? "Teacher" : "Student";
+  document.getElementById("roleTitle").textContent = roleText + " Account";
+}
+
+function goTo(action){
+  if(!selectedRole) return;
+
+  let url = "";
+
+  if(selectedRole === "teacher" && action === "signup") url = "teacher-signup.html";
+  if(selectedRole === "teacher" && action === "login")  url = "teacher-login.html";
+  if(selectedRole === "student" && action === "signup") url = "student-signup.html";
+  if(selectedRole === "student" && action === "login")  url = "student-login.html";
+
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>
