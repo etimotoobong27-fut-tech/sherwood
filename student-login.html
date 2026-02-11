@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teachers Login - Sherwood Nursery Private School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body {
+        background: linear-gradient(rgba(255,105,180,0.6), rgba(255,105,180,0.6)),
+        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')
+        no-repeat center/cover;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        backdrop-filter: blur(4px);
+    }
+
+    .login-container {
+        background:white;
+        width:350px;
+        padding:2rem;
+        border-radius:15px;
+        box-shadow:0 8px 25px rgba(0,0,0,0.2);
+        text-align:center;
+        animation:fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:translateY(30px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+
+    h2 { margin-bottom:1.5rem; color:#ff1493; font-size:1.8rem; font-weight:600; }
+
+    .input-group {
+        margin-bottom:1.2rem;
+        text-align:left;
+    }
+
+    .input-group label {
+        font-weight:500;
+        margin-bottom:0.4rem;
+        display:block;
+        color:#0B3D91;
+    }
+
+    .input-box {
+        width:100%;
+        padding:0.8rem 1rem;
+        border:2px solid #ddd;
+        border-radius:8px;
+        font-size:1rem;
+        outline:none;
+        transition:0.3s;
+    }
+    .input-box:focus {
+        border-color:#ff69b4;
+        box-shadow:0 0 8px rgba(255,105,180,0.6);
+    }
+
+    .password-wrapper {
+        position:relative;
+    }
+    .toggle-password {
+        position:absolute;
+        right:12px;
+        top:50%;
+        transform:translateY(-50%);
+        cursor:pointer;
+        color:#555;
+    }
+
+    button {
+        width:100%;
+        padding:0.8rem;
+        background:#ff1493;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:1.1rem;
+        margin-top:1rem;
+        transition:0.3s;
+        font-weight:600;
+    }
+    button:hover {
+        background:#ff69b4;
+        box-shadow:0 0 12px rgba(255,105,180,0.7);
+    }
+
+    .error {
+        color:red;
+        margin-top:0.5rem;
+        display:none;
+        font-size:0.9rem;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>Student's Login</h2>
+
+    <div class="input-group">
+        <label>Student ID</label>
+        <input type="text" id="teacherID" class="input-box" placeholder="Enter ID (e.g. STH102)">
+    </div>
+
+    <div class="input-group password-wrapper">
+        <label>Password</label>
+        <input type="password" id="password" class="input-box" placeholder="Enter Password">
+        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+    </div>
+
+    <button onclick="teacherLogin()">Login</button>
+
+    <p id="errorMsg" class="error">Invalid Login Details</p>
+</div>
+
+<script>
+function togglePassword() {
+    const passField = document.getElementById("password");
+    const icon = document.querySelector(".toggle-password");
+
+    if (passField.type === "password") {
+        passField.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        passField.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+
+// SAMPLE LOGIN (To be connect to a database later)
+function teacherLogin() {
+    const id = document.getElementById("teacherID").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const error = document.getElementById("errorMsg");
+
+    if (id === "" || pass === "") {
+        error.innerText = "Please fill all fields";
+        error.style.display = "block";
+        return;
+    }
+
+    // SAMPLE VALIDATION
+    if (id === "TCH102" && pass === "12345") {
+        error.style.display = "none";
+        alert("Login Successful!");
+        window.location.href = "teachers-dashboard.html";  // CHANGE LATER
+    } else {
+        error.innerText = "Invalid Login Details";
+        error.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
