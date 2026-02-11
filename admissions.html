@@ -1,214 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions | Sherwood Private School</title>
-  <style>
-    /* Reset & Base */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { background:#f9f9f9; color:#222; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions | Sherwood Private School</title>
 
-    /* Navbar */
-    header { background:#0B3D91; color:white; position:sticky; top:0; z-index:1000; }
-    .header-container { max-width:1200px; margin:auto; display:flex; align-items:center; justify-content: space-between; padding:1rem; position: relative; }
-    .header-container .logo { font-size:1.8rem; font-weight:bold; }
-    .main-nav { display:flex; gap:0.75rem; }
-    .main-nav a { color:white; text-decoration:none; font-weight:500; transition:0.3s; }
-    .main-nav a:hover, .main-nav a.active { color:#FF1493; }
-    .cta-btn { background:#FF1493; color:white; padding:0.6rem 1.5rem; border-radius:5px; text-decoration:none; font-weight:500; transition:0.3s; }
-    .cta-btn:hover { background:#FF69B4; }
-    .mobile-toggle { display:none; font-size:1.5rem; background:none; border:none; color:white; cursor:pointer; }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* Overlay for mobile menu */
-    .menu-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:900; transition:opacity 0.3s ease-in-out; }
-    .menu-overlay.active { display:block; opacity:1; }
+<style>
+:root{
+  --primary:#0B3D91;
+  --accent:#FF1493;
+  --bg:#f9f9f9;
+  --white:#fff;
+  --muted:#6b7280;
+}
 
-    /* Hero Section */
-    .admissions-hero { background:#0B3D91; color:white; text-align:center; padding:6rem 1rem; }
-    .admissions-hero h1 { font-size:3rem; margin-bottom:1rem; }
-    .admissions-hero p { font-size:1.2rem; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);color:#222;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
 
-    /* Admissions Info */
-    .admissions-info { max-width:800px; margin:3rem auto; text-align:center; padding:0 1rem; }
-    .admissions-info h2 { color:#0B3D91; font-size:2rem; margin-bottom:1rem; }
-    .admissions-info p { font-size:1.1rem; line-height:1.6; }
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--primary);
+}
 
-    /* Form Section */
-    .admissions-form-section { max-width:700px; margin:2rem auto 6rem auto; background:white; padding:2rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
-    .form-group { margin-bottom:1.5rem; display:flex; flex-direction:column; }
-    .form-group label { margin-bottom:0.5rem; font-weight:500; }
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea { padding:0.8rem; border:1px solid #ccc; border-radius:6px; font-size:1rem; transition:0.3s; }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color:#FF1493; outline:none; }
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+}
 
-    /* Submit Button */
-    .submit-btn { background:#FF1493; color:white; padding:0.8rem 2rem; border:none; border-radius:6px; cursor:pointer; font-size:1.1rem; transition:0.3s; }
-    .submit-btn:hover { background:#FF69B4; }
+.logo{
+  font-size:1.6rem;
+  font-weight:700;
+  color:#fff;
+}
 
-    /* Form Message */
-    .form-message { margin-top:1rem; font-weight:500; color:#0B3D91; }
+.main-nav{
+  display:flex;
+  gap:1rem;
+}
 
-    /* Footer */
-    footer { background:#0B3D91; color:white; text-align:center; padding:2rem; }
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  padding:.5rem .75rem;
+  border-radius:6px;
+  transition:.3s;
+}
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .main-nav { 
-        position: fixed; 
-        top:0; 
-        right:-100%; 
-        height:100%; 
-        width:250px; 
-        background:#0B3D91; 
-        flex-direction: column; 
-        padding:4rem 1rem; 
-        gap:1rem; 
-        transition: right 0.3s ease-in-out; 
-        z-index:1000;
-      }
-      .main-nav.active { right:0; }
-      .mobile-toggle { display:inline-block; }
-      .cta-btn { display:none; }
-    }
-  </style>
+.main-nav a:hover,
+.main-nav a.active{
+  background:rgba(255,255,255,.15);
+  color:var(--accent);
+}
+
+.cta-btn{
+  background:var(--accent);
+  color:#fff;
+  padding:.6rem 1.4rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.cta-btn:hover{opacity:.9}
+
+/* ===== Hamburger Toggle (Same Style) ===== */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  width:26px;
+  height:3px;
+  background:#fff;
+  border-radius:3px;
+  transition:.3s;
+}
+
+.menu-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* Overlay */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  opacity:0;
+  pointer-events:none;
+  transition:.4s;
+  z-index:900;
+}
+
+.menu-overlay.show{
+  opacity:1;
+  pointer-events:all;
+}
+
+/* Mobile Nav */
+@media(max-width:900px){
+  .main-nav{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#0B3D91,#062a66);
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transform:translateY(-100%);
+    transition:.4s ease;
+    z-index:950;
+  }
+
+  .main-nav.show{
+    transform:translateY(0);
+  }
+
+  .menu-toggle{display:flex;}
+  .cta-btn{display:none;}
+}
+
+/* ================= HERO ================= */
+.admissions-hero{
+  background:linear-gradient(180deg,#0B3D91,#062a66);
+  color:#fff;
+  text-align:center;
+  padding:6rem 1rem;
+}
+
+.admissions-hero h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+}
+
+.admissions-hero p{
+  font-size:1.2rem;
+  opacity:.95;
+}
+
+/* ================= INFO ================= */
+.admissions-info{
+  max-width:900px;
+  margin:4rem auto;
+  text-align:center;
+  padding:0 1rem;
+}
+
+.admissions-info h2{
+  color:var(--primary);
+  font-size:2rem;
+  margin-bottom:1rem;
+}
+
+.admissions-info p{
+  font-size:1.1rem;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+/* ================= FORM ================= */
+.admissions-form-section{
+  max-width:700px;
+  margin:2rem auto 6rem;
+  background:#fff;
+  padding:2.5rem;
+  border-radius:14px;
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+.form-group{
+  margin-bottom:1.5rem;
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group label{
+  margin-bottom:.5rem;
+  font-weight:500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  padding:.9rem;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:1rem;
+  transition:.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--accent);
+  outline:none;
+  box-shadow:0 0 0 3px rgba(255,20,147,.15);
+}
+
+.submit-btn{
+  background:var(--accent);
+  color:#fff;
+  padding:.9rem 2rem;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:1.05rem;
+  font-weight:600;
+  transition:.3s;
+}
+
+.submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.form-message{
+  margin-top:1rem;
+  font-weight:500;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:2.5rem 1rem;
+}
+</style>
 </head>
+
 <body>
 
-<!-- Overlay -->
 <div class="menu-overlay"></div>
 
-<!-- Navbar -->
 <header>
   <div class="header-container">
     <div class="logo">Sherwood Private School</div>
+
     <nav class="main-nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
       <a href="admissions.html" class="active">Admissions</a>
       <a href="activities.html">Activities</a>
-      <a href="news.html">News</a>
       <a href="contact.html">Contact</a>
     </nav>
+
     <a href="admissions.html" class="cta-btn">Apply Now</a>
-    <button class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- Hero Section -->
 <section class="admissions-hero">
   <h1>Admissions</h1>
   <p>Join Sherwood Private School — Nurturing Excellence from Nursery to Secondary</p>
 </section>
 
-<!-- Admissions Info -->
 <section class="admissions-info">
   <h2>How to Apply</h2>
-  <p>Complete the application form below. Our admissions team will review and contact you with the next steps. We accept applications for Nursery, Primary, and Secondary levels.</p>
+  <p>
+    Complete the application form below. Our admissions team will review and contact you with the next steps.
+    We accept applications for Nursery, Primary, and Secondary levels.
+  </p>
 </section>
 
-<!-- Admissions Form -->
 <section class="admissions-form-section">
-  <form id="admissionsForm">
-    <div class="form-group">
-      <label for="fullName">Full Name*</label>
-      <input type="text" id="fullName" name="fullName" required>
-    </div>
+<form id="admissionsForm">
 
-    <div class="form-group">
-      <label for="email">Email Address*</label>
-      <input type="email" id="email" name="email" required>
-    </div>
+<div class="form-group">
+<label>Full Name*</label>
+<input type="text" name="fullName" required>
+</div>
 
-    <div class="form-group">
-      <label for="phone">Phone Number*</label>
-      <input type="tel" id="phone" name="phone" required>
-    </div>
+<div class="form-group">
+<label>Email Address*</label>
+<input type="email" name="email" required>
+</div>
 
-    <div class="form-group">
-      <label for="childName">Child’s Name*</label>
-      <input type="text" id="childName" name="childName" required>
-    </div>
+<div class="form-group">
+<label>Phone Number*</label>
+<input type="tel" name="phone" required>
+</div>
 
-    <div class="form-group">
-      <label for="level">Intended Level*</label>
-      <select id="level" name="level" required>
-        <option value="">Select Level</option>
-        <option value="nursery">Nursery</option>
-        <option value="primary">Primary</option>
-        <option value="secondary">Secondary</option>
-      </select>
-    </div>
+<div class="form-group">
+<label>Child’s Name*</label>
+<input type="text" name="childName" required>
+</div>
 
-    <div class="form-group">
-      <label for="message">Additional Information</label>
-      <textarea id="message" name="message" rows="4" placeholder="Optional"></textarea>
-    </div>
+<div class="form-group">
+<label>Intended Level*</label>
+<select name="level" required>
+<option value="">Select Level</option>
+<option>Nursery</option>
+<option>Primary</option>
+<option>Secondary</option>
+</select>
+</div>
 
-    <button type="submit" class="submit-btn">Submit Application</button>
-    <p id="formMessage" class="form-message"></p>
-  </form>
+<div class="form-group">
+<label>Additional Information</label>
+<textarea name="message" rows="4"></textarea>
+</div>
+
+<button type="submit" class="submit-btn">Submit Application</button>
+<p id="formMessage" class="form-message"></p>
+
+</form>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="footer-content">
-    &copy; 2025 Sherwood Private School | Palace Way, Off Miyaki Oworoshoki, Lagos State, Nigeria
-  </div>
+© 2025 Sherwood Private School | All Rights Reserved.
 </footer>
 
 <script>
-  // MOBILE MENU TOGGLE WITH OVERLAY
-  const toggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.main-nav');
-  const overlay = document.querySelector('.menu-overlay');
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.main-nav');
+const overlay=document.querySelector('.menu-overlay');
 
-  function openMenu() {
-    nav.classList.add('active');
-    overlay.classList.add('active');
-    toggle.setAttribute('aria-expanded', true);
+toggle.onclick=()=>{
+  toggle.classList.toggle('active');
+  nav.classList.toggle('show');
+  overlay.classList.toggle('show');
+};
+
+overlay.onclick=()=>{
+  toggle.classList.remove('active');
+  nav.classList.remove('show');
+  overlay.classList.remove('show');
+};
+
+const form=document.getElementById('admissionsForm');
+const message=document.getElementById('formMessage');
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+
+  const fullName=form.fullName.value.trim();
+  const child=form.childName.value.trim();
+  const level=form.level.value;
+
+  if(!fullName||!child||!level){
+    message.textContent="Please fill all required fields.";
+    message.style.color="red";
+    return;
   }
 
-  function closeMenu() {
-    nav.classList.remove('active');
-    overlay.classList.remove('active');
-    toggle.setAttribute('aria-expanded', false);
-  }
-
-  toggle.addEventListener('click', () => {
-    if(nav.classList.contains('active')) closeMenu();
-    else openMenu();
-  });
-
-  overlay.addEventListener('click', closeMenu);
-
-  // Handle form submission
-  const form = document.getElementById('admissionsForm');
-  const formMessage = document.getElementById('formMessage');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const fullName = form.fullName.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const childName = form.childName.value.trim();
-    const level = form.level.value;
-
-    if (!fullName || !email || !phone || !childName || !level) {
-      formMessage.textContent = "Please fill in all required fields.";
-      formMessage.style.color = "red";
-      return;
-    }
-
-    formMessage.textContent = `Thank you, ${fullName}! Your application for ${childName} (${level}) has been submitted.`;
-    formMessage.style.color = "#0B3D91";
-    form.reset();
-  });
+  message.textContent=`Thank you ${fullName}! Application for ${child} (${level}) submitted successfully.`;
+  message.style.color="#0B3D91";
+  form.reset();
+});
 </script>
 
 </body>
