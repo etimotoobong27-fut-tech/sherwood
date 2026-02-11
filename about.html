@@ -8,6 +8,7 @@
 <meta name="description" content="Learn about Sherwood Private School – a leading nursery, primary and secondary school in Lagos dedicated to academic excellence and character development.">
 
 <style>
+
 /* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#F9F9F9;color:#222;overflow-x:hidden;}
@@ -15,132 +16,245 @@ body{background:#F9F9F9;color:#222;overflow-x:hidden;}
 /* ================= HEADER ================= */
 header{
   background:linear-gradient(90deg,#0B3D91,#123E9C);
-  position:sticky;top:0;z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 .header-container{
-  max-width:1200px;margin:auto;
-  display:flex;align-items:center;justify-content:space-between;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   padding:1rem;
 }
-.logo{font-size:1.8rem;font-weight:700;color:#fff;}
-.main-nav{display:flex;gap:1rem;}
-.main-nav a{
-  color:#fff;text-decoration:none;font-weight:500;
+.logo{
+  font-size:1.8rem;
+  font-weight:700;
+  color:#fff;
+}
+
+/* Desktop Nav */
+.desktop-nav{
+  display:flex;
+  gap:1.2rem;
+}
+.desktop-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
   transition:.3s;
 }
-.main-nav a:hover,.main-nav a.active{color:#FF69B4;}
-.cta-btn{
-  background:#FF1493;color:#fff;
-  padding:.6rem 1.5rem;border-radius:6px;
-  text-decoration:none;font-weight:600;
+.desktop-nav a:hover,
+.desktop-nav a.active{
+  color:#FF69B4;
 }
+
+.cta-btn{
+  background:#FF1493;
+  color:#fff;
+  padding:.6rem 1.5rem;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Mobile */
 .menu-toggle{
-  display:none;font-size:2rem;color:#fff;cursor:pointer;
+  display:none;
+  font-size:2rem;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* Overlay */
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:998;
+}
+.mobile-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+/* Mobile Nav */
+.mobile-nav{
+  position:fixed;
+  top:0;
+  right:-300px;
+  width:260px;
+  height:100%;
+  background:#0B3D91;
+  padding:2rem 1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  transition:.4s;
+  z-index:999;
+}
+.mobile-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1.1rem;
+}
+.mobile-nav.show{
+  right:0;
 }
 
 /* ================= HERO ================= */
 .about-hero{
-  max-width:1200px;margin:auto;
-  display:flex;flex-wrap:wrap;gap:3rem;
-  padding:4rem 1rem;align-items:center;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:3rem;
+  padding:4rem 1rem;
+  align-items:center;
 }
 .about-text{
   flex:1 1 500px;
   animation:fadeUp 1s ease;
 }
 .about-text h1{
-  font-size:3rem;color:#0B3D91;margin-bottom:1rem;
+  font-size:3rem;
+  color:#0B3D91;
+  margin-bottom:1rem;
 }
-.about-text p{font-size:1.1rem;margin-bottom:1.5rem;line-height:1.7;}
+.about-text p{
+  font-size:1.1rem;
+  margin-bottom:1.5rem;
+  line-height:1.7;
+}
 .about-text .btn{
-  background:#FF1493;color:#fff;
-  padding:.9rem 2.2rem;border-radius:8px;
-  text-decoration:none;font-weight:600;
+  background:#FF1493;
+  color:#fff;
+  padding:.9rem 2.2rem;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
 }
 
 /* ================= CAROUSEL ================= */
 .about-carousel{
   flex:1 1 400px;
-  position:relative;overflow:hidden;
+  position:relative;
+  overflow:hidden;
   border-radius:15px;
   box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 .carousel-slide{display:none;}
 .carousel-slide img{width:100%;display:block;}
 .carousel-slide p{
-  background:#0B3D91;color:#fff;
-  padding:.7rem;text-align:center;
+  background:#0B3D91;
+  color:#fff;
+  padding:.7rem;
+  text-align:center;
 }
 .prev,.next{
-  position:absolute;top:50%;
+  position:absolute;
+  top:50%;
   transform:translateY(-50%);
   background:rgba(0,0,0,.6);
-  color:#fff;border:none;
-  font-size:2rem;padding:.3rem .7rem;
-  cursor:pointer;border-radius:50%;
+  color:#fff;
+  border:none;
+  font-size:2rem;
+  padding:.3rem .7rem;
+  cursor:pointer;
+  border-radius:50%;
 }
 .prev{left:10px;}
 .next{right:10px;}
 
 /* ================= MISSION & VISION ================= */
 .mission-vision{
-  background:#fff;padding:4rem 1rem;
+  background:#fff;
+  padding:4rem 1rem;
 }
 .mv-inner{
-  max-width:1000px;margin:auto;
-  display:flex;flex-wrap:wrap;gap:3rem;
+  max-width:1000px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:3rem;
 }
 .mv-text{
   flex:1 1 400px;
-  opacity:0;transform:translateY(40px);
+  opacity:0;
+  transform:translateY(40px);
   transition:.8s;
 }
-.mv-text.show{opacity:1;transform:translateY(0);}
+.mv-text.show{
+  opacity:1;
+  transform:translateY(0);
+}
 .mv-text h2{
-  color:#0B3D91;margin-bottom:.7rem;
-  border-left:4px solid #FF1493;padding-left:.7rem;
+  color:#0B3D91;
+  margin-bottom:.7rem;
+  border-left:4px solid #FF1493;
+  padding-left:.7rem;
 }
 
 /* ================= VALUES ================= */
 .values{
-  background:#F0F8FF;padding:4rem 1rem;text-align:center;
+  background:#F0F8FF;
+  padding:4rem 1rem;
+  text-align:center;
 }
 .value-cards{
-  display:flex;flex-wrap:wrap;gap:2rem;
-  max-width:1200px;margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  max-width:1200px;
+  margin:auto;
 }
 .value-card{
   flex:1 1 250px;
-  background:#fff;padding:2rem;
+  background:#fff;
+  padding:2rem;
   border-radius:15px;
   box-shadow:0 6px 15px rgba(0,0,0,.1);
   transition:.4s;
-  opacity:0;transform:translateY(40px);
+  opacity:0;
+  transform:translateY(40px);
 }
-.value-card.show{opacity:1;transform:translateY(0);}
-.value-card:hover{transform:translateY(-10px);}
-.value-card h3{color:#FF1493;margin-bottom:.6rem;}
+.value-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.value-card:hover{
+  transform:translateY(-10px);
+}
+.value-card h3{
+  color:#FF1493;
+  margin-bottom:.6rem;
+}
 
 /* ================= FOOTER ================= */
 footer{
-  background:#0B3D91;color:#fff;
-  text-align:center;padding:2rem;margin-top:3rem;
+  background:#0B3D91;
+  color:#fff;
+  text-align:center;
+  padding:2rem;
+  margin-top:3rem;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-  .menu-toggle{display:block;}
-  .main-nav{
-    position:absolute;top:100%;left:0;width:100%;
-    background:#0B3D91;
-    flex-direction:column;
-    max-height:0;overflow:hidden;
-    transition:.4s;
+  .desktop-nav,
+  .cta-btn{
+    display:none;
   }
-  .main-nav.show{max-height:400px;}
-  .main-nav a{padding:1rem;}
-  .cta-btn{display:none;}
-  .about-text h1{font-size:2.3rem;}
+  .menu-toggle{
+    display:block;
+  }
+  .about-text h1{
+    font-size:2.3rem;
+  }
 }
 
 /* ================= ANIMATION ================= */
@@ -148,6 +262,7 @@ footer{
   from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
+
 </style>
 </head>
 
@@ -156,19 +271,34 @@ footer{
 <header>
   <div class="header-container">
     <div class="logo">Sherwood Private School</div>
-    <div class="menu-toggle">☰</div>
-    <nav class="main-nav">
-      < <a href="index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="academics">Academics</a>
-    <a href="admissions.html">Admissions</a>
-    <a href="activities.html">Activities</a>
-    <a href="contact.html">Contact</a>
-    <a href="signup.html">Login/Sign up</a>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="activities.html">Activities</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Login/Sign up</a>
     </nav>
+
     <a href="admissions.html" class="cta-btn">Apply Now</a>
+
+    <div class="menu-toggle">☰</div>
   </div>
 </header>
+
+<div class="mobile-overlay"></div>
+
+<nav class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="activities.html">Activities</a>
+  <a href="contact.html">Contact</a>
+  <a href="signup.html">Login/Sign up</a>
+</nav>
 
 <section class="about-hero">
   <div class="about-text">
@@ -221,31 +351,58 @@ footer{
 </footer>
 
 <script>
-/* MENU */
-const toggle=document.querySelector('.menu-toggle');
-const nav=document.querySelector('.main-nav');
-toggle.onclick=()=>nav.classList.toggle('show');
+
+/* MOBILE MENU */
+const toggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+const overlay = document.querySelector('.mobile-overlay');
+
+toggle.onclick = () => {
+  mobileNav.classList.toggle('show');
+  overlay.classList.toggle('show');
+};
+
+overlay.onclick = () => {
+  mobileNav.classList.remove('show');
+  overlay.classList.remove('show');
+};
 
 /* CAROUSEL */
 let i=0;
 const slides=document.querySelectorAll('.carousel-slide');
-function show(){slides.forEach(s=>s.style.display='none');slides[i].style.display='block';}
+function show(){
+  slides.forEach(s=>s.style.display='none');
+  slides[i].style.display='block';
+}
 show();
-document.querySelector('.next').onclick=()=>{i=(i+1)%slides.length;show();}
-document.querySelector('.prev').onclick=()=>{i=(i-1+slides.length)%slides.length;show();}
-setInterval(()=>{i=(i+1)%slides.length;show();},5000);
+document.querySelector('.next').onclick=()=>{
+  i=(i+1)%slides.length;
+  show();
+}
+document.querySelector('.prev').onclick=()=>{
+  i=(i-1+slides.length)%slides.length;
+  show();
+}
+setInterval(()=>{
+  i=(i+1)%slides.length;
+  show();
+},5000);
 
 /* SCROLL ANIMATION */
 const reveal=[...document.querySelectorAll('.value-card,.mv-text')];
 window.addEventListener('scroll',()=>{
   reveal.forEach(el=>{
-    if(el.getBoundingClientRect().top<window.innerHeight-100)
+    if(el.getBoundingClientRect().top<window.innerHeight-100){
       el.classList.add('show');
+    }
   });
 });
+
 </script>
 
 </body>
 </html>
+
+
 
 
