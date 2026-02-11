@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Activities | Sherwood Private School</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
 :root{
@@ -21,13 +21,8 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:#222;overflow-x:hidden;}
 
-/* ================= HEADER ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:var(--primary);
-}
+/* ======== MASTER HEADER (REPLACED ONLY THIS PART) ======== */
+header{background:#0B3D91;position:sticky;top:0;z-index:1000}
 .header-container{
   max-width:1200px;
   margin:auto;
@@ -36,82 +31,67 @@ header{
   justify-content:space-between;
   padding:1rem;
 }
-.logo{
-  font-size:1.6rem;
-  font-weight:700;
-  color:#fff;
-}
-.main-nav{
-  display:flex;
-  gap:1rem;
-}
+.logo img{height:52px;}
 .main-nav a{
   color:#fff;
   text-decoration:none;
+  margin:0 .7rem;
   font-weight:500;
-  padding:.5rem .75rem;
-  border-radius:6px;
-  transition:.3s;
 }
 .main-nav a:hover,
-.main-nav a.active{
-  background:rgba(255,255,255,.15);
-  color:var(--accent);
-}
+.main-nav a.active{color:#FF1493}
 .cta-btn{
-  background:var(--accent);
+  background:#FF1493;
   color:#fff;
   padding:.6rem 1.4rem;
-  border-radius:8px;
+  border-radius:6px;
   text-decoration:none;
-  font-weight:600;
-  transition:.3s;
 }
-.cta-btn:hover{opacity:.9}
+.menu-btn{display:none;font-size:1.9rem;color:#fff;cursor:pointer}
 
-/* ===== Mobile Toggle (Academics-style) ===== */
-.menu-toggle{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-.menu-toggle span{
-  width:26px;
-  height:3px;
-  background:#fff;
-  border-radius:3px;
-  transition:.3s;
-}
-.menu-toggle.active span:nth-child(1){
-  transform:rotate(45deg) translate(5px,5px);
-}
-.menu-toggle.active span:nth-child(2){
+/* MOBILE NAV */
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
   opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:999;
 }
-.menu-toggle.active span:nth-child(3){
-  transform:rotate(-45deg) translate(6px,-6px);
+.mobile-overlay.active{
+  opacity:1;
+  visibility:visible;
 }
+.mobile-nav{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100vh;
+  background:#0B3D91;
+  padding-top:5rem;
+  transition:.4s ease;
+  z-index:1000;
+}
+.mobile-nav.active{right:0}
+.mobile-nav a{
+  display:block;
+  padding:1rem 1.5rem;
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+.mobile-nav a:hover,
+.mobile-nav a.active{color:#FF1493}
 
-/* Mobile Nav */
+/* RESPONSIVE */
 @media(max-width:900px){
-  .main-nav{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(180deg,#0B3D91,#062a66);
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transform:translateY(-100%);
-    transition:.4s ease;
-  }
-  .main-nav.show{transform:translateY(0);}
-  .menu-toggle{display:flex;}
+  .main-nav,.cta-btn{display:none}
+  .menu-btn{display:block}
 }
 
-/* ================= HERO (VIDEO) ================= */
+/* ================= YOUR ORIGINAL PAGE STYLES (UNCHANGED) ================= */
 .activities-hero{
   position:relative;
   height:90vh;
@@ -184,7 +164,7 @@ header{
   100%{opacity:0;transform:translate(-50%,10px);}
 }
 
-/* ================= ACTIVITIES ================= */
+/* ACTIVITIES */
 .activities-grid{
   max-width:1200px;
   margin:4rem auto;
@@ -220,7 +200,6 @@ header{
   color:var(--muted);
 }
 
-/* ================= FOOTER ================= */
 footer{
   background:var(--primary);
   color:#fff;
@@ -233,28 +212,41 @@ footer{
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-container">
-    <div class="logo">Sherwood Private School</div>
+    <div class="logo">
+      <img src="Screenshot_20240330-221945.jpg" alt="Sherwood Private School">
+    </div>
+
     <nav class="main-nav">
-       <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="academics">Academics</a>
-    <a href="admissions.html">Admissions</a>
-    <a href="activities.html" class="active">Activities</a>
-    <a href="students dashboard2.html">Students Dashboard</a>
-    <a href="teachers dashboard.html">Teacher Dashboard</a>
-    <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="activities.html" class="active">Activities</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Login/Sign up</a>
     </nav>
+
     <a href="admissions.html" class="cta-btn">Apply Now</a>
-    <button class="menu-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <i class="fas fa-bars menu-btn" id="menuBtn"></i>
   </div>
 </header>
 
-<!-- HERO -->
+<div class="mobile-overlay" id="overlay"></div>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="academics.html">Academics</a>
+  <a href="admissions.html">Admissions</a>
+  <a href="activities.html" class="active">Activities</a>
+  <a href="contact.html">Contact</a>
+  <a href="signup.html">Login/Sign up</a>
+</div>
+
+<!-- YOUR ORIGINAL PAGE CONTENT (UNCHANGED) -->
+
 <section class="activities-hero">
   <video autoplay muted loop playsinline>
     <source src="school-life.mp4" type="video/mp4">
@@ -266,7 +258,6 @@ footer{
   <div class="scroll-indicator"><span></span></div>
 </section>
 
-<!-- ACTIVITIES -->
 <section class="activities-grid">
   <div class="activity-card" data-delay="0">
     <img src="images/sports.jpg" alt="Sports">
@@ -299,21 +290,31 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2025 Sherwood Private School | All Right Reserved.
 </footer>
 
 <script>
-// ===== Mobile Menu Toggle =====
-const toggle=document.querySelector('.menu-toggle');
-const nav=document.querySelector('.main-nav');
-toggle.onclick=()=>{
-  toggle.classList.toggle('active');
-  nav.classList.toggle('show');
+/* MASTER MOBILE MENU */
+const menuBtn=document.getElementById("menuBtn");
+const mobileNav=document.getElementById("mobileNav");
+const overlay=document.getElementById("overlay");
+const links=mobileNav.querySelectorAll("a");
+
+function closeMenu(){
+  mobileNav.classList.remove("active");
+  overlay.classList.remove("active");
+  menuBtn.classList.replace("fa-times","fa-bars");
+}
+
+menuBtn.onclick=()=>{
+  mobileNav.classList.toggle("active");
+  overlay.classList.toggle("active");
+  menuBtn.classList.toggle("fa-times");
+  menuBtn.classList.toggle("fa-bars");
 };
 
-// ===== Scroll Animations =====
+/* ORIGINAL SCROLL ANIMATION */
 const cards=document.querySelectorAll('.activity-card');
 function reveal(){
   const trigger=window.innerHeight*0.85;
@@ -332,5 +333,6 @@ window.addEventListener('load',reveal);
 
 </body>
 </html>
+
 
 
