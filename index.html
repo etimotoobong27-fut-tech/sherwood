@@ -3,192 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sherwood Private School | Inspiring Excellence</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<title>Elite International School</title>
 
 <style>
-:root{
-  --blue:#0a2a52;
-  --gold:#f4c430;
-  --accent:#e94e1b;
-  --light:#f6f8fb;
-  --dark:#1c2430;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI, sans-serif}
+body{background:#0a0f1f;color:white;overflow-x:hidden}
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Montserrat',sans-serif;background:var(--light);color:var(--dark)}
-
-/* HEADER */
+/* ===== HEADER ===== */
 header{
-  position:fixed;top:0;width:100%;
-  background:linear-gradient(90deg,var(--blue),#123d73);
-  z-index:9999;
-}
-.navbar{
-  max-width:1300px;margin:auto;
-  padding:1rem;
+  position:fixed;
+  width:100%;
+  padding:18px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-}
-.logo-area img{height:52px}
-
-/* CONTACT-PAGE STYLE TOGGLE */
-.menu-toggle{
-  background:var(--accent);
-  color:#fff;
-  border:none;
-  padding:.6rem 1rem;
-  font-size:1.5rem;
-  border-radius:10px;
-  cursor:pointer;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,.3);
+  z-index:1000;
 }
 
-/* FULLSCREEN MENU */
-.mobile-menu{
+.logo{font-size:22px;font-weight:bold}
+
+.menu-toggle{font-size:28px;cursor:pointer}
+
+/* ===== OVERLAY MENU ===== */
+.overlay{
   position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#0a2a52,#0f3b6f);
+  top:0;left:0;
+  width:100%;height:100%;
+  background:#050816;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  gap:2rem;
-  transform:translateY(-100%);
-  transition:.5s;
-  z-index:10000;
+  align-items:center;
+  transform:scale(0);
+  transition:.5s ease;
+  z-index:999;
 }
-.mobile-menu.active{transform:translateY(0)}
 
-.mobile-menu a{
+.overlay.active{transform:scale(1)}
+
+.overlay a{
+  font-size:34px;
+  margin:18px;
   color:white;
-  font-size:1.8rem;
   text-decoration:none;
-  font-weight:600;
+  transition:.3s;
 }
 
-.close-menu{
-  position:absolute;
-  top:20px;
-  right:25px;
-  font-size:2.5rem;
-  background:none;
-  border:none;
-  color:white;
-  cursor:pointer;
-}
+.overlay a:hover{color:#00eaff}
 
-/* HERO */
-.hero{height:100vh;position:relative;overflow:hidden}
-.hero-slide{
-  position:absolute;inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 1s;
-}
-.hero-slide.active{opacity:1}
-
-.hero::after{
-  content:"";
-  position:absolute;inset:0;
-  background:rgba(0,0,0,.6);
-}
-
-.hero-content{
-  position:relative;z-index:2;
-  height:100%;
+/* ===== HERO ===== */
+.hero{
+  height:100vh;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  color:white;
+  align-items:center;
   text-align:center;
-  padding:1rem;
-  animation:fadeUp 1.2s ease;
+  background:linear-gradient(270deg,#001f3f,#000814,#001f3f);
+  background-size:600% 600%;
+  animation:bgMove 12s infinite;
 }
 
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:3.2rem;
-}
+.hero h1{font-size:60px;margin-bottom:15px}
+.hero p{font-size:22px;margin-bottom:25px;color:#ccc}
 
-.hero-buttons a{
-  display:inline-block;
-  margin:1rem;
-  padding:1rem 2.5rem;
+.btn{
+  background:#00eaff;
+  color:black;
+  padding:14px 30px;
   border-radius:40px;
-  text-decoration:none;
-  font-weight:700;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
 }
+.btn:hover{transform:scale(1.07)}
 
-.hero-btn{background:var(--gold);color:var(--blue)}
-.hero-btn.alt{border:2px solid white;color:white}
-
-/* SECTIONS */
-section{padding:5rem 1rem}
-.container{max-width:1200px;margin:auto}
-
-.section-title{
+/* ===== STATS ===== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  padding:80px 40px;
+  background:#050816;
   text-align:center;
-  font-family:'Playfair Display',serif;
-  font-size:2.4rem;
-  margin-bottom:2rem;
-  color:var(--blue);
 }
 
-/* FEATURES */
-.features{
+.stat h2{font-size:42px;color:#00eaff}
+.stat p{color:#aaa}
+
+/* ===== PROGRAMS ===== */
+.section{
+  padding:100px 40px;
+  text-align:center;
+}
+
+.cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2rem;
+  gap:25px;
+  margin-top:40px;
 }
-.feature{
-  background:white;
-  padding:2rem;
-  border-radius:18px;
-  box-shadow:0 20px 45px rgba(0,0,0,.08);
-  transition:.4s;
-}
-.feature:hover{transform:translateY(-10px)}
 
-/* NEW EXTRA CONTENT */
-.programs{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:2rem;
+.card{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:15px;
+  transition:.3s;
 }
-.program{
-  background:linear-gradient(135deg,#fff,#eef3fa);
-  padding:2rem;
-  border-radius:18px;
+
+.card:hover{transform:translateY(-10px)}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{
+  background:#050816;
+  padding:90px 40px;
   text-align:center;
+}
+
+.testimonial{
+  max-width:700px;
+  margin:auto;
+  font-style:italic;
+  color:#ddd;
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
   transition:.4s;
 }
-.program:hover{transform:scale(1.05)}
 
-/* CTA */
+.gallery img:hover{transform:scale(1.1)}
+
+/* ===== CTA ===== */
 .cta{
-  background:linear-gradient(90deg,var(--blue),#123d73);
-  color:white;
-  padding:4rem 1.5rem;
-  border-radius:26px;
+  padding:100px 20px;
   text-align:center;
+  background:linear-gradient(45deg,#00eaff,#0066ff);
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
-  background:#06172b;
-  color:#cbd6e2;
-  padding:2rem;
+  background:#02040c;
   text-align:center;
+  padding:25px;
+  color:#777;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
+/* ===== ANIMATIONS ===== */
+@keyframes bgMove{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
 }
 </style>
 </head>
@@ -196,91 +173,76 @@ footer{
 <body>
 
 <header>
-  <div class="navbar">
-    <div class="logo-area">
-      <img src="Screenshot_20240330-221945.jpg">
-    </div>
-    <button class="menu-toggle" id="menuBtn">☰</button>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="close-menu" id="closeMenu">×</button>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Academics</a>
-    <a href="#">Admissions</a>
-    <a href="#">Activities</a>
-    <a href="#">Contact</a>
-  </div>
+<div class="logo">Elite International</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 </header>
+
+<div class="overlay" id="menu">
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Programs</a>
+<a href="#">Admissions</a>
+<a href="#">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1588072432836-e10032774350');"></div>
-  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b');"></div>
-
-  <div class="hero-content">
-    <h1>Welcome to Sherwood Private School</h1>
-    <p>Inspiring minds, shaping leaders, building the future.</p>
-
-    <div class="hero-buttons">
-      <a href="#" class="hero-btn">Apply for Admission</a>
-      <a href="#" class="hero-btn alt">Explore Our School</a>
-    </div>
-  </div>
+<h1>Raising Global Leaders</h1>
+<p>Where Excellence Meets Innovation</p>
+<button class="btn">Explore Our School</button>
 </section>
 
-<!-- EXISTING CONTENT KEPT -->
-<section>
-  <div class="container">
-    <h2 class="section-title">What We Do</h2>
-    <p style="text-align:center;max-width:800px;margin:auto">
-      Sherwood Private School provides a nurturing environment where academic excellence,
-      discipline and moral values are developed.
-    </p>
-  </div>
+<!-- STATS -->
+<section class="stats">
+<div class="stat"><h2>25+</h2><p>Years of Excellence</p></div>
+<div class="stat"><h2>5K+</h2><p>Graduates Worldwide</p></div>
+<div class="stat"><h2>98%</h2><p>University Placement</p></div>
+<div class="stat"><h2>40+</h2><p>Expert Teachers</p></div>
 </section>
 
-<!-- ADDED MORE CONTENT -->
-<section>
-  <div class="container">
-    <h2 class="section-title">Our Programs</h2>
-    <div class="programs">
-      <div class="program">Nursery School</div>
-      <div class="program">Primary School</div>
-      <div class="program">Secondary School</div>
-      <div class="program">ICT Training</div>
-      <div class="program">Sports & Arts</div>
-      <div class="program">Leadership Development</div>
-    </div>
-  </div>
+<!-- PROGRAMS -->
+<section class="section">
+<h2>Our Programs</h2>
+<div class="cards">
+<div class="card"><h3>Science & Tech</h3><p>Advanced STEM education.</p></div>
+<div class="card"><h3>Business & Leadership</h3><p>Future CEOs training.</p></div>
+<div class="card"><h3>Arts & Creativity</h3><p>Music, drama & design.</p></div>
+</div>
 </section>
 
-<!-- KEEP YOUR CTA -->
-<section class="container">
-  <div class="cta">
-    <h2>Admissions Now Open</h2>
-    <p>Give your child a strong academic future.</p>
-    <a href="#" style="background:var(--gold);padding:1rem 2rem;border-radius:40px;text-decoration:none;color:var(--blue)">Contact Admissions</a>
-  </div>
+<!-- TESTIMONIAL -->
+<section class="testimonials">
+<h2>What Parents Say</h2>
+<br>
+<p class="testimonial">
+“This school transformed my child into a confident global thinker.”
+</p>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+<img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<h2>Admissions Open</h2>
+<p>Secure your child’s future today</p>
+<br>
+<button class="btn">Apply Now</button>
 </section>
 
 <footer>
-  <p>© 2025 Sherwood Private School</p>
+© 2026 Elite International School
 </footer>
 
 <script>
-menuBtn.onclick=()=>mobileMenu.classList.add("active");
-closeMenu.onclick=()=>mobileMenu.classList.remove("active");
-
-/* Hero slider */
-const slides=document.querySelectorAll(".hero-slide");
-let s=0;
-setInterval(()=>{
-  slides[s].classList.remove("active");
-  s=(s+1)%slides.length;
-  slides[s].classList.add("active");
-},3000);
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
 </script>
 
 </body>
