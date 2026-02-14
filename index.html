@@ -40,35 +40,34 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:1rem; /* ensures spacing between logo and toggle */
+  gap:1rem;
 }
-
 .logo-area img{height:52px}
 
+/* MOBILE MENU TOGGLE */
 .menu-toggle{
   display:none;
   background:var(--accent);
   color:white;
   border:none;
-  padding:.4rem .7rem;      /* smaller, balanced size */
-  font-size:1.3rem;         /* smaller font */
-  border-radius:50%;         /* fully round button */
+  padding:.4rem .7rem;
+  font-size:1.3rem;
+  border-radius:50%;
   cursor:pointer;
-  margin-left:1rem;          /* space from logo */
-  width:45px;                /* fixed size for round shape */
-  height:45px;               /* fixed size for round shape */
+  margin-left:1rem;
+  width:45px;
+  height:45px;
   display:flex;
   align-items:center;
   justify-content:center;
   transition: transform 0.2s ease, background 0.3s ease;
 }
-
-/* Hover effect */
 .menu-toggle:hover {
-  background:darkorange;
-  transform:scale(1.1);
+  background: darkorange;
+  transform: scale(1.1);
 }
 
+/* NAV LINKS */
 .nav-links{
   display:flex;
   gap:1.6rem;
@@ -79,36 +78,40 @@ header{
   color:white;
 }
 
-/* CONTACT PAGE STYLE OVERLAY MENU */
+/* MOBILE MENU OVERLAY */
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg,#0a2a52,#0f3b6f);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  transform: translateY(-100%);
+  transition: .5s ease;
+  z-index: 99999;
+}
+.mobile-menu.active{
+  transform: translateY(0);
+}
 .mobile-menu a {
   color: white;
-  font-size: 1.6rem;          /* slightly smaller than before for balance */
+  font-size: 1.6rem;
   text-decoration: none;
   font-weight: 600;
-  padding: 0.8rem 1.5rem;     /* add some padding around each link */
-  border-radius: 12px;         /* subtle rounded background effect on hover */
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
   transition: background 0.3s ease, transform 0.2s ease;
   display: inline-block;
   text-align: center;
 }
-
-/* Hover effect for links */
 .mobile-menu a:hover {
-  background: rgba(255, 255, 255, 0.15); /* semi-transparent highlight */
+  background: rgba(255, 255, 255, 0.15);
   transform: scale(1.05);
 }
 
-.mobile-menu.active{
-  transform:translateY(0);
-}
-
-.mobile-menu a{
-  color:white;
-  font-size:1.8rem;
-  text-decoration:none;
-  font-weight:600;
-}
-
+/* CLOSE BUTTON */
 .close-menu {
   position: absolute;
   top: 20px;
@@ -116,23 +119,20 @@ header{
   background: var(--accent);
   color: white;
   border: none;
-  width: 45px;          /* same as toggle button */
-  height: 45px;         /* same as toggle button */
-  border-radius: 50%;   /* round shape */
-  font-size: 1.3rem;    /* matches toggle */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
 }
-
-/* Hover effect */
 .close-menu:hover {
   background: darkorange;
   transform: scale(1.1);
 }
-
 
 /* ================= HERO SLIDER ================= */
 .hero{
@@ -158,7 +158,7 @@ header{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.35); /* reduced opacity */
+  background:rgba(0,0,0,.35);
 }
 
 .hero-content{
@@ -218,7 +218,7 @@ header{
   color:white;
 }
 
-/* GENERAL */
+/* GENERAL SECTIONS */
 section{padding:5rem 1.2rem; opacity:0; transform:translateY(60px); transition:1s ease;}
 section.show{opacity:1; transform:translateY(0);}
 .container{max-width:1200px;margin:auto}
@@ -325,7 +325,7 @@ footer{
 /* RESPONSIVE */
 @media(max-width:900px){
   .nav-links{display:none}
-  .menu-toggle{display:block}
+  .menu-toggle{display:flex}
   .hero h1{font-size:2.4rem}
 }
 </style>
@@ -349,7 +349,7 @@ footer{
     <a href="signup.html">Login/Sign up</a>
     </nav>
 
-    <button class="menu-toggle" id="menuBtn">☰ Menu</button>
+    <button class="menu-toggle" id="menuBtn">☰</button>
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
@@ -370,8 +370,6 @@ footer{
     <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1588072432836-e10032774350');"></div>
     <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b');"></div>
     <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7');"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1513258496099-48168024aec0');"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b');"></div>
   </div>
 
   <div class="hero-content">
@@ -642,10 +640,12 @@ setInterval(() => {
 /* Testimonial slider */
 const testimonialTrack = document.getElementById("testimonialTrack");
 let t = 0;
-setInterval(() => {
-  testimonialTrack.style.transform = `translateX(-${t * 100}%)`;
-  t = (t + 1) % testimonialTrack.children.length;
-}, 4000);
+if(testimonialTrack){
+  setInterval(() => {
+    testimonialTrack.style.transform = `translateX(-${t * 100}%)`;
+    t = (t + 1) % testimonialTrack.children.length;
+  }, 4000);
+}
 
 /* Intersection Observer for sections */
 const observer = new IntersectionObserver(entries => {
@@ -676,14 +676,15 @@ counters.forEach(counter => {
 
 /* Gallery slider */
 const gallery = document.getElementById("gallery");
-let g = 0;
-setInterval(() => {
-  gallery.style.transform = `translateX(-${g * 100}%)`;
-  gallery.style.transition = "transform 0.8s ease";
-  g = (g + 1) % gallery.children.length;
-}, 3000);
+if(gallery){
+  let g = 0;
+  setInterval(() => {
+    gallery.style.transform = `translateX(-${g * 100}%)`;
+    gallery.style.transition = "transform 0.8s ease";
+    g = (g + 1) % gallery.children.length;
+  }, 3000);
+}
 </script>
 
 </body>
 </html>
-
